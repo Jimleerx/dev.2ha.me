@@ -5,15 +5,21 @@ import {
   SiCplusplus,
   // SiCsharp,
   SiCss3,
+  SiGo,
   SiHtml5,
+  SiIntellijidea,
   SiJavascript,
   SiJson,
+  SiKotlin,
   SiLatex,
   SiMarkdown,
   SiMdx,
+  SiOracle,
   SiPython,
+  SiReact,
   SiTypescript,
   SiYaml,
+
 } from 'react-icons/si'
 
 export const languageIcons: { [key: string]: IconType } = {
@@ -31,6 +37,10 @@ export const languageIcons: { [key: string]: IconType } = {
   json: SiJson,
   yaml: SiYaml,
   tex: SiLatex,
+  java: SiIntellijidea,
+  kotlin: SiKotlin,
+  react: SiReact,
+  go: SiGo
 }
 
 export const getLanguageIcon = (language: string): JSX.Element | null => {

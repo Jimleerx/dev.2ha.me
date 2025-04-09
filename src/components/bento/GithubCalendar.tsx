@@ -15,7 +15,7 @@ interface Props extends Omit<ActivityCalendarProps, 'data' | 'theme'> {
 
 async function fetchCalendarData(username: string): Promise<ApiResponse> {
   const response = await fetch(
-    `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
+    `https://github-contributions-api.jogruber.de/v4/satnaing?y=last`,
   )
   const data: ApiResponse | ApiErrorResponse = await response.json()
 

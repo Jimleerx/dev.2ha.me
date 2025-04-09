@@ -1,15 +1,16 @@
 ---
+import DevCloudServices from '@/components/bento/DevCloudServices'
 import DiscordPresence from '@/components/bento/DiscordPresence.tsx'
 import GithubCalendar from '@/components/bento/GithubCalendar.tsx'
-import SpotifyPresence from '@/components/bento/SpotifyPresence.tsx'
 import WakatimeGraph from '@/components/bento/WakatimeGraph.tsx'
 import Link from '@/components/Link.astro'
-import { SITE, SOCIAL_LINKS } from '@/consts'
+import FuzzyText from '@/components/magicui/fuzzy-text'
+import { DEV_LINKS, SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 
-const latestPost = await getCollection('blog').then((posts) =>
+const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
     .sort(
       (a, b) =>
@@ -26,24 +27,230 @@ const latestPost = await getCollection('blog').then((posts) =>
     aria-label="Personal information and activity grid"
   >
     <div
-      class="first aspect-square rounded-3xl border bg-[url('/static/bento/about-square.webp')] bg-cover bg-center bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/bento/about.webp')] xl:aspect-auto"
+      class="first aspect-square flex relative justify-center rounded-3xl border bg-[url('/static/404.webp')] bg-cover bg-center bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/404.webp')] xl:aspect-auto"
       role="img"
       aria-label="Introduction"
-    >
-      <div
+    > 
+      <div class="justify-center absolute bottom-2" >
+        <FuzzyText client:load
+          baseIntensity={0.12} 
+          hoverIntensity={0.24}
+          fontSize={96}
+          color="#fbb229"
+        >404</FuzzyText>
+        <div class="mt-3 mb-3"></div>
+        <FuzzyText client:load
+          baseIntensity={0.12} 
+          hoverIntensity={0.24}
+          fontSize={33}
+          color='#f95038'
+        >Not Found</FuzzyText>
+      </div>
+      
+      <!-- <div
         class="overlay size-full rounded-3xl bg-[url('/static/bento/about-silhouette.webp')] bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-200"
       >
-      </div>
+      </div> -->
     </div>
 
     <div
-      class="has-overlay aspect-square [grid-area:b] xl:bg-[url('/static/bento/details-silhouette.webp')]"
-      role="img"
-      aria-label="CTF Information"
+      class="has-overlay relative aspect-square items-center justify-center [grid-area:b] bg-[url('/static/honeycomb.webp')]
+      grid grid-cols-4 grid-rows-3"
+      style="grid-template-columns: 2.8fr 3fr 2.8fr 1.4fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
+      aria-label="Developer Stack Shortcuts"
     >
-      <div
-        class="overlay size-full rounded-3xl bg-[url('/static/bento/details.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-0"
+      <!-- <div
+        class="overlay size-full rounded-3xl  bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-0"
       >
+      </div> -->
+      <!-- <DevStackIconsCloud client:load/> -->
+      <div class="max-w max-h inline-block mt-[2.35em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'Gitea')?.href ||
+          '#'}
+          title="代码仓库"
+          aria-label="代码仓库"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:git"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[-3.4em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'Nexus')?.href ||
+          '#'}
+          title="Maven仓库"
+          aria-label="Maven仓库"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:chart-doughnut-variant"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[2.5em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'Bytebase')?.href ||
+          '#'}
+          title="数据库管理"
+          aria-label="数据库管理"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:database-cog"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[-3em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'Zfile')?.href ||
+          '#'}
+          title="网盘"
+          aria-label="网盘"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:cloud-arrow-up"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[0.6em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'FileServer')?.href ||
+          '#'}
+          title="文件服务器"
+          aria-label="文件服务器"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:file-arrow-up-down-outline"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[-5.3em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'immich')?.href ||
+          '#'}
+          title="相册"
+          aria-label="相册"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:camera"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[0.6em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'Emby')?.href ||
+          '#'}
+          title="Emby"
+          aria-label="Emby"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:emby"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[-5.3em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'Plex')?.href ||
+          '#'}
+          title="Plex"
+          aria-label="Plex"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:plex"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
+      </div>
+
+      <div class="max-w max-h inline-block mt-[1em]">
+        <Link
+        href={DEV_LINKS.find((link) => link.label === 'MovieRobot')?.href ||
+          '#'}
+          title="媒体订阅工具"
+          aria-label="媒体订阅工具"
+          target="_blank"
+        >
+          <div
+            class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+          >
+            <Icon
+              style="color: rgb(233, 211, 182);"
+              name="mdi:fruit-cherries"
+              class="z-[1] size-1/2 text-primary sm:size-8"
+              aria-hidden="true"
+            />
+          </div>
+        </Link>
       </div>
     </div>
 
@@ -55,6 +262,8 @@ const latestPost = await getCollection('blog').then((posts) =>
 
     <div class="relative overflow-hidden [grid-area:d] sm:aspect-square">
       <DiscordPresence client:load />
+      
+
     </div>
 
     <div
@@ -95,17 +304,17 @@ const latestPost = await getCollection('blog').then((posts) =>
         class="overlay absolute inset-0 z-[1] size-full rounded-3xl bg-[url('/static/bento/contributions-square.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/bento/contributions.webp')] xl:opacity-0"
       >
       </div>
-      <GithubCalendar username="jktrn" client:load />
+      <GithubCalendar username="jimleerx" client:load />
     </div>
 
     <div
-      class="has-overlay relative aspect-square [grid-area:g] hover:bg-none xl:bg-[url('/static/bento/spotify-silhouette.webp')]"
+      class="overlay absolute inset-0 z-0 size-full rounded-3xl transition-opacity duration-200 xl:opacity-0has-overlay relative flex aspect-square sm:aspect-[1/1] xl:aspect-aspect-[1/1] [grid-area:g]"
     >
-      <div
-        class="overlay absolute inset-0 z-0 size-full rounded-3xl bg-[url('/static/bento/spotify.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-0"
+      <!-- <div
+        class="overlay absolute inset-0 z-0 size-full rounded-3xl transition-opacity duration-200 xl:opacity-0"
       >
-      </div>
-      <SpotifyPresence client:load />
+      </div> -->
+      <DevCloudServices client:load />
     </div>
 
     <div
@@ -130,6 +339,7 @@ const latestPost = await getCollection('blog').then((posts) =>
         href={SOCIAL_LINKS.find((link) => link.label === 'GitHub')?.href || '#'}
         title="Visit my GitHub profile"
         aria-label="Visit my GitHub profile"
+        target="_blank"
       >
         <div
           class="absolute bottom-0 right-0 m-3 flex w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
@@ -143,30 +353,12 @@ const latestPost = await getCollection('blog').then((posts) =>
       <WakatimeGraph omitLanguages={['Markdown', 'JSON']} client:load />
     </div>
 
+    <!-- service links -->
     <div
-      class="has-overlay relative flex aspect-square items-center justify-center [grid-area:k] hover:bg-none xl:bg-[url('/static/bento/twitter-silhouette.webp')]"
+      class="has-overlay aspect-square [grid-area:k] bg-[url('/static/bento/technologies.webp')]"
+      style="grid-template-columns: 2.8fr 3fr 2.8fr 1.4fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
     >
-      <div
-        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/bento/twitter.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-0"
-      >
-      </div>
-      <Icon
-        name="mdi:twitter"
-        class="absolute z-[1] size-1/2 text-primary sm:size-24"
-        aria-hidden="true"
-      />
-      <Link
-        href={SOCIAL_LINKS.find((link) => link.label === 'Twitter')?.href ||
-          '#'}
-        title="Visit my Twitter profile"
-        aria-label="Visit my Twitter profile"
-      >
-        <div
-          class="absolute bottom-0 right-0 m-3 flex w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
-        >
-          <Icon name="lucide:move-up-right" size={16} />
-        </div>
-      </Link>
+      
     </div>
   </section>
 </Layout>

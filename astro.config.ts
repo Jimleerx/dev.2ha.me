@@ -23,7 +23,7 @@ import icon from 'astro-icon'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://enscribe.dev',
+  site: 'https://dev.2ha.me',
   integrations: [
     tailwind({
       applyBaseStyles: false,

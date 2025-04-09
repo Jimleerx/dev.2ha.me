@@ -54,31 +54,33 @@ const WakatimeGraph = ({ omitLanguages = [] }: Props) => {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch(
-      'https://wakatime.com/share/@jktrn/ef6e633b-589d-44f2-9ae6-0eb93445cf2a.json',
-    )
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to fetch data')
-        return response.json()
-      })
-      .then((data) => {
-        const filteredLanguages = data.data
-          .filter(
-            (lang: { name: string }) => !omitLanguages.includes(lang.name),
-          )
-          .slice(0, 7)
-          .map((lang: { name: string; hours: number }, index: number) => ({
-            name: lang.name,
-            hours: Number(lang.hours.toFixed(2)),
-            fill: colors[index % colors.length],
-          }))
-        setLanguages(filteredLanguages)
-        setIsLoading(false)
-      })
-      .catch((err) => {
-        setError(err instanceof Error ? err.message : 'An error occurred')
-        setIsLoading(false)
-      })
+    // fetch(
+    //   'https://wakatime.com/share/@jktrn/ef6e633b-589d-44f2-9ae6-0eb93445cf2a.json',
+    // )
+    //   .then((response) => {
+    //     if (!response.ok) throw new Error('Failed to fetch data')
+    //     return response.json()
+    //   })
+    //   .then((data) => {
+    //     const filteredLanguages = data.data
+    //       .filter(
+    //         (lang: { name: string }) => !omitLanguages.includes(lang.name),
+    //       )
+    //       .slice(0, 7)
+    //       .map((lang: { name: string; hours: number }, index: number) => ({
+    //         name: lang.name,
+    //         hours: Number(lang.hours.toFixed(2)),
+    //         fill: colors[index % colors.length],
+    //       }))
+    //     setLanguages(filteredLanguages)
+    //     setIsLoading(false)
+    //   })
+    //   .catch((err) => {
+    //     setError(err instanceof Error ? err.message : 'An error occurred')
+    //     setIsLoading(false)
+    //   })
+    setLanguages([{"name":"java","hours":1239,"fill":"hsl(var(--chart-1))"},{"name":"kotlin","hours":309,"fill":"hsl(var(--chart-2))"},{"name":"javascript","hours":299,"fill":"hsl(var(--chart-3))"},{"name":"typescript","hours":257,"fill":"hsl(var(--chart-4))"},{"name":"python","hours":114,"fill":"hsl(var(--chart-5))"},{"name":"react","hours":50,"fill":"hsl(var(--chart-6))"},{"name":"go","hours":5,"fill":"hsl(var(--chart-7))"}])
+    setIsLoading(false)
   }, [])
 
   const CustomYAxisTick = ({ x, y, payload }: any) => {
