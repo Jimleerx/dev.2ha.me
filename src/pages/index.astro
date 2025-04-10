@@ -5,6 +5,7 @@ import GithubCalendar from '@/components/bento/GithubCalendar.tsx'
 import WakatimeGraph from '@/components/bento/WakatimeGraph.tsx'
 import Link from '@/components/Link.astro'
 import FuzzyText from '@/components/magicui/fuzzy-text'
+import LetterGlitch from '@/components/magicui/letter-glitch'
 import { DEV_LINKS, SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
@@ -56,7 +57,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     <div
       class="has-overlay relative aspect-square items-center justify-center [grid-area:b] bg-[url('/static/honeycomb.webp')]
       grid grid-cols-4 grid-rows-3"
-      style="grid-template-columns: 2.8fr 3fr 2.8fr 1.4fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
+      style="grid-template-columns: 2.85fr 2.95fr 2.9fr 1.3fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
       aria-label="Developer Stack Shortcuts"
     >
       <!-- <div
@@ -244,7 +245,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
           >
             <Icon
-              style="color: rgb(233, 211, 182);"
+              style="color: #e9d3b6;"
               name="mdi:fruit-cherries"
               class="z-[1] size-1/2 text-primary sm:size-8"
               aria-hidden="true"
@@ -355,10 +356,15 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
 
     <!-- service links -->
     <div
-      class="has-overlay aspect-square [grid-area:k] bg-[url('/static/bento/technologies.webp')]"
-      style="grid-template-columns: 2.8fr 3fr 2.8fr 1.4fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
+      class="has-overlay aspect-square [grid-area:k] "
     >
-      
+    <LetterGlitch client:load
+      glitchColors={["#de17a5", "#5617de", "#e9d3b6"]},
+      glitchSpeed={50}
+      centerVignette={false}
+      outerVignette={true}
+      smooth={true}
+    />
     </div>
   </section>
 </Layout>
