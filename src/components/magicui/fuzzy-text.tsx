@@ -9,6 +9,7 @@ interface FuzzyTextProps {
   enableHover?: boolean;
   baseIntensity?: number;
   hoverIntensity?: number;
+  text?: string
 }
 
 const FuzzyText: React.FC<FuzzyTextProps> = ({
@@ -57,7 +58,7 @@ const FuzzyText: React.FC<FuzzyTextProps> = ({
         document.body.removeChild(temp);
       }
 
-      const text = React.Children.toArray(children)[0].props.value;
+      const text = (children as React.ReactElement).props.value;
       const offscreen = document.createElement("canvas");
       const offCtx = offscreen.getContext("2d");
       if (!offCtx) return;

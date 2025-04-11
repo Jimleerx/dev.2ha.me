@@ -5,6 +5,7 @@ import GithubCalendar from '@/components/bento/GithubCalendar.tsx'
 import WakatimeGraph from '@/components/bento/WakatimeGraph.tsx'
 import Link from '@/components/Link.astro'
 import FuzzyText from '@/components/magicui/fuzzy-text'
+import GradientText from '@/components/magicui/gradint-text'
 import LetterGlitch from '@/components/magicui/letter-glitch'
 import { DEV_LINKS, SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
@@ -37,8 +38,8 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
           baseIntensity={0.12} 
           hoverIntensity={0.24}
           fontSize={96}
-          color="#fbb229"
-        >404</FuzzyText>
+          color="#fbb229",
+        >4O4</FuzzyText>
         <div class="mt-3 mb-3"></div>
         <FuzzyText client:load
           baseIntensity={0.12} 
@@ -268,8 +269,10 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     </div>
 
     <div
-      class="has-overlay relative flex aspect-[6/5] items-start overflow-hidden p-4 [grid-area:e] hover:bg-none sm:aspect-[2.1/1] sm:items-center xl:aspect-auto xl:bg-[url('/static/bento/blog-silhouette.webp')]"
+      class="has-overlay grid grid-rows-2 relative flex aspect-[6/5] items-start overflow-hidden p-1 [grid-area:e] hover:bg-none sm:aspect-[2.1/1] sm:items-center xl:aspect-auto xl:bg-[url('/static/bento/blog-silhouette.webp')]"
+      style="grid-template-rows: 9fr 1fr; "
     >
+    <!-- todo: add blog tag by gradientText -->
       <div
         class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/bento/blog-square.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/bento/blog.webp')] xl:opacity-0"
       >
@@ -282,8 +285,18 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
               alt={`Featured image for the latest post: ${latestPost.data.title}`}
               width={477}
               height={251}
-              class="w-full rounded-2xl border border-border sm:ml-2 sm:w-[80%]"
+              class="w-full rounded-2xl border border-border sm:ml-1 sm:w-[82%] "
             />
+            
+            <div>
+              <GradientText
+                colors={["#fbb229", "#d0ff29", "#ff2000", "#ff29a9", "#b029ff"]}
+                animationSpeed={3}
+                showBorder={false}
+                className="custom-class"
+              >{latestPost.data.title}
+              </GradientText>
+            </div>
             <Link
               href={`/blog/${latestPost.id}`}
               aria-label={`Read latest blog post: ${latestPost.data.title}`}
