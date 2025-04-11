@@ -20,7 +20,7 @@ export default function GradientText({
         backgroundImage: `linear-gradient(to right, ${colors.join(", ")})`,
         animationDuration: `${animationSpeed}s`,
     };
-    console.log(children)
+    // console.log(children)
     return (
         <div
             className={`ml-2 relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
@@ -34,7 +34,7 @@ export default function GradientText({
                     }}
                 >
                     <div
-                        className="absolute inset-0 bg-black rounded-[1.25rem] z-[-1]"
+                        className="absolute inset-0 bg-black rounded-[0.25rem] z-[-1]"
                         style={{
                             width: "calc(100% - 2px)",
                             height: "calc(100% - 2px)",

@@ -4,6 +4,7 @@ import DiscordPresence from '@/components/bento/DiscordPresence.tsx'
 import GithubCalendar from '@/components/bento/GithubCalendar.tsx'
 import WakatimeGraph from '@/components/bento/WakatimeGraph.tsx'
 import Link from '@/components/Link.astro'
+import { BorderBeam } from '@/components/magicui/border-beam'
 import FuzzyText from '@/components/magicui/fuzzy-text'
 import GradientText from '@/components/magicui/gradint-text'
 import LetterGlitch from '@/components/magicui/letter-glitch'
@@ -288,13 +289,13 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
               class="w-full rounded-2xl border border-border sm:ml-1 sm:w-[82%] "
             />
             
-            <div>
+            <div class="relative w-full rounded-xl overflow-hidden">
               <GradientText
                 colors={["#fbb229", "#d0ff29", "#ff2000", "#ff29a9", "#b029ff"]}
-                animationSpeed={3}
+                animationSpeed={4}
                 showBorder={false}
                 className="custom-class"
-              >{latestPost.data.title}
+              >🔖{latestPost.data.title}
               </GradientText>
             </div>
             <Link
