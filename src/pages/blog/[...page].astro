@@ -2,11 +2,14 @@
 import BlogCard from '@/components/BlogCard.astro'
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import Container from '@/components/Container.astro'
+import Link from '@/components/Link.astro'
 import PaginationComponent from '@/components/ui/pagination'
 import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import type { PaginateFunction } from 'astro'
 import { type CollectionEntry, getCollection } from 'astro:content'
+import { slug } from 'github-slugger'
+
 
 export async function getStaticPaths({
   paginate,
@@ -35,6 +38,26 @@ const postsByYear = page.data.reduce(
 )
 
 const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
+
+const tagCounts: { [x: string]: number } = {}
+page.data.forEach(
+  (post) => {
+    let tags = post.data.tags
+    tags?.forEach(tag => {
+      let count = tagCounts[tag]
+      if (count == null) {
+        tagCounts[tag] = 1
+      } else {
+        tagCounts[tag] = tagCounts[tag] + 1
+      }
+    })
+  },
+  {},
+)
+
+const tagKeys = Object.keys(tagCounts)
+// sorted by count
+const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
 ---
 
 <Layout title="Blog" description="Blog">
@@ -45,6 +68,33 @@ const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
         { label: `Page ${page.currentPage}`, icon: 'lucide:folder-open' },
       ]}
     />
+
+    <div class="hidden h-full max-h-screen max-w-[280px] min-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:contents dark:bg-gray-900/70 dark:shadow-gray-800/40">
+      <div class="px-6 py-2 absolute left-4 top-[50%]"
+          style="transform: translateY(-50%);">
+          <Link
+            href={`/blog`}
+            class="hover:text-primary-500 dark:hover:text-primary-500 font-bold uppercase"
+          >
+            All Posts
+          </Link>
+        <ul>
+          {sortedTags.map((t) => {
+            return (
+              <li value={t} class="my-0">
+                  <Link
+                    href={`/tags/${slug(t)}`}
+                    class="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-400 uppercase dark:text-gray-300"
+                    aria-label={`View posts tagged ${t}`}
+                  >
+                    {`${t} (${tagCounts[t]})`}
+                  </Link>
+              </li>
+            )
+          })}
+        </ul>
+      </div>
+    </div>
 
     <div class="flex min-h-[calc(100vh-18rem)] flex-col gap-y-8">
       {
