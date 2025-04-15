@@ -1,7 +1,7 @@
 ---
 title: '破解群晖套件版emby媒体播放器'
 description: '在dsm7.2上破解emby套件, 输入任意激活码即可获取小金牌'
-date: 2025-04-15
+date: 2024-12-31
 tags: ['emby', 'synology', 'crack']
 image: 'assets/emby_banner.png'
 authors: ['jimlee']
@@ -54,6 +54,10 @@ wget --no-check-certificate https://github.com/MediaBrowser/Emby.Releases/releas
 mkdir output
 /usr/syno/sbin/synoarchive -xf 'emby-server-synology72_4.8.11.0_x86_64.spk' -C output
 ```
+查看文件树
+```
+find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+```
 现在文件结构应该是这样
 <FileTree>
 - output
@@ -80,10 +84,6 @@ mkdir output
 ```
 mkdir pkg
 tar -xf output/package.tgz -C pkg 
-```
-查看文件树
-```
-find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
 现在文件树如下
 <FileTree>

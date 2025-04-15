@@ -1,0 +1,21 @@
+---
+title: '常用代码块合集'
+description: '常用的kotlin, python, shell, regex等代码块合集'
+date: 2025-04-10
+tags: ['kotlin', 'python', 'regex']
+image: 'assets/commoncodebanner.webp'
+authors: ['jimlee']
+---
+
+## kotlin 
+### 添加全局logger
+```
+val <T : Any> T.LOGGER: Logger
+    get() = LoggerFactory.getLogger(this::class.java)
+```
+
+## linux
+### 打印文件树
+```
+find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+```
