@@ -8,6 +8,7 @@ import { BorderBeam } from '@/components/magicui/border-beam'
 import FuzzyText from '@/components/magicui/fuzzy-text'
 import GradientText from '@/components/magicui/gradint-text'
 import LetterGlitch from '@/components/magicui/letter-glitch'
+import MagnetLines from '@/components/magicui/magnet-lines'
 import { DEV_LINKS, SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
@@ -67,7 +68,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       >
       </div> -->
       <!-- <DevStackIconsCloud client:load/> -->
-      <div class="max-w max-h inline-block mt-[2.35em]">
+      <div class="max-w max-h inline-block mt-[2.6em] sm:mt-[2.35em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'Gitea')?.href ||
           '#'}
@@ -81,14 +82,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:git"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[-3.4em]">
+      <div class="max-w max-h inline-block mt-[-3.7em] ml-[0.1em] sm:mt-[-3.4em] sm:ml-[0em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'Nexus')?.href ||
           '#'}
@@ -102,14 +103,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:chart-doughnut-variant"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[2.5em]">
+      <div class="max-w max-h inline-block mt-[2.5em] ml-[-0.1em] sm:mt-[2.5em] sm:ml-[0em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'Bytebase')?.href ||
           '#'}
@@ -123,14 +124,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:database-cog"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[-3em]">
+      <div class="max-w max-h inline-block mt-[-4em] sm:mt-[-3em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'Zfile')?.href ||
           '#'}
@@ -144,14 +145,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:cloud-arrow-up"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[0.6em]">
+      <div class="max-w max-h inline-block mt-[0.1em] sm:mt-[0.6em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'FileServer')?.href ||
           '#'}
@@ -165,14 +166,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:file-arrow-up-down-outline"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[-5.3em]">
+      <div class="max-w max-h inline-block mt-[-6.5em] ml-[0.1em] sm:mt-[-5.3em] sm:ml-[0em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'immich')?.href ||
           '#'}
@@ -186,14 +187,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:camera"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[0.6em]">
+      <div class="max-w max-h inline-block mt-[0.2em] sm:mt-[0.6em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'Emby')?.href ||
           '#'}
@@ -207,14 +208,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:emby"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[-5.3em]">
+      <div class="max-w max-h inline-block mt-[-6.5em] sm:mt-[-5.3em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'Plex')?.href ||
           '#'}
@@ -228,14 +229,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: rgb(233, 211, 182);"
               name="mdi:plex"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
         </Link>
       </div>
 
-      <div class="max-w max-h inline-block mt-[1em]">
+      <div class="max-w max-h inline-block mt-[1.49em] sm:mt-[1em]">
         <Link
         href={DEV_LINKS.find((link) => link.label === 'MovieRobot')?.href ||
           '#'}
@@ -249,7 +250,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
             <Icon
               style="color: #e9d3b6;"
               name="mdi:fruit-cherries"
-              class="z-[1] size-1/2 text-primary sm:size-8"
+              class="z-[1] size-1/2 text-primary sm:size-8 size-8"
               aria-hidden="true"
             />
           </div>
@@ -258,9 +259,18 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     </div>
 
     <div
-      class="aspect-[1/2.1] bg-[url('/static/bento/image-1.webp')] [grid-area:c] xl:aspect-auto"
+      class="aspect-[1/2.1] [grid-area:c] xl:aspect-auto"
       aria-hidden="true"
     >
+    <MagnetLines client:load
+      rows={9}
+      columns={4}
+      containerSize="100%"
+      lineColor="#e9d3b6"
+      lineWidth="0.8vmin"
+      lineHeight="4vmin"
+      baseAngle={0}
+    />
     </div>
 
     <div class="relative overflow-hidden [grid-area:d] sm:aspect-square">
