@@ -52,19 +52,22 @@ const authors = defineCollection({
     github: z.string().url().optional(),
     linkedin: z.string().url().optional(),
     discord: z.string().url().optional(),
+    gitea: z.string().url().optional(),
+    devintro: z.string().url().optional(),
   }),
 })
 
-const projects = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
-  schema: ({ image }) =>
-    z.object({
-      name: z.string(),
-      description: z.string(),
-      tags: z.array(z.string()),
-      image: image(),
-      link: z.string().url(),
-    }),
-})
+// const projects = defineCollection({
+//   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
+//   schema: ({ image }) =>
+//     z.object({
+//       name: z.string(),
+//       description: z.string(),
+//       tags: z.array(z.string()),
+//       image: image(),
+//       link: z.string().url(),
+//     }),
+// })
 
-export const collections = { blog, authors, projects }
+// export const collections = { blog, authors, projects }
+export const collections = { blog, authors }

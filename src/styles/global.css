@@ -7,7 +7,7 @@
   src: url('/fonts/haipaiqiangdiaosenxiyuan.woff');
   font-weight: 100 800;
   font-style: normal;
-  unicode-range: U+2E80-2EFF,U+3400-4DBF,U+4E00-9FFF;
+  /* unicode-range: U+2E80-2EFF,U+3400-4DBF,U+4E00-9FFF; */
 }
 
 @font-face {
