@@ -1,0 +1,195 @@
+
+--- 
+import { Icon } from "astro-icon/components";
+import { DEV_LINKS } from "@/consts";
+import Link from "./Link.astro";
+---
+
+<div  class="max-w max-h inline-block mt-[2.6em] sm:mt-[2.35em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'Gitea')?.href ||
+      '#'}
+      title="代码仓库"
+      aria-label="代码仓库"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:git"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[-3.7em] ml-[0.1em] sm:mt-[-3.4em] sm:ml-[0em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'Nexus')?.href ||
+      '#'}
+      title="Maven仓库"
+      aria-label="Maven仓库"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:chart-doughnut-variant"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[2.5em] ml-[-0.1em] sm:mt-[2.5em] sm:ml-[0em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'Bytebase')?.href ||
+      '#'}
+      title="数据库管理"
+      aria-label="数据库管理"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:database-cog"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[-4em] sm:mt-[-3em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'Zfile')?.href ||
+      '#'}
+      title="网盘"
+      aria-label="网盘"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:cloud-arrow-up"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[0.1em] sm:mt-[0.6em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'FileServer')?.href ||
+      '#'}
+      title="文件服务器"
+      aria-label="文件服务器"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:file-arrow-up-down-outline"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[-6.5em] ml-[0.1em] sm:mt-[-5.3em] sm:ml-[0em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'immich')?.href ||
+      '#'}
+      title="相册"
+      aria-label="相册"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:camera"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[0.2em] sm:mt-[0.6em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'Emby')?.href ||
+      '#'}
+      title="Emby"
+      aria-label="Emby"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:emby"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[-6.5em] sm:mt-[-5.3em]">
+    <Link
+    href={DEV_LINKS.find((link) => link.label === 'Plex')?.href ||
+      '#'}
+      title="Plex"
+      aria-label="Plex"
+      target="_blank"
+    >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: rgb(233, 211, 182);"
+          name="mdi:plex"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
+
+  <div  class="max-w max-h inline-block mt-[1.49em] sm:mt-[1em]">
+    <Link
+      href={DEV_LINKS.find((link) => link.label === 'MovieRobot')?.href ||
+        '#'}
+        title="媒体订阅工具"
+        aria-label="媒体订阅工具"
+        target="_blank"
+      >
+      <div
+         class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+      >
+        <Icon
+          style="color: #e9d3b6;"
+          name="mdi:fruit-cherries"
+          class="z-[1] size-1/2 text-primary sm:size-8 size-8"
+          aria-hidden="true"
+        />
+      </div>
+    </Link>
+  </div>
