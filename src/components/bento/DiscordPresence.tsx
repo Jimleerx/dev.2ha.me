@@ -110,18 +110,18 @@ const DiscordPresence = () => {
             </span>
           </div>
           <div className="flex grow rounded-xl bg-secondary/50 px-3 py-2">
-              <div className="flex size-full flex-col items-center justify-center gap-1">
-                <img
-                  src="/static/bento/bento-discord-futon.svg"
-                  alt="No Status Image"
-                  width={64}
-                  height={64}
-                  className="h-full w-fit rounded-lg"
-                />
-                <div className="text-[10px] text-muted-foreground">
-                  但行好事，莫问前程。
-                </div>
+            <div className="flex size-full flex-col items-center justify-center gap-1">
+              <img
+                src="/static/bento/bento-discord-futon.svg"
+                alt="No Status Image"
+                width={64}
+                height={64}
+                className="h-full w-fit rounded-lg"
+              />
+              <div className="text-[10px] text-muted-foreground">
+                但行好事，莫问前程。
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -129,7 +129,6 @@ const DiscordPresence = () => {
         <FaDiscord className="size-10 text-background" />
       </div> */}
     </div>
-    
   )
 }
 

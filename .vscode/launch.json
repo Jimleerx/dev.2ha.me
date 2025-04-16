@@ -7,7 +7,13 @@
 
         {
             "command": "npm run dev",
-            "name": "Run npm start",
+            "name": "developer mode",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "npm run build",
+            "name": "build package",
             "request": "launch",
             "type": "node-terminal"
         },

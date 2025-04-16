@@ -19,11 +19,9 @@ export type DevLink = {
   icon: string
 }
 
-
 export const SITE: Site = {
   TITLE: 'dev.2ha.me',
-  DESCRIPTION:
-    '2ha.me的开发者主页',
+  DESCRIPTION: '2ha.me的开发者主页',
   EMAIL: 'li@2ha.me',
   NUM_POSTS_ON_HOMEPAGE: 2,
   POSTS_PER_PAGE: 4,
@@ -46,13 +44,53 @@ export const SOCIAL_LINKS: Link[] = [
 ]
 
 export const DEV_LINKS: DevLink[] = [
-  { href: 'https://code.2ha.me', label: 'Gitea', title: "代码仓库", icon: "mdi:git" },
-  { href: 'https://maven.2ha.me', label: 'Nexus', title: "Maven仓库", icon: "mdi:chart-doughnut-variant" },
-  { href: 'https://dms.2ha.me', label: 'Bytebase', title: "数据库管理", icon: "mdi:database-cog" },
-  { href: 'https://p.2ha.me', label: 'Zfile', title: "网盘", icon: "mdi:cloud-arrow-up" },
-  { href: 'https://photo.2ha.me', label: 'immich', title: "相册", icon: "mdi:camera" },
-  { href: 'https://f.2ha.me', label: 'FileServer', title: "文件服务器", icon: "mdi:file-arrow-up-down-outline" },
-  { href: 'https://v.2ha.me', label: 'Emby', title: "Emby", icon: "mdi:emby" },
-  { href: 'https://plex.2ha.me', label: 'Plex', title: "Plex", icon: "mdi:plex" },
-  { href: 'https://mr.2ha.me', label: 'MovieRobot', title: "媒体订阅工具", icon: "mdi:fruit-cherries" },
+  {
+    href: 'https://code.2ha.me',
+    label: 'Gitea',
+    title: '代码仓库',
+    icon: 'mdi:git',
+  },
+  {
+    href: 'https://maven.2ha.me',
+    label: 'Nexus',
+    title: 'Maven仓库',
+    icon: 'mdi:chart-doughnut-variant',
+  },
+  {
+    href: 'https://dms.2ha.me',
+    label: 'Bytebase',
+    title: '数据库管理',
+    icon: 'mdi:database-cog',
+  },
+  {
+    href: 'https://p.2ha.me',
+    label: 'Zfile',
+    title: '网盘',
+    icon: 'mdi:cloud-arrow-up',
+  },
+  {
+    href: 'https://photo.2ha.me',
+    label: 'immich',
+    title: '相册',
+    icon: 'mdi:camera',
+  },
+  {
+    href: 'https://f.2ha.me',
+    label: 'FileServer',
+    title: '文件服务器',
+    icon: 'mdi:file-arrow-up-down-outline',
+  },
+  { href: 'https://v.2ha.me', label: 'Emby', title: 'Emby', icon: 'mdi:emby' },
+  {
+    href: 'https://plex.2ha.me',
+    label: 'Plex',
+    title: 'Plex',
+    icon: 'mdi:plex',
+  },
+  {
+    href: 'https://mr.2ha.me',
+    label: 'MovieRobot',
+    title: '媒体订阅工具',
+    icon: 'mdi:fruit-cherries',
+  },
 ]

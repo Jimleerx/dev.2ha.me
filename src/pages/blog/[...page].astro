@@ -10,7 +10,6 @@ import type { PaginateFunction } from 'astro'
 import { type CollectionEntry, getCollection } from 'astro:content'
 import { slug } from 'github-slugger'
 
-
 export async function getStaticPaths({
   paginate,
 }: {
@@ -40,20 +39,17 @@ const postsByYear = page.data.reduce(
 const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
 
 const tagCounts: { [x: string]: number } = {}
-page.data.forEach(
-  (post) => {
-    let tags = post.data.tags
-    tags?.forEach(tag => {
-      let count = tagCounts[tag]
-      if (count == null) {
-        tagCounts[tag] = 1
-      } else {
-        tagCounts[tag] = tagCounts[tag] + 1
-      }
-    })
-  },
-  {},
-)
+page.data.forEach((post) => {
+  let tags = post.data.tags
+  tags?.forEach((tag) => {
+    let count = tagCounts[tag]
+    if (count == null) {
+      tagCounts[tag] = 1
+    } else {
+      tagCounts[tag] = tagCounts[tag] + 1
+    }
+  })
+}, {})
 
 const tagKeys = Object.keys(tagCounts)
 // sorted by count
@@ -69,34 +65,42 @@ const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
       ]}
     />
 
-    <div class="hidden h-full max-h-screen max-w-[280px] min-w-[280px] lg:contents flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md sm:none dark:bg-gray-900/70 dark:shadow-gray-800/40">
-      <div class="px-4 py-2 absolute left-4 top-[50%]"
-          style="transform: translateY(-50%);">
-          <Link
-            href={`/blog`}
-            class="hover:text-primary-500 dark:hover:text-primary-500 font-bold uppercase"
-          >
-            All Posts
-          </Link>
+    <div
+      class="sm:none hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md lg:contents dark:bg-gray-900/70 dark:shadow-gray-800/40"
+    >
+      <div
+        class="absolute left-4 top-[50%] px-4 py-2"
+        style="transform: translateY(-50%);"
+      >
+        <Link
+          href={`/blog`}
+          class="hover:text-primary-500 dark:hover:text-primary-500 font-bold uppercase"
+        >
+          All Posts
+        </Link>
         <ul>
-          {sortedTags.map((t) => {
-            return (
-              <li value={t} class="my-0">
+          {
+            sortedTags.map((t) => {
+              return (
+                <li value={t} class="my-0">
                   <Link
                     href={`/tags/${slug(t)}`}
-                    class="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium text-gray-400 uppercase dark:text-gray-300"
+                    class="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium uppercase text-gray-400 dark:text-gray-300"
                     aria-label={`View posts tagged ${t}`}
                   >
                     {`${t} (${tagCounts[t]})`}
                   </Link>
-              </li>
-            )
-          })}
+                </li>
+              )
+            })
+          }
         </ul>
-        <span class="text-base ms-auto inline-flex items-center h-6 sm:text-end">
+        <span
+          class="ms-auto inline-flex h-6 items-center text-base sm:text-end"
+        >
           <a
             aria-label="View all blog categories"
-            class="font-medium text-accent sm:hover:text-accent-two"
+            class="sm:hover:text-accent-two font-medium text-accent"
             style="color: #e9d3b6; font-size: 12px;"
             href="/tags/"
           >

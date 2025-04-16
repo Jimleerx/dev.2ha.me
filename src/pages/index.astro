@@ -31,30 +31,33 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     aria-label="Personal information and activity grid"
   >
     <div
-      class="first aspect-square flex relative justify-center rounded-3xl border [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto"
+      class="first relative flex aspect-square justify-center rounded-3xl border [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto"
       role="img"
       aria-label="Introduction"
-    > 
-
-      <img class="svg-bg-color relative justify-center max-w-fit rounded-3xl border object-cover w-full no-repeat"
+    >
+      <img
+        class="svg-bg-color no-repeat relative w-full max-w-fit justify-center rounded-3xl border object-cover"
         src="/static/404.svg"
       />
-      <div class="justify-center absolute bottom-2" >
-        <FuzzyText client:load
-          baseIntensity={0.12} 
+      <div class="absolute bottom-2 justify-center">
+        <FuzzyText
+          client:load
+          baseIntensity={0.12}
           hoverIntensity={0.24}
           fontSize={96}
-          color="#fbb229",
-        >4O4</FuzzyText>
-        <div class="mt-3 mb-3"></div>
-        <FuzzyText client:load
-          baseIntensity={0.12} 
+          color="#fbb229"
+          ,>4O4</FuzzyText
+        >
+        <div class="mb-3 mt-3"></div>
+        <FuzzyText
+          client:load
+          baseIntensity={0.12}
           hoverIntensity={0.24}
           fontSize={33}
-          color='#f95038'
-        >Not Found</FuzzyText>
+          color="#f95038">Not Found</FuzzyText
+        >
       </div>
-      
+
       <!-- <div
         class="overlay size-full rounded-3xl bg-[url('/static/bento/about-silhouette.webp')] bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-200"
       >
@@ -62,8 +65,8 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     </div>
 
     <div
-      class="has-overlay relative aspect-square items-center justify-center [grid-area:b] bg-[url('/static/honeycomb.webp')]
-      grid grid-cols-4 grid-rows-3"
+      class="has-overlay relative grid aspect-square grid-cols-4 grid-rows-3 items-center
+      justify-center bg-[url('/static/honeycomb.webp')] [grid-area:b]"
       style="grid-template-columns: 2.85fr 2.95fr 2.9fr 1.3fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
       aria-label="Developer Stack Shortcuts"
     >
@@ -75,32 +78,28 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       <ShortCuts />
     </div>
 
-    <div
-      class="aspect-[1/2.1] [grid-area:c] xl:aspect-auto"
-      aria-hidden="true"
-    >
-    <MagnetLines client:load
-      rows={9}
-      columns={4}
-      containerSize="100%"
-      lineColor="#e9d3b6"
-      lineWidth="0.8vmin"
-      lineHeight="4vmin"
-      baseAngle={0}
-    />
+    <div class="aspect-[1/2.1] [grid-area:c] xl:aspect-auto" aria-hidden="true">
+      <MagnetLines
+        client:load
+        rows={9}
+        columns={4}
+        containerSize="100%"
+        lineColor="#e9d3b6"
+        lineWidth="0.8vmin"
+        lineHeight="4vmin"
+        baseAngle={0}
+      />
     </div>
 
     <div class="relative overflow-hidden [grid-area:d] sm:aspect-square">
       <DiscordPresence client:load />
-      
-
     </div>
 
     <div
-      class="has-overlay grid grid-rows-2 relative flex aspect-[6/5] items-start overflow-hidden p-1 [grid-area:e] hover:bg-none sm:aspect-[2.1/1] sm:items-center xl:aspect-auto xl:bg-[url('/static/bento/blog-silhouette.webp')]"
+      class="has-overlay relative flex grid aspect-[6/5] grid-rows-2 items-start overflow-hidden p-1 [grid-area:e] hover:bg-none sm:aspect-[2.1/1] sm:items-center xl:aspect-auto xl:bg-[url('/static/bento/blog-silhouette.webp')]"
       style="grid-template-rows: 9fr 1fr; "
     >
-    <!-- todo: add blog tag by gradientText -->
+      <!-- todo: add blog tag by gradientText -->
       <div
         class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/bento/blog-square.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/bento/blog.webp')] xl:opacity-0"
       >
@@ -115,14 +114,15 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
               height={251}
               class="w-full rounded-2xl border border-border sm:ml-1 sm:w-[82%] "
             />
-            
-            <div class="relative w-full rounded-xl overflow-hidden">
+
+            <div class="relative w-full overflow-hidden rounded-xl">
               <GradientText
-                colors={["#fbb229", "#d0ff29", "#ff2000", "#ff29a9", "#b029ff"]}
+                colors={['#fbb229', '#d0ff29', '#ff2000', '#ff29a9', '#b029ff']}
                 animationSpeed={4}
                 showBorder={false}
                 className="custom-class"
-              >🔖{latestPost.data.title}
+              >
+                🔖{latestPost.data.title}
               </GradientText>
             </div>
             <Link
@@ -150,7 +150,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     </div>
 
     <div
-      class="overlay absolute inset-0 z-0 size-full rounded-3xl transition-opacity duration-200 xl:opacity-0has-overlay relative flex aspect-square sm:aspect-[1/1] xl:aspect-aspect-[1/1] [grid-area:g]"
+      class="overlay xl:opacity-0has-overlay xl:aspect-aspect-[1/1] absolute relative inset-0 z-0 flex aspect-square size-full rounded-3xl transition-opacity duration-200 [grid-area:g] sm:aspect-[1/1]"
     >
       <!-- <div
         class="overlay absolute inset-0 z-0 size-full rounded-3xl transition-opacity duration-200 xl:opacity-0"
@@ -196,16 +196,16 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     </div>
 
     <!-- service links -->
-    <div
-      class="has-overlay aspect-square [grid-area:k] "
-    >
-    <LetterGlitch client:load
-      glitchColors={["#de17a5", "#5617de", "#e9d3b6"]},
-      glitchSpeed={50}
-      centerVignette={false}
-      outerVignette={true}
-      smooth={true}
-    />
+    <div class="has-overlay aspect-square [grid-area:k]">
+      <LetterGlitch
+        client:load
+        glitchColors={['#de17a5', '#5617de', '#e9d3b6']}
+        ,
+        glitchSpeed={50}
+        centerVignette={false}
+        outerVignette={true}
+        smooth={true}
+      />
     </div>
   </section>
 </Layout>

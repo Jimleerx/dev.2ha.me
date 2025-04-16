@@ -1,63 +1,63 @@
-import React from 'react';
-import Link from '../Link.astro';
+import React from 'react'
+import Link from '../Link.astro'
 
 interface GradientTextProps {
-    children: React.ReactNode;
-    className?: string;
-    colors?: string[];
-    animationSpeed?: number;
-    showBorder?: boolean;
+  children: React.ReactNode
+  className?: string
+  colors?: string[]
+  animationSpeed?: number
+  showBorder?: boolean
 }
 
 export default function GradientText({
-    children,
-    className = "",
-    colors = ["#ffaa40", "#9c40ff", "#ffaa40"],
-    animationSpeed = 8,
-    showBorder = false,
+  children,
+  className = '',
+  colors = ['#ffaa40', '#9c40ff', '#ffaa40'],
+  animationSpeed = 8,
+  showBorder = false,
 }: GradientTextProps) {
-    const gradientStyle = {
-        backgroundImage: `linear-gradient(to right, ${colors.join(", ")})`,
-        animationDuration: `${animationSpeed}s`,
-    };
-    // console.log(children)
-    return (
+  const gradientStyle = {
+    backgroundImage: `linear-gradient(to right, ${colors.join(', ')})`,
+    animationDuration: `${animationSpeed}s`,
+  }
+  // console.log(children)
+  return (
+    <div
+      className={`relative mx-auto ml-2 flex max-w-fit cursor-pointer flex-row items-center justify-center overflow-hidden rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 ${className}`}
+    >
+      {showBorder && (
         <div
-            className={`ml-2 relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 overflow-hidden cursor-pointer ${className}`}
+          className="pointer-events-none absolute inset-0 z-0 animate-gradient bg-cover"
+          style={{
+            ...gradientStyle,
+            backgroundSize: '300% 100%',
+          }}
         >
-            {showBorder && (
-                <div
-                    className="absolute inset-0 bg-cover z-0 pointer-events-none animate-gradient"
-                    style={{
-                        ...gradientStyle,
-                        backgroundSize: "300% 100%",
-                    }}
-                >
-                    <div
-                        className="absolute inset-0 bg-black rounded-[0.25rem] z-[-1]"
-                        style={{
-                            width: "calc(100% - 2px)",
-                            height: "calc(100% - 2px)",
-                            left: "50%",
-                            top: "50%",
-                            transform: "translate(-50%, -50%)",
-                        }}
-                    ></div>
-                </div>
-            )}
-            <div
-                className="inline-block relative z-2 text-transparent bg-cover animate-gradient"
-                style={{
-                    ...gradientStyle,
-                    backgroundClip: "text",
-                    WebkitBackgroundClip: "text",
-                    backgroundSize: "300% 100%",
-                }}
-            >
-                {children}
-            </div>
+          <div
+            className="absolute inset-0 z-[-1] rounded-[0.25rem] bg-black"
+            style={{
+              width: 'calc(100% - 2px)',
+              height: 'calc(100% - 2px)',
+              left: '50%',
+              top: '50%',
+              transform: 'translate(-50%, -50%)',
+            }}
+          ></div>
         </div>
-    );
+      )}
+      <div
+        className="z-2 relative inline-block animate-gradient bg-cover text-transparent"
+        style={{
+          ...gradientStyle,
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          backgroundSize: '300% 100%',
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  )
 }
 
 // tailwind.config.js

@@ -19,7 +19,6 @@ import {
   SiReact,
   SiTypescript,
   SiYaml,
-
 } from 'react-icons/si'
 
 export const languageIcons: { [key: string]: IconType } = {
@@ -40,7 +39,7 @@ export const languageIcons: { [key: string]: IconType } = {
   java: SiIntellijidea,
   kotlin: SiKotlin,
   react: SiReact,
-  go: SiGo
+  go: SiGo,
 }
 
 export const getLanguageIcon = (language: string): JSX.Element | null => {
