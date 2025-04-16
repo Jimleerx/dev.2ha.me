@@ -1,4 +1,4 @@
-import type { ShikiTransformer } from 'shiki'
+import { type ShikiTransformer } from '@shikijs/types';
 import { createCommentNotationTransformer } from '@shikijs/transformers'
 
 export interface TransformerNotationSkipOptions {
@@ -31,4 +31,5 @@ export function transformerNotationSkip(
     },
     false, // remove empty lines
   )
-}
+
+ }

@@ -48,7 +48,7 @@ const chartConfig: ChartConfig = {
   ),
 }
 
-const WakatimeGraph = ({ omitLanguages = [] }: Props) => {
+const WakatimeGraph = ({ }: Props) => {
   const [languages, setLanguages] = useState<Language[]>([])
   const [isLoading, setIsLoading] = useState(true)
 

@@ -1,5 +1,4 @@
 import AvatarComponent from '@/components/ui/avatar'
-import { BorderBeam } from '../magicui/border-beam'
 
 const DiscordPresence = () => {
   // const { data: lanyard, isLoading } = useLanyard({

@@ -14,7 +14,6 @@ import {
   SiLatex,
   SiMarkdown,
   SiMdx,
-  SiOracle,
   SiPython,
   SiReact,
   SiTypescript,

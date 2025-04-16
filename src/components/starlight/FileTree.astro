@@ -5,7 +5,7 @@ const fileTreeHtml = await Astro.slots.render('default')
 const html = processFileTree(fileTreeHtml, '文件树')
 ---
 
-<starlight-file-tree set:html={html} class="not-content" data-pagefind-ignore />
+<starlight-file-tree set:html={html} class="not-content rounded-xl" data-pagefind-ignore />
 
 <style>
   starlight-file-tree {
