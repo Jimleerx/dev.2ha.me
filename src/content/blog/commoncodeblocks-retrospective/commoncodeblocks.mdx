@@ -9,13 +9,13 @@ authors: ['jimlee']
 
 ## kotlin 
 ### 添加全局logger
-```
+```kotlin
 val <T : Any> T.LOGGER: Logger
     get() = LoggerFactory.getLogger(this::class.java)
 ```
 
 ## linux
 ### 打印文件树
-```
+```shellscript
 find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```

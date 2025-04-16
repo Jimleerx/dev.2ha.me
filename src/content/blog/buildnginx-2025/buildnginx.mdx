@@ -10,25 +10,25 @@ authors: ['jimlee']
 ## 在debian上安装nginx
 debian默认软件库的nginx没有fancy-index模块, fancy-index是一个html文件服务器, 下面就开始手动给nginx添加fancy-index模块。
 ## 1. 安装编译环境
-```
+```shellscript
 sudo apt install -y build-essential libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
 # 包含pcre(正则库), zlib(压缩库), ssl(https)
 ```
 ## 2. 下载并解压nginx源码
 官网查看最新版本(当前20250111为1.26.3)
 https://nginx.org/en/download.html
-```
+```shellscript
 wget https://nginx.org/download/nginx-1.26.3.tar.gz
 tar -xf nginx-1.26.3.tar.gz
 ``` 
 ## 3. 下载并解压nginx-fancyindex模块
-```
+```shellscript
 cd nginx-1.26.3
 wget https://github.com/aperezdc/ngx-fancyindex/releases/download/v0.5.2/ngx-fancyindex-0.5.2.tar.xz
 tar -xf ngx-fancyindex-0.5.2.tar.xz
 ```
 ## 4. 配置需要编译的模块 
-```
+```shellscript
 # NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录
 mkdir -p /var/cache/nginx
 ./configure --add-module=./ngx-fancyindex-0.5.2 \
@@ -71,11 +71,11 @@ mkdir -p /var/cache/nginx
 --with-stream_ssl_preread_module 
 ```
 ## 5. 编译
-```
+```shellscript
 sudo make && sudo make install
 ```
 ## 6. 创建systemctl服务
-```
+```systemd
 vim /usr/lib/systemd/system/nginx.service
 [Unit]
 Description=nginx
@@ -92,11 +92,11 @@ PrivateTmp=true
 WantedBy=multi-user.target
 ```
 ## 7. 通过systemctl管理nginx
-```
+```shellscript
 systemctl start nginx
 systemctl status nginx
 ```
 ## 8. 修改setcap让普通用户可以使用1024以下端口
-```
+```shellscript
 setcap cap_net_bind_service=+eip ${NGINX_ROOT_PATH}/sbin/nginx
 ```

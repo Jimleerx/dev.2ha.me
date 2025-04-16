@@ -17,7 +17,7 @@ import FileTree from '@/components/starlight/FileTree.astro'
 | 2   | Windows10/11    | [dnSpy](https://github.com/dnSpy/dnSpy/releases)                                       |
 
 ## 1. SSH登录DSM, 切换到root用户
-```
+```shellscript
 ssh {user}@{dsm_ip} // 输入密码
 sudo -i // 输入密码
 ```
@@ -44,18 +44,18 @@ sudo -i // 输入密码
 ![emby_versions](assets/emby_versions.png)
 找到与DSM对应的系统版本与系统架构, 我的系统是DSM7.2 x86_64
 复制下载链接, 使用wget下载到NAS临时目录/tmp/emby
-```
+```shellscript
 mkdir -p /tmp/emby
 cd /tmp/emby
 wget --no-check-certificate https://github.com/MediaBrowser/Emby.Releases/releases/download/4.8.11.0/emby-server-synology72_4.8.11.0_x86_64.spk
 ```
 ## 3. 解包emby套件
-```
+```shellscript
 mkdir output
 /usr/syno/sbin/synoarchive -xf 'emby-server-synology72_4.8.11.0_x86_64.spk' -C output
 ```
 查看文件树
-```
+```shellscript
 find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
 现在文件结构应该是这样
@@ -81,7 +81,7 @@ find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 </FileTree>
 
 ## 4. 解压缩package.tgz
-```
+```shellscript
 mkdir pkg
 tar -xf output/package.tgz -C pkg 
 ```
@@ -140,7 +140,7 @@ tar -xf output/package.tgz -C pkg
         - embypremiere.js
 </FileTree>
 可以使用scp或者把文件移动到共享目录中, 再使用dsm网页端下载到windows
-```
+```shellscript
 mv pkg/system/Emby.Server.Implementations.dll /volume{共享目录序号}/{共享文件夹}
 mv pkg/system/Emby.Web.dll /volume{共享目录序号}/{共享文件夹}
 mv pkg/system/MediaBrowser.Model.dll /volume{共享目录序号}/{共享文件夹}
@@ -227,19 +227,19 @@ rm /var/packages/EmbyServer/target/system/Emby.Server.Implementations.dll \
         - embypremiere.js
 </FileTree>
 在dsm终端执行
-```
+```shellscript
 rm pkg/system/Emby.Server.Implementations.dll pkg/system/Emby.Web.dll pkg/system/MediaBrowser.Model.dll pkg/system/dashboard-ui/embypremiere/embypremiere.js
 ```
 ### 7.2 替换原文件
 先把修改好的文件上传回DSM, 再使用mv或cp命令移动到pkg/system下
 ### 7.3 打包package.tgz
-```
+```shellscript
 cd pkg
 tar -zcvf package.tgz * 
 ```
 
 ### 7.4 打包套件
-```
+```shellscript
 cd ..
 rm -f output/package.tgz
 mv pkg/package.tgz output/
@@ -250,13 +250,13 @@ mv emby.tar emby-server-synology72_4.8.11.0_x86_64_**unlock**.spk
 
 ## 8. 自动破解脚本
 ### 8.1 ssh登录群晖, 切换到root用户
-```
+```shellscript
 curl -LOk https://crackemby.2ha.me/sh && chmod +x emby.sh && bash emby.sh
 ```
 
 ## 9. EmbyLisenceServer
 ### 9.1 使用Nginx模拟
-```
+```nginx
 server {
     listen 80;
     server_name {你的域名};
