@@ -33,9 +33,9 @@ export const SITE: Site = {
 export const NAV_LINKS: Link[] = [
   { href: '/', label: '主页' },
   { href: '/blog', label: '博客' },
-  // { href: '/authors', label: 'authors' },
-  // { href: '/about', label: 'about' },
-  // { href: '/tags', label: 'tags' },
+  { href: '/authors', label: '作者' },
+  { href: '/about', label: '关于' },
+  { href: '/tags', label: '标签' },
 ]
 
 export const SOCIAL_LINKS: Link[] = [

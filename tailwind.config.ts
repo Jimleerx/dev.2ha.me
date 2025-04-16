@@ -8,7 +8,7 @@ const config: Config = {
   	extend: {
   		fontFamily: {
   			sans: [
-  				'JetBrains Mono',
+  				'haipaiqiangdiaosenxiyuan',
                     ...defaultTheme.fontFamily.sans
                 ],
   			mono: [

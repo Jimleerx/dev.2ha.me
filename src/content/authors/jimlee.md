@@ -1,7 +1,7 @@
 ---
 name: 'jimlee'
 pronouns: 'he/him'
-avatar: 'https://h.2ha.me/icons/avatar.png'
+avatar: 'https://h.2ha.me/icons/avatar.webp'
 bio: 'd(-_-)b'
 website: 'https://dev.2ha.me'
 # twitter: 'https://twitter.com/enscry'
