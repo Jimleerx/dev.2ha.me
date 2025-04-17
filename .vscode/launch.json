@@ -7,7 +7,7 @@
 
         {
             "command": "npm run dev",
-            "name": "developer mode",
+            "name": "start dev server",
             "request": "launch",
             "type": "node-terminal"
         },

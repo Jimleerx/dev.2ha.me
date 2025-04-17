@@ -1,3 +1,4 @@
+import { Link } from 'lucide-react'
 import React from 'react'
 
 interface GradientTextProps {
@@ -5,7 +6,8 @@ interface GradientTextProps {
   className?: string
   colors?: string[]
   animationSpeed?: number
-  showBorder?: boolean
+  showBorder?: boolean,
+  link?: string
 }
 
 export default function GradientText({
@@ -14,6 +16,7 @@ export default function GradientText({
   colors = ['#ffaa40', '#9c40ff', '#ffaa40'],
   animationSpeed = 8,
   showBorder = false,
+  link = "#"
 }: GradientTextProps) {
   const gradientStyle = {
     backgroundImage: `linear-gradient(to right, ${colors.join(', ')})`,
@@ -22,7 +25,7 @@ export default function GradientText({
   // console.log(children)
   return (
     <div
-      className={`relative mx-auto ml-2 flex max-w-fit cursor-pointer flex-row items-center justify-center overflow-hidden rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 ${className}`}
+      className={`relative mx-auto ml-2 md:max-h-[1em] flex max-w-fit cursor-pointer flex-row items-center justify-center overflow-hidden rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 ${className}`}
     >
       {showBorder && (
         <div
@@ -52,8 +55,8 @@ export default function GradientText({
           WebkitBackgroundClip: 'text',
           backgroundSize: '300% 100%',
         }}
-      >
-        {children}
+      > 
+        <a href={link} className="inline-block duration-300 ease-in-out capitalize text-foreground/60 transition-colors hover:text-foreground/80"> {children} </a>
       </div>
     </div>
   )
