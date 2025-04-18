@@ -503,3 +503,8 @@
     }
   }
 }
+
+/* patch */
+.recharts-cartesian-grid-vertical {
+  display: none;
+}
