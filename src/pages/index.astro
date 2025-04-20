@@ -13,6 +13,7 @@ import { SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
+import Music163Presence from '@/components/bento/Music163Presence'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -31,7 +32,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     aria-label="Personal information and activity grid"
   >
     <div
-      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-[url('/static/404_white_mask.webp')] bg-cover bg-center bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/404_white_mask.webp')] xl:aspect-auto"
+      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-[url('/static/404_white_mask.svg')] bg-cover bg-center bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/404_white_mask.svg')] xl:aspect-auto"
       role="img"
       aria-label="Introduction"
     >
@@ -96,12 +97,12 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       />
     </div>
 
-    <div class="relative overflow-hidden [grid-area:d] sm:aspect-square">
+    <div class="relative overflow-hidden [grid-area:d] sm:aspect-square min-h-[300px]">
       <AuthorPresence client:load />
     </div>
 
     <div
-      class="has-overlay relative flex grid aspect-[6/5] grid-rows-2 items-start overflow-hidden p-1 [grid-area:e] sm:aspect-[2.1/1] sm:items-center xl:aspect-auto"
+      class="has-overlay min-h-[300px] relative flex grid aspect-[6/5] grid-rows-2 items-start overflow-hidden p-1 [grid-area:e] sm:aspect-[2.1/1] sm:items-center xl:aspect-auto"
       style="grid-template-rows: 9fr 1fr; "
     >
       <!-- todo: add blog tag by gradientText -->
@@ -158,14 +159,19 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       <GithubCalendar username="jimleerx" client:load />
     </div>
 
-    <div
+    <!-- <div
       class="overlay xl:opacity-0has-overlay xl:aspect-aspect-[1/1] absolute relative inset-0 z-0 flex aspect-square size-full rounded-3xl transition-opacity duration-200 [grid-area:g] sm:aspect-[1/1]"
     >
-      <!-- <div
-        class="overlay absolute inset-0 z-0 size-full rounded-3xl transition-opacity duration-200 xl:opacity-0"
-      >
-      </div> -->
       <DevCloudServices client:load />
+    </div> -->
+    <div
+      class="has-overlay relative aspect-square [grid-area:g] hover:bg-none"
+    >
+      <div
+        class="overlay absolute inset-0 z-0 size-full rounded-3xl bg-[url('/static/bento/music163.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-100"
+      >
+      </div>
+      <Music163Presence client:load />
     </div>
 
     <div

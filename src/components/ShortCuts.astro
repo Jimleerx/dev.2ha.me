@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components'
 import Link from './Link.astro'
 ---
 
-<div class="max-w max-h mt-[2.6em] inline-block sm:mt-[2.35em]">
+<div class="z-10 max-w max-h mt-[2.6em] inline-block sm:mt-[2.35em]">
   <Link
     href={DEV_LINKS.find((link) => link.label === 'Gitea')?.href || '#'}
     title="代码仓库"
@@ -25,7 +25,7 @@ import Link from './Link.astro'
 </div>
 
 <div
-  class="max-w max-h ml-[0.1em] mt-[-3.7em] inline-block sm:ml-[0em] sm:mt-[-3.4em]"
+  class="z-10 max-w max-h ml-[0.1em] mt-[-3.7em] inline-block sm:ml-[0em] sm:mt-[-3.4em]"
 >
   <Link
     href={DEV_LINKS.find((link) => link.label === 'Nexus')?.href || '#'}
@@ -47,7 +47,7 @@ import Link from './Link.astro'
 </div>
 
 <div
-  class="max-w max-h ml-[-0.1em] mt-[2.5em] inline-block sm:ml-[0em] sm:mt-[2.5em]"
+  class="z-10 max-w max-h ml-[-0.1em] mt-[2.5em] inline-block sm:ml-[0em] sm:mt-[2.5em]"
 >
   <Link
     href={DEV_LINKS.find((link) => link.label === 'Bytebase')?.href || '#'}
@@ -68,7 +68,7 @@ import Link from './Link.astro'
   </Link>
 </div>
 
-<div class="max-w max-h mt-[-4em] inline-block sm:mt-[-3em]">
+<div class="z-10 max-w max-h mt-[-4em] inline-block sm:mt-[-3em]">
   <Link
     href={DEV_LINKS.find((link) => link.label === 'Zfile')?.href || '#'}
     title="网盘"
@@ -88,7 +88,7 @@ import Link from './Link.astro'
   </Link>
 </div>
 
-<div class="max-w max-h mt-[0.1em] inline-block sm:mt-[0.6em]">
+<div class="z-10 max-w max-h mt-[0.1em] inline-block sm:mt-[0.6em]">
   <Link
     href={DEV_LINKS.find((link) => link.label === 'FileServer')?.href || '#'}
     title="文件服务器"
@@ -109,7 +109,7 @@ import Link from './Link.astro'
 </div>
 
 <div
-  class="max-w max-h ml-[0.1em] mt-[-6.5em] inline-block sm:ml-[0em] sm:mt-[-5.3em]"
+  class="z-10 max-w max-h ml-[0.1em] mt-[-6.5em] inline-block sm:ml-[0em] sm:mt-[-5.3em]"
 >
   <Link
     href={DEV_LINKS.find((link) => link.label === 'immich')?.href || '#'}
@@ -130,7 +130,7 @@ import Link from './Link.astro'
   </Link>
 </div>
 
-<div class="max-w max-h mt-[0.2em] inline-block sm:mt-[0.6em]">
+<div class="z-10 max-w max-h mt-[0.2em] inline-block sm:mt-[0.6em]">
   <Link
     href={DEV_LINKS.find((link) => link.label === 'Emby')?.href || '#'}
     title="Emby"
@@ -150,7 +150,7 @@ import Link from './Link.astro'
   </Link>
 </div>
 
-<div class="max-w max-h mt-[-6.5em] inline-block sm:mt-[-5.3em]">
+<div class="z-10 max-w max-h mt-[-6.5em] inline-block sm:mt-[-5.3em]">
   <Link
     href={DEV_LINKS.find((link) => link.label === 'Plex')?.href || '#'}
     title="Plex"
@@ -170,7 +170,7 @@ import Link from './Link.astro'
   </Link>
 </div>
 
-<div class="max-w max-h mt-[1.49em] inline-block sm:mt-[1em]">
+<div class="z-10 max-w max-h mt-[1.49em] inline-block sm:mt-[1em]">
   <Link
     href={DEV_LINKS.find((link) => link.label === 'MovieRobot')?.href || '#'}
     title="媒体订阅工具"
