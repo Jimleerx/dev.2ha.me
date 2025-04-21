@@ -508,3 +508,9 @@
 .recharts-cartesian-grid-vertical {
   display: none;
 }
+
+@media screen and (min-width: 1280px) {
+  html {
+    zoom: 0.915;
+  } 
+}

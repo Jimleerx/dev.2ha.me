@@ -9,7 +9,8 @@ interface Track {
   album: { '#text': string } // 专辑
   image: { '#text': string }[] // 
   url: string
-  '@attr'?: { nowplaying: string }
+  '@attr'?: { nowplaying: string },
+  outerurl: string
 }
 
 const SpotifyPresence = () => {
@@ -30,7 +31,8 @@ const SpotifyPresence = () => {
             '#text': lastweekFirstSong.al.name
           },
           image: [{'#text': lastweekFirstSong.al.picUrl}],
-          url: 'https://music.163.com/song?id=' + lastweekFirstSong.id
+          url: 'https://music.163.com/song?id=' + lastweekFirstSong.id,
+          outerurl: "https://music.163.com/song/media/outer/url?id=" + lastweekFirstSong.id + ".mp3"
         }
         setDisplayData(track)
         setIsLoading(false)
