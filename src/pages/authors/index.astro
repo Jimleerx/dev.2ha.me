@@ -4,6 +4,16 @@ import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import Container from '@/components/Container.astro'
 import Layout from '@/layouts/Layout.astro'
 import { getCollection } from 'astro:content'
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+import Link from '@/components/Link.astro'
 
 const authors = await getCollection('authors')
 ---
@@ -24,5 +34,108 @@ const authors = await getCollection('authors')
         <p class="text-center text-muted-foreground">No authors found.</p>
       )
     }
+    <div class="flex flex-col gap-4">
+      <Table className="text-lg">
+        <TableCaption className="text-sm">站内引用的外部资源</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="max-w-[80px]">Path</TableHead>
+            <TableHead className="max-w-[80px] flex items-center">Illustrator</TableHead>
+            <TableHead className="text-right">Resources</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell className="font-medium">Background</TableCell>
+            <TableCell className="flex items-center">
+              <Link class="contents" href="https://www.pixiv.net/users/12078157" target="_blank">
+                @K <svg class="size-8 ml-1" style="filter: invert(100%);" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"><title>pixiv</title><path d="M4.94 0A4.953 4.953 0 0 0 0 4.94v14.12A4.953 4.953 0 0 0 4.94 24h14.12A4.953 4.953 0 0 0 24 19.06c-.014 1.355 0-14.12 0-14.12A4.953 4.953 0 0 0 19.06 0Zm1.783 5.465h.904a.37.37 0 0 1 .31.17l.752 1.17a6.172 6.172 0 0 1 10.01 4.834 6.172 6.172 0 0 1-9.394 5.265v2.016a.37.37 0 0 1-.37.367H6.724a.37.37 0 0 1-.37-.367V5.834a.37.37 0 0 1 .37-.37m5.804 2.951a3.222 3.222 0 1 0-.002 6.443 3.222 3.222 0 0 0 .002-6.443"/></svg>
+              </Link> 
+            </TableCell>
+            <TableCell className="text-right">
+              <Link href="https://www.pixiv.net/artworks/60914916" target="_blank">
+                <img class="h-12 w-28 ml-1 mr-1" src="/static/404_white_mask.webp" />
+              </Link>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">Blog Banner</TableCell>
+            <TableCell className="flex items-center">
+              <Link class="contents" href="https://www.deviantart.com/kagawayusaku/gallery" target="_blank">
+                @kagawayusaku <svg class="size-8 ml-1 mr-1" style="filter: invert(100%);" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"><title>DeviantArt</title><path d="M19.207 4.794l.23-.43V0H15.07l-.436.44-2.058 3.925-.646.436H4.58v5.993h4.04l.36.436-4.175 7.98-.24.43V24H8.93l.436-.44 2.07-3.925.644-.436h7.35v-5.993h-4.05l-.36-.438 4.186-7.977z"/></svg>
+              </Link> 
+            </TableCell>
+            <TableCell className="text-right">
+              <Link href="https://www.deviantart.com/kagawayusaku/art/Alicia-chan-789980526" target="_blank">
+                <img class="h-12 w-28 ml-1 mr-1" src="/static/blog/commoncodebanner.webp" />
+              </Link>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">Logo</TableCell>
+            <TableCell className="flex items-center">
+              <Link class="contents" href="https://www.pixiv.net/users/7400726" target="_blank">
+                @papacat <svg class="size-10 ml-1 mr-1" style="filter: invert(100%);" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"><title>pixiv</title><path d="M4.94 0A4.953 4.953 0 0 0 0 4.94v14.12A4.953 4.953 0 0 0 4.94 24h14.12A4.953 4.953 0 0 0 24 19.06c-.014 1.355 0-14.12 0-14.12A4.953 4.953 0 0 0 19.06 0Zm1.783 5.465h.904a.37.37 0 0 1 .31.17l.752 1.17a6.172 6.172 0 0 1 10.01 4.834 6.172 6.172 0 0 1-9.394 5.265v2.016a.37.37 0 0 1-.37.367H6.724a.37.37 0 0 1-.37-.367V5.834a.37.37 0 0 1 .37-.37m5.804 2.951a3.222 3.222 0 1 0-.002 6.443 3.222 3.222 0 0 0 .002-6.443"/></svg>
+              </Link>
+            </TableCell>
+            <TableCell className="text-right">
+              <Link href="https://www.pixiv.net/artworks/126000685" target="_blank">
+                <img class="size-8 ml-1 mr-1" src="/static/avatar_256.webp" />
+              </Link>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">Background</TableCell>
+            <TableCell className="flex items-center">
+              <Link class="contents" href="https://www.pixiv.net/users/7400726" target="_blank">
+                @papacat <svg class="size-8 ml-1 mr-1" style="filter: invert(100%);" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24"><title>pixiv</title><path d="M4.94 0A4.953 4.953 0 0 0 0 4.94v14.12A4.953 4.953 0 0 0 4.94 24h14.12A4.953 4.953 0 0 0 24 19.06c-.014 1.355 0-14.12 0-14.12A4.953 4.953 0 0 0 19.06 0Zm1.783 5.465h.904a.37.37 0 0 1 .31.17l.752 1.17a6.172 6.172 0 0 1 10.01 4.834 6.172 6.172 0 0 1-9.394 5.265v2.016a.37.37 0 0 1-.37.367H6.724a.37.37 0 0 1-.37-.367V5.834a.37.37 0 0 1 .37-.37m5.804 2.951a3.222 3.222 0 1 0-.002 6.443 3.222 3.222 0 0 0 .002-6.443"/></svg>
+              </Link>
+            </TableCell>
+            <TableCell className="text-right min-w-[100%]">
+              <Link href="https://www.pixiv.net/artworks/129060334" target="_blank">
+                <img class="size-12" src="/static/bento/lieflat.png" />
+              </Link>
+              <Link href="https://www.pixiv.net/artworks/127893154" target="_blank">
+                <img class="size-12" src="/static/papacat/127893154_p1.png" />
+              </Link>
+              <Link href="https://www.pixiv.net/artworks/129025379" target="_blank">
+                <img class="size-12" src="/static/papacat/129025379_p0.png" />
+              </Link>
+              <Link href="https://www.pixiv.net/artworks/129163576" target="_blank">
+                <img class="size-12" src="/static/papacat/129163576_p0.png" />
+              </Link>
+              <Link href="https://www.pixiv.net/artworks/128312028" target="_blank">
+                <img class="size-12" src="/static/papacat/128312028_p0.png" />
+              </Link>
+              <Link href="https://www.pixiv.net/artworks/126789376" target="_blank">
+                <img class="size-12" src="/static/papacat/126789376_p0.png" />
+              </Link>
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-medium">Background</TableCell>
+            <TableCell className="flex items-center">
+              <Link class="contents" href="https://www.pixiv.net/users/7400726" target="_blank">
+                redraw with @papacat's.
+              </Link>
+            </TableCell>
+            <TableCell className="text-right">
+              <Link href="https://www.pixiv.net/artworks/127479726" target="_blank">
+                <img class="size-12" src="/static/papacat/127479726_p0.png" />
+              </Link>
+              <Link href="/static/127479726_amazing.png" target="_blank">
+                <img class="size-12 ml-1 mr-1" src="/static/127479726_amazing.png" />
+              </Link>
+              <Link href="/static/127479726_fear.png" target="_blank">
+                <img class="size-12 ml-1 mr-1" src="/static/127479726_fear.png" />
+              </Link>
+              <Link href="/static/127479726_dizzy.png" target="_blank">
+                <img class="size-12 ml-1 mr-1" src="/static/127479726_dizzy.png" />
+              </Link>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </div>
   </Container>
 </Layout>
