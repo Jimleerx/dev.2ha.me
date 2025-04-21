@@ -22,10 +22,11 @@ const SpotifyPresence = () => {
       .then((response) => response.json())
       .then((data) => {
         let lastweekFirstSong = data.weekData[0].song
+        let arname = lastweekFirstSong.ar.map((it: { name: string }) => it.name).join(' / ');
         let track: Track = {
           name: lastweekFirstSong.name,
           artist: {
-            '#text': lastweekFirstSong.ar[0].name
+            '#text': arname
           },
           album: {
             '#text': lastweekFirstSong.al.name
