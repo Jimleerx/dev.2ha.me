@@ -11,8 +11,8 @@ import { SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
-import Music163Presence from '@/components/bento/Music163Presence'
 import GiteaCalendar from '@/components/bento/GiteaCalendar'
+import Music163Player from '@/components/bento/Music163Player'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -160,7 +160,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
         class="overlay absolute inset-0 z-0 size-full rounded-3xl bg-[url('/static/bento/music163.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-100"
       >
       </div>
-      <Music163Presence client:load />
+      <Music163Player client:load />
     </div>
 
     <div
