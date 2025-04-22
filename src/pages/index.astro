@@ -1,6 +1,5 @@
 ---
 import AuthorPresence from '@/components/bento/AuthorPresence'
-import GithubCalendar from '@/components/bento/GithubCalendar.tsx'
 import WakatimeGraph from '@/components/bento/WakatimeGraph.tsx'
 import Link from '@/components/Link.astro'
 import FuzzyText from '@/components/magicui/fuzzy-text'
@@ -13,6 +12,7 @@ import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import Music163Presence from '@/components/bento/Music163Presence'
+import GiteaCalendar from '@/components/bento/GiteaCalendar'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -63,10 +63,6 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
         >
       </div>
 
-      <!-- <div
-        class="overlay size-full rounded-3xl bg-[url('/static/bento/about-silhouette.webp')] bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-200"
-      >
-      </div> -->
     </div>
 
     <div
@@ -104,7 +100,6 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       class="has-overlay min-h-[300px] relative flex grid aspect-[6/5] grid-rows-2 items-start overflow-hidden p-1 [grid-area:e] sm:aspect-[2.1/1] sm:items-center xl:aspect-auto"
       style="grid-template-rows: 9fr 1fr; "
     >
-      <!-- todo: add blog tag by gradientText -->
       <div
         class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/bento/lastblogbg-sm.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/bento/lastblogbg.webp')] xl:opacity-100"
       >
@@ -155,14 +150,9 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
         class="overlay absolute inset-0 z-[1] size-full rounded-3xl bg-[url('/static/bento/contributions-square.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/bento/contributions.png')] xl:opacity-100"
       >
       </div>
-      <GithubCalendar username="jimleerx" client:load />
+      <GiteaCalendar client:load />
     </div>
 
-    <!-- <div
-      class="overlay xl:opacity-0has-overlay xl:aspect-aspect-[1/1] absolute relative inset-0 z-0 flex aspect-square size-full rounded-3xl transition-opacity duration-200 [grid-area:g] sm:aspect-[1/1]"
-    >
-      <DevCloudServices client:load />
-    </div> -->
     <div
       class="has-overlay relative aspect-square [grid-area:g] hover:bg-none"
     >
