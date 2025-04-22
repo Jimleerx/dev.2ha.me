@@ -1,10 +1,8 @@
 'use client'
 
 import { Skeleton } from '@/components/ui/skeleton'
-import type { any } from 'astro:schema'
 import { type FunctionComponent, useCallback, useEffect, useState } from 'react'
 import Calendar, {
-  type Props as ActivityCalendarProps,
 } from 'react-activity-calendar'
 
 // Adopted from https://github.com/grubersjoe/react-github-calendar
