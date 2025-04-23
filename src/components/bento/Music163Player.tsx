@@ -108,14 +108,12 @@ const SpotifyPresence = () => {
             <span className="mb-2 flex gap-2">
             {showPlay ? (<img
                 src="/static/bento/playing_init.svg"
-                alt="Now playing"
-                width={16}
-                height={16}
+                alt="Ready playing"
+                className="w-8"
               />) : (<img
                 src="/static/bento/playing.gif"
                 alt="Now playing"
-                width={16}
-                height={16}
+                className="w-8"
               />)}
               <span className="text-sm text-primary">
                 {displayData['@attr']?.nowplaying === 'true'
