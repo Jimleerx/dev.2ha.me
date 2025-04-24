@@ -18,7 +18,7 @@ const AuthorPresence = () => {
             </div>
             <div className="flex items-center rounded-xl bg-secondary/50 px-2">
               <img
-                src="/static/bento/badges.png"
+                src="/static/images/badges.png"
                 alt="Discord Badges"
                 width={104}
                 height={24}
@@ -35,7 +35,7 @@ const AuthorPresence = () => {
           <div className="flex grow rounded-xl bg-secondary/50 px-3 py-2">
             <div className="flex size-full flex-col items-center justify-center gap-1">
               <img
-                src="/static/bento/lieflat.svg"
+                src="/static/images/lieflat.svg"
                 alt="No Status Image"
                 width={64}
                 height={64}

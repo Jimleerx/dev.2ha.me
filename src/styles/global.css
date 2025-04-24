@@ -514,3 +514,7 @@
     zoom: 0.95;
   } 
 } */
+
+.bg-color {
+  background-color: #e4e4e4 !important;
+}

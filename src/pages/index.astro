@@ -5,7 +5,6 @@ import Link from '@/components/Link.astro'
 import FuzzyText from '@/components/magicui/fuzzy-text'
 import GradientText from '@/components/magicui/gradint-text'
 import LetterGlitch from '@/components/magicui/letter-glitch'
-import MagnetLines from '@/components/magicui/magnet-lines'
 import ShortCuts from '@/components/ShortCuts.astro'
 import { SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
@@ -31,7 +30,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     aria-label="Personal information and activity grid"
   >
     <div
-      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-[url('/static/404_white_mask.svg')] bg-cover bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/404_white_mask.svg')] xl:aspect-auto"
+      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-[url('/static/404_white_mask.png')] bg-cover bg-color bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/404_white_mask.png')] xl:aspect-auto"
       role="img"
       aria-label="Introduction"
     >
@@ -58,7 +57,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
           client:load
           baseIntensity={0.04}
           hoverIntensity={0.24}
-          fontSize={33}
+          fontSize={36}
           color="#f95038">Not Found</FuzzyText
         >
       </div>
@@ -73,14 +72,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     >
       <img
         class="overlay absolute no-repeat w-full max-w-fit justify-center rounded-3xl object-cover z-9"
-        src="/static/bento/shortcuts-bg.png"
+        src="/static/images/shortcuts-bg.png"
       />
       <!-- <DevStackIconsCloud client:load/> -->
       <ShortCuts />
     </div>
 
-    <div class="aspect-[1/2.1] [grid-area:c] xl:aspect-auto" aria-hidden="true">
-      <MagnetLines
+    <div class="aspect-[1/2.1] [grid-area:c] bg-[url('/static/images/ump45.png')] xl:aspect-auto bg-color" aria-hidden="true">
+      <!-- <MagnetLines
         client:load
         rows={9}
         columns={4}
@@ -89,7 +88,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
         lineWidth="0.8vmin"
         lineHeight="4vmin"
         baseAngle={0}
-      />
+      /> -->
     </div>
 
     <div class="relative overflow-hidden [grid-area:d] sm:aspect-square min-h-[300px]">
@@ -101,7 +100,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       style="grid-template-rows: 9fr 1fr; "
     >
       <div
-        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/bento/lastblogbg-sm.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/bento/lastblogbg.webp')] xl:opacity-100"
+        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/images/lastblogbg-sm.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/images/lastblogbg.webp')] xl:opacity-100"
       >
       </div>
       {
@@ -147,7 +146,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       class="has-overlay relative flex aspect-square items-center justify-center overflow-hidden [grid-area:f] sm:aspect-[2.1/1] xl:aspect-auto"
     >
       <div
-        class="overlay absolute inset-0 z-[1] size-full rounded-3xl bg-[url('/static/bento/contributions-square.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/bento/contributions.png')] xl:opacity-100"
+        class="overlay absolute inset-0 z-[1] size-full rounded-3xl bg-[url('/static/images/contributions-square.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/images/contributions.png')] xl:opacity-100"
       >
       </div>
       <GiteaCalendar client:load />
@@ -157,14 +156,14 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       class="has-overlay relative aspect-square [grid-area:g] hover:bg-none"
     >
       <div
-        class="overlay absolute inset-0 z-0 size-full rounded-3xl bg-[url('/static/bento/music163.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-100"
+        class="overlay absolute inset-0 z-0 size-full rounded-3xl bg-[url('/static/images/music163.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-100"
       >
       </div>
       <Music163Player client:load />
     </div>
 
     <div
-      class="aspect-[1/2.1] bg-[url('/static/bento/image-2.webp')] [grid-area:h] xl:aspect-auto"
+      class="aspect-[1/2.1] bg-[url('/static/images/ump9.png')] [grid-area:h] xl:aspect-auto bg-color"
       aria-hidden="true"
     >
     </div>
@@ -173,7 +172,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       class="has-overlay relative flex aspect-square items-center justify-center [grid-area:i] "
     >
       <div
-        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/bento/github.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-100"
+        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/images/github.png')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 xl:opacity-100"
       >
       </div>
       <Icon
@@ -195,7 +194,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       </Link>
     </div>
 
-    <div class="has-overlay aspect-square [grid-area:j] bg-[url('/static/bento/waketime.png')] bg-cover bg-center bg-no-repeat ">
+    <div class="has-overlay aspect-square [grid-area:j] bg-[url('/static/images/waketime.png')] bg-cover bg-center bg-no-repeat ">
       <WakatimeGraph omitLanguages={['Markdown', 'JSON']} client:load />
     </div>
 

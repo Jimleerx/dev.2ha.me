@@ -43,7 +43,7 @@ const GiteaCalendar: FunctionComponent = ({ ...props }) => {
     return (
       <div className="flex flex-col items-center justify-center gap-4">
         <img
-          src="/static/images/bento/bento-discord-futon.svg"
+          src="/static/images/lieflat.svg"
           alt="Error"
           width={0}
           height={0}

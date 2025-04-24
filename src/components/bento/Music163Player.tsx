@@ -107,11 +107,11 @@ const SpotifyPresence = () => {
           <div className="flex flex-col">
             <span className="mb-2 flex gap-2">
             {showPlay ? (<img
-                src="/static/bento/playing_init.svg"
+                src="/static/images/playing_init.svg"
                 alt="Ready playing"
                 className="w-8"
               />) : (<img
-                src="/static/bento/playing.gif"
+                src="/static/images/playing.gif"
                 alt="Now playing"
                 className="w-8"
               />)}
