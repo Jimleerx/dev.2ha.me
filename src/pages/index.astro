@@ -30,20 +30,20 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     aria-label="Personal information and activity grid"
   >
     <div
-      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-[url('/static/404_white_mask.png')] bg-cover bg-color bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/404_white_mask.png')] xl:aspect-auto"
+      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-[url('/static/images/output.gif')] bg-cover bg-color bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/images/output.gif')] xl:aspect-auto"
       role="img"
       aria-label="Introduction"
     >
-      <div
+      <!-- <div
         class="overlay size-full rounded-3xl bg-[url('/static/404.webp')] bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-200"
       >
-      </div>
+      </div> -->
     <!-- class="first relative flex aspect-square justify-center rounded-3xl border [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto" -->
       <!-- <img
         class="no-repeat relative w-full max-w-fit justify-center rounded-3xl object-cover"
         src="/static/404_white_mask.webp"
       /> -->
-      <div class="absolute self-end p-2 justify-center">
+      <!-- <div class="absolute self-end p-2 justify-center">
         <FuzzyText
           client:load
           baseIntensity={0.04}
@@ -60,7 +60,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
           fontSize={36}
           color="#f95038">Not Found</FuzzyText
         >
-      </div>
+      </div> -->
 
     </div>
 
