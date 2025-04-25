@@ -2,7 +2,7 @@
 import AuthorPresence from '@/components/bento/AuthorPresence'
 import WakatimeGraph from '@/components/bento/WakatimeGraph.tsx'
 import Link from '@/components/Link.astro'
-import FuzzyText from '@/components/magicui/fuzzy-text'
+// import FuzzyText from '@/components/magicui/fuzzy-text'
 import GradientText from '@/components/magicui/gradint-text'
 import LetterGlitch from '@/components/magicui/letter-glitch'
 import ShortCuts from '@/components/ShortCuts.astro'
@@ -22,28 +22,41 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     .filter((post) => !post.data.hidden && !post.data.draft)
     .at(0),
 )
+
+const bgIndex = Boolean(Math.floor(Math.random() * 2))
 ---
 
 <Layout title="主页" description={SITE.DESCRIPTION}>
   <section
     class="mx-auto grid max-w-[375px] grid-cols-2 gap-4 px-4 [grid-template-areas:'a_a'_'a_a'_'b_b'_'b_b'_'e_e'_'h_i'_'h_c'_'k_c'_'d_d'_'d_d'_'g_g'_'g_g'_'f_f'_'j_j'_'j_j'] *:rounded-3xl *:border *:bg-secondary/25 *:bg-cover *:bg-center *:bg-no-repeat sm:max-w-screen-sm sm:[grid-template-areas:'a_a'_'b_d'_'e_e'_'j_g'_'h_i'_'h_c'_'k_c'_'f_f'] xl:max-w-screen-xl xl:grid-cols-4 xl:[grid-template-areas:'a_a_b_c'_'d_e_e_c'_'h_f_f_g'_'h_i_j_k'] xl:[&:hover:has(>.has-overlay:hover)>.first>.overlay]:opacity-100 xl:[&:hover>*:not(.first):hover_.overlay]:opacity-100"
     aria-label="Personal information and activity grid"
-  >
+  > 
     <div
-      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-[url('/static/images/tou.gif')] bg-cover bg-color bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] sm:bg-[url('/static/images/tou.gif')] xl:aspect-auto"
+      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-cover bg-color bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto"
       role="img"
       aria-label="Introduction"
-      style="filter: contrast(2) saturate(0) invert(100) sepia(100); border-color: #afafaf;"
     >
       <!-- <div
         class="overlay size-full rounded-3xl bg-[url('/static/404.webp')] bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-200"
       >
       </div> -->
     <!-- class="first relative flex aspect-square justify-center rounded-3xl border [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto" -->
-      <!-- <img
+     {
+      bgIndex && (<img
         class="no-repeat relative w-full max-w-fit justify-center rounded-3xl object-cover"
-        src="/static/404_white_mask.webp"
-      /> -->
+        src="/static/images/tou.gif"
+        style="filter: contrast(2) saturate(0) invert(100) sepia(100); border-color: #afafaf;"
+      />)
+     }
+     {
+      !bgIndex && (
+      <img
+        class="no-repeat relative w-full max-w-fit justify-center rounded-3xl object-cover"
+        src="/static/images/maoliang.gif"
+      />
+      )
+     }
+      
       <!-- <div class="absolute self-end p-2 justify-center">
         <FuzzyText
           client:load
