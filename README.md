@@ -2,22 +2,20 @@
 
 <div align="center">
 
-## enscribe.dev
-
-[![CodeFactor]](https://www.codefactor.io/repository/github/jktrn/enscribe.dev)
-![Stargazers]
+## dev.2ha.me
+### frok by enscribe.dev
+[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)
 [![Code License]](LICENSE.md)
 [![Content License]](LICENSE.content.md)
 
-[enscribe.dev](https://enscribe.dev) is my personal information security blog—built with [Astro](https://astro.build/), [Tailwind](https://tailwindcss.com/), and [shadcn/ui](https://ui.shadcn.com/). Based on my personal blogging template, [astro-erudite](https://github.com/jktrn/astro-erudite).
-
+[dev.2ha.me](https://dev.2ha.me) 是我在学习[Next.js](https://nextjs.org/)时练手的项目，我从[tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)项目的Examples发现了[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)，[dev.2ha.me](https://dev.2ha.me)和[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)使用了相同的架构，[Astro](https://astro.build/), [Tailwind](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/) 和 [startlight](https://starlight.astro.build/). 修改了一些API展示为中国国内的平台数据, 主体框架与[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)的3.0版本一致。
 </div>
 
 ---
 
-## Technology Stack
+## 技术栈
 
-This is a list of the various technologies used to build this website:
+这些是原[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)使用到的技术栈
 
 | Category            | Technology Name                                                                                    |
 | ------------------- | -------------------------------------------------------------------------------------------------- |
@@ -29,70 +27,37 @@ This is a list of the various technologies used to build this website:
 | Graphics            | [Figma](https://www.figma.com/)                                                                    |
 | Deployment          | [Vercel](https://vercel.com)                                                                       |
 
+
 > [!NOTE]
-> This site was previously built using [Next.js](https://nextjs.org) via the [timlrx/tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog). If you wish to reference the codebase or utilize its components at that point (previously licensed via [Apache 2.0](https://github.com/jktrn/enscribe.dev/blob/ddda783b21d5d49783f4d98e9b06676af8f95031/LICENSE)), utilize the [v2.3.0](https://github.com/jktrn/enscribe.dev/releases/tag/v2.3.0) release or browse the tree at [`ddda783`](https://github.com/jktrn/enscribe.dev/tree/ddda783b21d5d49783f4d98e9b06676af8f95031).
+> [dev.2ha.me](https://dev.2ha.me) 是基于 [enscribe.dev](https://github.com/jktrn/enscribe.dev.git) 这个项目的。如果您想参考其他样例的代码库或者使用其中的组件，可以查看[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)或者[tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)项目的Examples
+> 我在[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)基础上添加了网易云音乐，GiteaCalendar的支持，替换了原[enscribe.dev](https://github.com/jktrn/enscribe.dev.git)背景图片，修改为我自己喜欢的风格。
 
 ---
 
-## Licensing
+## 许可
 
-This project uses a multi-tiered licensing approach to differentiate between various components:
+该项目采用多级许可方式来区分不同的组件
 
-### Original Template
+### 原始模板
 
-From the [Original Template License](LICENSE.md#original-template-license) section within the license:
+摘自许可证中的 “原始模板许可证 ”部分：
 
-> This website is based on [astro-erudite](https://github.com/jktrn/astro-erudite), which was loosely derived from an MIT-licensed project, [trevortylerlee/astro-micro](https://github.com/trevortylerlee/astro-micro).
+> 本网站基于 [enscribe.dev](https://github.com/jktrn/enscribe.dev.git)，而 [enscribe.dev](https://github.com/jktrn/enscribe.dev.git) 是基于 [jktrn/astro-erudite](https://github.com/jktrn/astro-erudite)的, [jktrn/astro-erudite](https://github.com/jktrn/astro-erudite)则衍生自松散的 MIT 许可项目 [trevortylerlee/astro-micro](https://github.com/trevortylerlee/astro-micro)。
 
-The original MIT license is included in the full [LICENSE.md](LICENSE.md) file for compliance.
-
-### Website Code
+原始 MIT 许可包含在完整的 LICENSE.md 文件中，以确保合规。
+### 站点代码
 
 [![Code License]](LICENSE.md)
+> 本许可证特别适用于对 [enscribe.dev](https://github.com/jktrn/enscribe.dev.git(基于[jktrn/astro-erudite](https://github.com/jktrn/astro-erudite)) 模板所做的自定义修改。它并不延伸至原始模板代码，原始模板代码仍使用其原始 MIT 许可。
 
-All modifications and custom implementations made to the original template are proprietary and all rights are reserved. The code is publicly available for viewing and reference only. Modification, redistribution, or commercial use requires explicit permission from the copyright holder.
+就本许可而言，“代码”是指网站的软件组件、配置、布局、样式、功能、脚本和其他功能元素，但不包括此存储库中包含的内容呈现脚本（例如 MDX、Markdown、SVG、等媒体资源文件）。
+此存储库中的所有此类代码均根据 Apache License 2.0 获得许可：
+[dev.2ha.me](https://dev.2ha.me) © 2024 Jimleerx
+本文件遵循 Apache 许可证 2.0 版（简称“许可证”）；您不得在未遵守该许可证的情况下使用本文件。您可以访问以下网址获取许可证副本：
+http://www.apache.org/licenses/LICENSE-2.0
+除非适用法律另有规定或双方以书面形式达成一致，否则根据本许可证分发的软件均按“原样”分发，不附带任何明示或暗示的保证或条件。请参阅许可证，了解本许可证下特定语言的权限和限制规定。
 
-From the [Website Code License](LICENSE.md#website-code-license) section:
-
-> This license applies specifically to the custom modifications made to the [jktrn/astro-erudite](https://github.com/jktrn/astro-erudite) template. It does not extend to the original template code, which remains under its original MIT license.
-
-From the [Disclaimer](LICENSE.md#disclaimer) section:
-
-> If you are interested in utilizing a similar website structure for your own means, please refer to the original template at [jktrn/astro-erudite](https://github.com/jktrn/astro-erudite), which is available under the MIT license and is free for use and modification.
-
-### Website Content
-
-[![Content License]](LICENSE.content.md)
-
-From the [Website Content License](LICENSE.md#website-content-license) section:
-
-> The content of this website, including but not limited to text, images, graphics, MDX files/components, and any other materials (excluding code and design elements covered under the Website Code License above), is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0).
->
-> To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-nd/4.0/ or view [LICENSE.content.md](./LICENSE.content.md).
-
-For full license details and permission requests, please refer to the [LICENSE.md](LICENSE.md) file in this repository or contact [jason@enscribe.dev](mailto:jason@enscribe.dev).
-
----
-
-### Star History
-
-<a href="https://star-history.com/#jktrn/enscribe.dev&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=jktrn/enscribe.dev&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=jktrn/enscribe.dev&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=jktrn/enscribe.dev&type=Date" />
- </picture>
-</a>
-
-
----
-
-Made with ♥ by [enscribe](https://enscribe.dev)!
-
-[cc-by-nc-nd]: http://creativecommons.org/licenses/by-nc-nd/4.0/
-[cc-by-nc-nd-shield]: https://img.shields.io/badge/License-CC%20BY--NC--ND%204.0-lightgrey.svg
-
-[CodeFactor]: https://img.shields.io/codefactor/grade/github/jktrn/enscribe.dev?color=2f2a24&logo=codefactor&logoColor=fff&style=for-the-badge
-[Stargazers]: https://img.shields.io/github/stars/jktrn/enscribe.dev?color=463f37&logo=github&logoColor=fff&style=for-the-badge
-[Code License]: https://img.shields.io/badge/code%20license-proprietary-5d5449?style=for-the-badge&logo=github&logoColor=fff
-[Content License]: https://img.shields.io/badge/content%20license-CC%20BY--NC--ND%204.0-756a5b?style=for-the-badge&logo=creativecommons&logoColor=fff
+非代码内容
+使用到的部分图片资源的来自网络，如果是商业使用需得到原作者的授权。
+任何未在上述代码中定义的内容，包括但不限于 MDX 博客文章、SVG 图形、个人素材、其他图片、任何格式的书面内容以及任何随附文档，均受知识共享署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0) 许可。这意味着您可以使用和分享这些内容，但必须提供适当的署名，不得将其用于商业用途，也不得分发其修改版本。更多详情，请参阅 CC BY-NC-ND 4.0 。
+摘自 [Website Code License](LICENSE.md#website-code-license) 部分:
