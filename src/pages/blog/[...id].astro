@@ -91,17 +91,19 @@ const readTime = readingTime(totalBody)
       ]}
       class="col-start-2"
     />
-    {!isSubpost && post.data.image && (
-      <div class="col-span-full mx-auto w-full max-w-[1000px]">
-        <Image
-          src={post.data.image}
-          alt={post.data.title}
-          width={1200}
-          height={630}
-          class="rounded-xl object-cover"
-        />
-      </div>
-    )}
+    {
+      !isSubpost && post.data.image && (
+        <div class="col-span-full mx-auto w-full max-w-[1000px]">
+          <Image
+            src={post.data.image}
+            alt={post.data.title}
+            width={1200}
+            height={630}
+            class="rounded-xl object-cover"
+          />
+        </div>
+      )
+    }
     <section class="col-start-2 flex flex-col gap-y-6">
       {
         !isSubpost && (
@@ -173,7 +175,7 @@ const readTime = readingTime(totalBody)
     {headings.length > 0 && <TableOfContents headings={headings} />}
 
     <article
-      class="prose prose-sm prose-neutral col-start-2 max-w-none prose-invert [&>:first-child>*]:mt-0"
+      class="prose prose-sm prose-neutral prose-invert col-start-2 max-w-none [&>:first-child>*]:mt-0"
     >
       <Content />
     </article>

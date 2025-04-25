@@ -35,8 +35,8 @@ export function processFileTree(html: string, directoryLabel: string) {
 const fileTreeProcessor = rehype()
 	.data('settings', { fragment: true })
 	.use(function fileTree() {
-		return (tree: Element, file) => {
-			const { directoryLabel } = file.data;
+		return (tree: Element) => {
+			// const { directoryLabel } = file.data;
 
 			validateFileTree(tree);
 
@@ -91,7 +91,7 @@ const fileTreeProcessor = rehype()
 				if (isDirectory) {
 					// Add a screen reader only label for directories before the icon so that it is announced
 					// as such before reading the directory name.
-					icon.children.unshift(h('span', { class: 'sr-only' }, directoryLabel));
+					icon.children.unshift(h('span', { class: 'sr-only' }));
 				}
 
 				// Add classes and data attributes to the list item node.

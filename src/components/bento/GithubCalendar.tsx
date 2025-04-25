@@ -15,7 +15,7 @@ interface Props extends Omit<ActivityCalendarProps, 'data' | 'theme'> {
 
 async function fetchCalendarData(username: string): Promise<ApiResponse> {
   const response = await fetch(
-    `https://github-contributions-api.jogruber.de/v4/satnaing?y=last`,
+    `https://github-contributions-api.jogruber.de/v4/${username}?y=last`,
   )
   const data: ApiResponse | ApiErrorResponse = await response.json()
 
@@ -50,7 +50,7 @@ const GithubCalendar: FunctionComponent<Props> = ({ username, ...props }) => {
     return (
       <div className="flex flex-col items-center justify-center gap-4">
         <img
-          src="/static/images/bento/bento-discord-futon.svg"
+          src="/static/images/bento-discord-futon.svg"
           alt="Error"
           width={0}
           height={0}

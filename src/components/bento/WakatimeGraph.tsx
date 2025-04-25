@@ -48,12 +48,20 @@ const chartConfig: ChartConfig = {
   ),
 }
 
-const WakatimeGraph = ({ omitLanguages = [] }: Props) => {
+const WakatimeGraph = ({ }: Props) => {
   const [languages, setLanguages] = useState<Language[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    setLanguages([{"name":"java","hours":1239,"fill":"hsl(var(--chart-1))"},{"name":"kotlin","hours":309,"fill":"hsl(var(--chart-2))"},{"name":"javascript","hours":299,"fill":"hsl(var(--chart-3))"},{"name":"typescript","hours":257,"fill":"hsl(var(--chart-4))"},{"name":"python","hours":114,"fill":"hsl(var(--chart-5))"},{"name":"react","hours":50,"fill":"hsl(var(--chart-6))"},{"name":"go","hours":5,"fill":"hsl(var(--chart-7))"}])
+    setLanguages([
+      { name: 'java', hours: 1009, fill: 'hsl(var(--chart-1))' },
+      { name: 'kotlin', hours: 346, fill: 'hsl(var(--chart-2))' },
+      { name: 'javascript', hours: 311, fill: 'hsl(var(--chart-3))' },
+      { name: 'typescript', hours: 287, fill: 'hsl(var(--chart-4))' },
+      { name: 'python', hours: 120, fill: 'hsl(var(--chart-5))' },
+      { name: 'react', hours: 85, fill: 'hsl(var(--chart-6))' },
+      { name: 'go', hours: 9, fill: 'hsl(var(--chart-7))' },
+    ])
     setIsLoading(false)
   }, [])
 
