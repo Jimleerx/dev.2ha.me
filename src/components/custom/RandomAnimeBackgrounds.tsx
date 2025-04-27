@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 
 export const videoBackgrounds: string[] = [
-    '/static/anime-bg/225.mp4',
-    '/static/anime-bg/830.mp4',
-    '/static/anime-bg/guduyaogun.mp4',
-    '/static/anime-bg/guduyaogun1.mp4',
-    '/static/anime-bg/guduyaogun2.mp4',
-    '/static/anime-bg/lige.mp4',
-    '/static/anime-bg/maoliang.mp4',
-    '/static/anime-bg/miku.mp4',
-    '/static/anime-bg/miku2.mp4',
-    '/static/anime-bg/sanlian.mp4'
+    '225.mp4',
+    '830.mp4',
+    'guduyaogun.mp4',
+    'guduyaogun1.mp4',
+    'guduyaogun2.mp4',
+    'lige.mp4',
+    'maoliang.mp4',
+    'miku.mp4',
+    'miku2.mp4',
+    'sanlian.mp4',
+    'lycoris2.mp4',
 ]
 
 
@@ -35,7 +36,7 @@ const RandomAnimeBackground = () => {
 
   return (
     <video className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
-      src={videoBackgrounds[index]}
+      src={'/static/anime-bg/' + videoBackgrounds[index]}
       autoPlay muted loop>
         Your browser does not support the video tag.
     </video>
