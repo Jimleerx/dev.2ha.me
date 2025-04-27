@@ -10,8 +10,9 @@ import { SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
-import GiteaCalendar from '@/components/bento/GiteaCalendar'
-import Music163Player from '@/components/bento/Music163Player'
+import GiteaCalendar from '@/components/custom/GiteaCalendar'
+import Music163Player from '@/components/custom/Music163Player'
+import RandomAnimeBackground from '@/components/custom/RandomAnimeBackgrounds'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -32,7 +33,7 @@ const bgIndex = Boolean(Math.floor(Math.random() * 2))
     aria-label="Personal information and activity grid"
   > 
     <div
-      class="first flex flex-row justify-center aspect-square rounded-3xl border bg-cover bg-color bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto"
+      class="first flex flex-row xl:max-h-[298px] grow-[0] justify-center aspect-square rounded-3xl border bg-cover bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto"
       role="img"
       aria-label="Introduction"
     >
@@ -41,7 +42,7 @@ const bgIndex = Boolean(Math.floor(Math.random() * 2))
       >
       </div> -->
     <!-- class="first relative flex aspect-square justify-center rounded-3xl border [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto" -->
-     {
+     <!-- {
       bgIndex && (<img
         class="no-repeat relative w-full max-w-fit justify-center rounded-3xl object-cover"
         src="/static/images/tou.gif"
@@ -53,9 +54,9 @@ const bgIndex = Boolean(Math.floor(Math.random() * 2))
       <img
         class="no-repeat relative w-full max-w-fit justify-center rounded-3xl object-cover"
         src="/static/images/maoliang.gif"
-      />
-      )
-     }
+      />)
+     } -->
+     <RandomAnimeBackground client:load/>
       
       <!-- <div class="absolute self-end p-2 justify-center">
         <FuzzyText
