@@ -8,7 +8,7 @@ export const videoBackgrounds: string[] = [
     'guduyaogun2.mp4',
     'lige.mp4',
     'maoliang.mp4',
-    'miku.mp4',
+    // 'miku.mp4',
     'miku2.mp4',
     'sanlian.mp4',
     'lycoris2.mp4',
@@ -19,8 +19,20 @@ const RandomAnimeBackground = () => {
   const [index, setIndex] = useState<number>(0)
   const [isLoading, setIsLoading] = useState(true)
 
+  const handleVideoEnded = () => {
+    setIsLoading(true)
+    setIndex(getRandomIndex())
+    setTimeout(() => {
+      setIsLoading(false) 
+    }, 100); 
+  };
+
+  const getRandomIndex = () => {
+    return Math.floor(Math.random() * videoBackgrounds.length);  
+  };
+
   useEffect(() => {
-    setIndex(Math.floor(Math.random() * videoBackgrounds.length))
+    setIndex(getRandomIndex())
     setIsLoading(false)
   }, [])
 
@@ -37,7 +49,8 @@ const RandomAnimeBackground = () => {
   return (
     <video className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
       src={'/static/anime-bg/' + videoBackgrounds[index]}
-      autoPlay muted loop>
+      onEnded={handleVideoEnded}
+      autoPlay muted>
         Your browser does not support the video tag.
     </video>
   )
