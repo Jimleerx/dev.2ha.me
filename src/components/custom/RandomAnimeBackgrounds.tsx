@@ -33,7 +33,7 @@ const RandomAnimeBackground = () => {
   const handleCanPlayThrough = () => {
     setTimeout(() => {
       setIsLoading(false) 
-    }, 100);   
+    }, 200);   
   }
 
   const getRandomIndex = () => {
@@ -41,8 +41,7 @@ const RandomAnimeBackground = () => {
   };
 
   useEffect(() => {
-    setIndex(getRandomIndex())
-    setIsLoading(false)
+    // setIndex(getRandomIndex())
   }, [])
 
   // if (isLoading) {
