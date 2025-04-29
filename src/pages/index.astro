@@ -24,7 +24,6 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     .at(0),
 )
 
-const bgIndex = Boolean(Math.floor(Math.random() * 2))
 ---
 
 <Layout title="主页" description={SITE.DESCRIPTION}>
