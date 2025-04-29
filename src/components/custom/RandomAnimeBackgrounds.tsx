@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const videoBackgrounds: string[] = [
     '225.mp4',
@@ -18,14 +18,23 @@ export const videoBackgrounds: string[] = [
 const RandomAnimeBackground = () => {
   const [index, setIndex] = useState<number>(0)
   const [isLoading, setIsLoading] = useState(true)
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+  const [bindEvent, setBindEvent] = useState<boolean>(true);
 
   const handleVideoEnded = () => {
     setIsLoading(true)
     setIndex(getRandomIndex())
+    if (bindEvent && videoRef.current) {
+      videoRef.current.addEventListener('canplay', handleCanPlayThrough);
+      setBindEvent(false)
+    }
+  };
+
+  const handleCanPlayThrough = () => {
     setTimeout(() => {
       setIsLoading(false) 
-    }, 100); 
-  };
+    }, 100);   
+  }
 
   const getRandomIndex = () => {
     return Math.floor(Math.random() * videoBackgrounds.length);  
@@ -36,23 +45,34 @@ const RandomAnimeBackground = () => {
     setIsLoading(false)
   }, [])
 
-  if (isLoading) {
-    return (
+  // if (isLoading) {
+  //   return (
+  //     <video className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
+  //       src='/static/anime-bg/loading.mp4'
+  //       autoPlay muted loop>
+  //         Your browser does not support the video tag.
+  //     </video>
+  //   );
+  // }
+
+  return (
+    <>
+    {
+      isLoading ? 
       <video className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
         src='/static/anime-bg/loading.mp4'
         autoPlay muted loop>
           Your browser does not support the video tag.
+      </video> 
+      : 
+      <video ref={videoRef} className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
+        src={'/static/anime-bg/' + videoBackgrounds[index]}
+        onEnded={handleVideoEnded}
+        autoPlay muted>
+          Your browser does not support the video tag.
       </video>
-    );
-  }
-
-  return (
-    <video className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
-      src={'/static/anime-bg/' + videoBackgrounds[index]}
-      onEnded={handleVideoEnded}
-      autoPlay muted>
-        Your browser does not support the video tag.
-    </video>
+    }
+    </>
   )
 }
 
