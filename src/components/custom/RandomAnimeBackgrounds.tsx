@@ -41,7 +41,9 @@ const RandomAnimeBackground = () => {
   };
 
   useEffect(() => {
-    // setIndex(getRandomIndex())
+    setIndex(getRandomIndex())
+    setTimeout(() => {
+    }, 100); 
   }, [])
 
   // if (isLoading) {
