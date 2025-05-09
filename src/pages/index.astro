@@ -36,46 +36,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       role="img"
       aria-label="Introduction"
     >
-      <!-- <div
-        class="overlay size-full rounded-3xl bg-[url('/static/404.webp')] bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-200"
-      >
-      </div> -->
-    <!-- class="first relative flex aspect-square justify-center rounded-3xl border [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto" -->
-     <!-- {
-      bgIndex && (<img
-        class="no-repeat relative w-full max-w-fit justify-center rounded-3xl object-cover"
-        src="/static/images/tou.gif"
-        style="filter: contrast(2) saturate(0) invert(100) sepia(100); border-color: #afafaf;"
-      />)
-     }
-     {
-      !bgIndex && (
-      <img
-        class="no-repeat relative w-full max-w-fit justify-center rounded-3xl object-cover"
-        src="/static/images/maoliang.gif"
-      />)
-     } -->
      <RandomAnimeBackground client:load/>
-      
-      <!-- <div class="absolute self-end p-2 justify-center">
-        <FuzzyText
-          client:load
-          baseIntensity={0.04}
-          hoverIntensity={0.24}
-          fontSize={96}
-          color="#fbb229"
-          ,>4O4</FuzzyText
-        >
-        <div class="mb-3 mt-3"></div>
-        <FuzzyText
-          client:load
-          baseIntensity={0.04}
-          hoverIntensity={0.24}
-          fontSize={36}
-          color="#f95038">Not Found</FuzzyText
-        >
-      </div> -->
-
     </div>
 
     <div

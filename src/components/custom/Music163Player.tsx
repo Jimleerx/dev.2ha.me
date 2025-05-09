@@ -13,7 +13,7 @@ interface Track {
   outerurl: string
 }
 
-const SpotifyPresence = () => {
+const Music163Player = () => {
   const [displayData, setDisplayData] = useState<Track | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isPlaying, setIsPlaying] = useState(false);
@@ -47,7 +47,7 @@ const SpotifyPresence = () => {
           album: {
             '#text': lastweekFirstSong.al.name
           },
-          image: [{'#text': lastweekFirstSong.al.picUrl}],
+          image: [{'#text': lastweekFirstSong.al.picUrl.replace('http:', 'https:')}],
           url: 'https://music.163.com/song?id=' + lastweekFirstSong.id,
           outerurl: "https://music.163.com/song/media/outer/url?id=" + lastweekFirstSong.id + ".mp3"
         }
@@ -160,4 +160,4 @@ const SpotifyPresence = () => {
   )
 }
 
-export default SpotifyPresence
+export default Music163Player
