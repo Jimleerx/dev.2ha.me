@@ -1,6 +1,18 @@
 import type { ShikiTransformer } from "shiki";
 import { h } from "hastscript";
 
+/**
+ * shikijs transformerRenderWhitespace 会报错 Cannot read properties of undefined (reading 'type'), 解决办法是
+ * @shikijs/transformers/dist/index.mjs:516:22 加一个判断 提前返回
+ * 如下
+ *  if (token.children.length === 0) {
+        return token;
+    }
+    在这行代码之前加上面这段代码
+    const node = token.children[0];
+    if (node.type !== "text" || !node.value)
+    return token;
+ */
 export interface CopyButtonOptions {
     duration?: number;
     copyIcon?: string;
