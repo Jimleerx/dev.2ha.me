@@ -10,7 +10,8 @@ interface Track {
   image: { '#text': string }[] // 
   url: string
   '@attr'?: { nowplaying: string },
-  outerurl: string
+  outerurl: string,
+  backupurl: string
 }
 
 const Music163Player = () => {
@@ -49,7 +50,8 @@ const Music163Player = () => {
           },
           image: [{'#text': lastweekFirstSong.al.picUrl.replace('http:', 'https:')}],
           url: 'https://music.163.com/song?id=' + lastweekFirstSong.id,
-          outerurl: "https://music.163.com/song/media/outer/url?id=" + lastweekFirstSong.id + ".mp3"
+          outerurl: "https://music.163.com/song/media/outer/url?id=" + lastweekFirstSong.id + ".mp3",
+          backupurl: "https://f.2ha.me/music/" + lastweekFirstSong.id + ".mp3"
         }
         setDisplayData(track)
         setIsLoading(false)
@@ -82,7 +84,7 @@ const Music163Player = () => {
 
   if (!displayData) return <p>Something absolutely horrible has gone wrong</p>
 
-  const { name: song, artist, album, image, url, outerurl } = displayData
+  const { name: song, artist, album, image, url, outerurl, backupurl } = displayData
 
   return (
     <>
@@ -139,7 +141,10 @@ const Music163Player = () => {
             <span className="w-[85%] truncate text-xs text-muted-foreground">
               <span className="font-semibold text-secondary-foreground">
                 <div>
-                  <audio ref={audioRef} src={outerurl} />
+                  <audio ref={audioRef} >
+                    <source src={outerurl} type="audio/mp3" />
+                    <source src={backupurl} type="audio/mp3" />
+                  </audio>
                 </div>
               </span>
             </span>
