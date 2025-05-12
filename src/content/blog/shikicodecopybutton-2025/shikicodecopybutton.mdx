@@ -1,0 +1,404 @@
+---
+title: 'Astro集成Shikijs 和RehypePrettyCode踩坑'
+description: '1. shikijs重复依赖打包失败; 2. 使用Rehype Pretty Code/Copy Button 给markdown代码块添加复制按钮时发生错误Cannot read properties of undefined (reading "type")'
+date: 2025-05-12
+tags: ['typescript', 'astro', 'shiki']
+image: 'assets/shikicodecopybutton.png'
+authors: ['jimlee']
+---
+import FileTree from '@/components/starlight/FileTree.astro'
+
+
+# Shikijs重复依赖导致代码报错，打包失败
+## 执行 npm run build 后发生以下错误
+```log
+src/lib/transformerNotationSkip.ts - error ts(2322): Type 'import("/var/jenkins_home/workspace/dev.2ha.me/node_modules/@shikijs/transformers/node_modules/@shikijs/types/dist/index").ShikiTransformer' is not assignable to type 'import("/var/jenkins_home/workspace/dev.2ha.me/node_modules/@shikijs/types/dist/index").ShikiTransformer'.
+  Types of property 'preprocess' are incompatible.
+
+   return createCommentNotationTransformer(
+    ~~~~~~
+
+Result (78 files): 
+- 1 error
+- 0 warnings
+- 0 hints
+```
+## 检查src/lib/transformerNotationSkip.ts代码
+这里引用的ShikiTransformer是/node_modules/@shikijs/types 中的 ShikiTransformer, 与 node_modules/@shikijs/transformers/node_modules/@shikijs/types 中的 ShikiTransformer 代码相同，但是引用不同
+```typescript
+import { type ShikiTransformer } from '@shikijs/types';
+import { createCommentNotationTransformer } from '@shikijs/transformers'
+
+export interface TransformerNotationSkipOptions {
+  /**
+   * Class for skipped lines
+   */
+  classActiveSkip?: string
+  /**
+   * Class added to the root element when the code has skipped lines
+   */
+  classActivePre?: string
+}
+
+export function transformerNotationSkip(
+  options: TransformerNotationSkipOptions = {},
+): ShikiTransformer { 
+  const { classActiveSkip = 'skip', classActivePre = undefined } = options
+
+  return createCommentNotationTransformer(
+    'skip-lines',
+    // comment-start             | marker   | range       | comment-end
+    /^\s*(?:\/\/|\/\*|<!--|#)\s+\[!code skip:(\d+):(\d+)\]\s*(?:\*\/|-->)?/,
+    function ([_, start, end], _line) {
+      _line.children = [{ type: 'text', value: `${start}-${end}` }]
+      _line.properties = { style: `counter-set:line ${end}` }
+
+      if (classActiveSkip) this.addClassToHast(_line, classActiveSkip)
+      if (classActivePre) this.addClassToHast(this.pre, classActivePre)
+      return false
+    },
+    undefined, // remove empty lines
+  )
+
+ }
+
+```
+## 检查安装好依赖后的@shikijs目录
+<FileTree>
+- node_modules
+  - @shikijs
+    - engine-javascript
+      - dist
+      - README.md
+      - package.json
+      - LICENSE
+    - types
+      - dist
+      - README.md
+      - package.json
+      - LICENSE
+    - langs
+      - dist
+      - README.md
+      - package.json
+      - LICENSE
+    - engine-oniguruma
+      - dist
+      - README.md
+      - package.json
+      - LICENSE
+    - transformers
+      - dist
+      - README.md
+      - package.json
+      - node_modules // 重复依赖最外层 node_modules 下的 @shikijs shiki
+        - shiki // 与 node_modules/shiki 重复
+          - dist
+          - README.md
+          - package.json
+          - LICENSE
+        - oniguruma-to-es 
+          - dist
+          - README.md
+          - package.json
+          - types
+          - LICENSE
+        - @shikijs // 与 node_modules/@shikijs 重复
+          - engine-javascript
+          - types
+          - engine-oniguruma
+          - vscode-textmate
+          - core
+      - LICENSE
+    - themes
+      - dist
+      - README.md
+      - package.json
+      - LICENSE
+    - vscode-textmate
+      - dist
+      - README.md
+      - package.json
+      - LICENSE.md
+    - core
+      - dist
+      - README.md
+      - package.json
+      - LICENSE
+</FileTree>
+## 删除node_modules中的重复依赖
+```shellscript
+rm -rf node_modules/@shikijs/transformers/node_modules/
+```
+
+# 给Astro博客Markdown代码块添加复制按钮
+通过查找[Rehype Pretty Code文档](https://rehype-pretty.pages.dev/)找到 [Rehype Pretty Code/Copy Button](https://rehype-pretty.pages.dev/plugins/copy-button/)这个实验性功能
+## 1. 安装依赖
+```shellscript
+npm install @rehype-pretty/transformers
+```
+## 2. 添加transformerCopyButton.ts
+这个ts文件是基于node_modules\@rehype-pretty\transformers\dist\copy-button.js修改而来
+```typescript
+import type { ShikiTransformer } from "shiki";
+import { h } from "hastscript";
+
+export interface CopyButtonOptions {
+    duration?: number;
+    copyIcon?: string;
+    successIcon?: string
+}
+
+export const transformerCopyButton = (
+    options: CopyButtonOptions = {
+        duration: 1000
+    }
+): ShikiTransformer => {
+    return {
+        name: 'shiki-transformer-copy-button',
+        code(node) {
+            const button = h('button', {
+                class: 'shiki-transformer-button-copy',
+                'data-code': this.source,
+                onclick: `
+                navigator.clipboard.writeText(this.dataset.code);
+                this.classList.add('shiki-transformer-button-copied');
+                setTimeout(() => this.classList.remove('shiki-transformer-button-copied'), ${options.duration})
+                `
+            }, [
+                h('span', { class: 'ready' }),
+                h('span', { class: 'success' })
+            ]);
+            node.children.push(button)
+            node.children.push({
+                type: 'element',
+                tagName: 'style',
+                properties: {},
+                children: [
+                    {
+                        type: 'text',
+                        value: buttonStyles({
+                            successIcon: options.successIcon,
+                            copyIcon: options.copyIcon
+                        })
+                    }
+                ]
+            })
+        }
+    }
+}
+
+function buttonStyles({
+    successIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='rgba(5,223,114,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M16 3h2.6A2.4 2.4 0 0 1 21 5.4v15.2a2.4 2.4 0 0 1-2.4 2.4H5.4A2.4 2.4 0 0 1 3 20.6V5.4A2.4 2.4 0 0 1 5.4 3H8m0 11l3 3l5-7M8.8 1h6.4a.8.8 0 0 1 .8.8v2.4a.8.8 0 0 1-.8.8H8.8a.8.8 0 0 1-.8-.8V1.8a.8.8 0 0 1 .8-.8'/%3E%3C/svg%3E",
+    copyIcon = "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20fill='none'%20stroke='rgba(128,128,128,1)'%20stroke-linecap='round'%20stroke-linejoin='round'%20stroke-width='2'%20viewBox='0%200%2024%2024'%3E%3Crect%20width='8'%20height='4'%20x='8'%20y='2'%20rx='1'%20ry='1'/%3E%3Cpath%20d='M16%204h2a2%202%200%200%201%202%202v14a2%202%200%200%201-2%202H6a2%202%200%200%201-2-2V6a2%202%200%200%201%202-2h2'/%3E%3C/svg%3E",
+}: {
+    successIcon?: string,
+    copyIcon?: string
+}) {
+    let buttonStyle =
+        `
+:root {
+--border-color: #e2e2e3;
+--background-color: #f6f6f7;
+--hover-background-color: #ffff
+}
+
+pre:has(code) {
+    position: relative;
+}
+
+pre button.shiki-transformer-button-copy {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    background-color: var(--background-color);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    transition: var(--border-color) .25s, var(--background-color) .25s, opacity .25s;
+
+    &:hover {
+        background-color: var(--hover-background-color);
+    }
+
+    & span {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+    & .ready {
+        width: 20px;
+        height: 20px;
+        background-image: url("${copyIcon}");
+    }
+
+    & .success {
+        display: none;
+        width: 20px;
+        height: 20px;
+        background-image: url("${successIcon}");
+    }
+
+    &.shiki-transformer-button-copied {
+        & .success {
+            display: block;
+        }
+
+        & .ready {
+            display: none;
+        }
+    }
+}`
+    return buttonStyle
+}
+```
+
+## 3. 添加插件
+```typescript
++ import { transformerCopyButton } from './src/lib/transformerCopyButton'
+
+export default defineConfig({
+  site: 'https://dev.2ha.me',
+  integrations: [
+    tailwind({
+      applyBaseStyles: false,
+    }),
+    sitemap(),
+    mdx(),
+    react(),
+    icon(),
+  ],
+  markdown: {
+    syntaxHighlight: false,
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['nofollow', 'noreferrer', 'noopener'],
+        },
+      ],
+      rehypeHeadingIds,
+      [
+        rehypeKatex,
+        {
+          strict: false,
+        },
+      ],
+      sectionize as any,
+      [
+        rehypePrettyCode,
+        {
+          theme: {
+            light: 'everforest-dark',
+            dark: 'everforest-dark',
+          },
+          transformers: [
+            transformerNotationDiff(),
+            transformerMetaHighlight(),
+            transformerRenderWhitespace(),
+            transformerNotationSkip(),
+            transformerDiffHighlight(),
++            transformerCopyButton({
++                duration: 1000,
++                successIcon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(5,223,114,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14 2 2 4-4'/%3E%3C/svg%3E",
++                copyIcon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='rgba(128,128,128,1)' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3C/svg%3E",
++            })
+          ],
+        },
+      ],
+    ],
+    remarkPlugins: [remarkToc, remarkMath, remarkEmoji],
+  },
+  server: {
+    port: 1234,
+    host: true,
+  },
+  devToolbar: {
+    enabled: false,
+  },
+})
+```
+## 3. 启动项目后，访问blog后报错
+```log
+TypeError: Cannot read properties of undefined (reading 'type')
+    at /vscodeProjects/dev.2ha.me/node_modules/@shikijs/transformers/dist/index.mjs:516:22
+    at Array.flatMap (<anonymous>)
+    at /vscodeProjects/dev.2ha.me/node_modules/@shikijs/transformers/dist/index.mjs:507:41
+    at Array.forEach (<anonymous>)
+    at Object.root (/vscodeProjects/dev.2ha.me/node_modules/@shikijs/transformers/dist/index.mjs:501:21)
+    at tokensToHast (/vscodeProjects/dev.2ha.me/node_modules/@shikijs/core/dist/index.mjs:1313:33)
+    at codeToHast (/vscodeProjects/dev.2ha.me/node_modules/@shikijs/core/dist/index.mjs:1188:10… …
+```
+
+## 5. 修改node_modules/@shikijs/transformers依赖中的transformerRenderWhitespace方法
+```javascript
+function transformerRenderWhitespace(options = {}) {
+  const classMap = {
+    " ": options.classSpace ?? "space",
+    "	": options.classTab ?? "tab"
+  };
+  const position = options.position ?? "all";
+  const keys = Object.keys(classMap);
+  return {
+    name: "@shikijs/transformers:render-whitespace",
+    // We use `root` hook here to ensure it runs after all other transformers
+    root(root) {
+      const pre = root.children[0];
+      const code = pre.children[0];
+      code.children.forEach(
+        (line) => {
+          if (line.type !== "element")
+            return;
+          const elements = line.children.filter((token) => token.type === "element");
+          const last = elements.length - 1;
+          line.children = line.children.flatMap((token) => {
+            if (token.type !== "element")
+              return token;
+            const index = elements.indexOf(token);
+            if (position === "boundary" && index !== 0 && index !== last)
+              return token;
+            if (position === "trailing" && index !== last)
+              return token;
++            if (token.children.length === 0) {
++              return token;
++            }
+            const node = token.children[0];
+            if (node.type !== "text" || !node.value)
+            return token;
+            const parts = splitSpaces(
+              node.value.split(/([ \t])/).filter((i) => i.length),
+              position === "boundary" && index === last && last !== 0 ? "trailing" : position,
+              position !== "trailing"
+            );
+            if (parts.length <= 1)
+              return token;
+            return parts.map((part) => {
+              const clone = {
+                ...token,
+                properties: { ...token.properties }
+              };
+              clone.children = [{ type: "text", value: part }];
+              if (keys.includes(part)) {
+                this.addClassToHast(clone, classMap[part]);
+                delete clone.properties.style;
+              }
+              return clone;
+            });
+          });
+        }
+      );
+    }
+  };
+}
+```
