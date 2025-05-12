@@ -518,3 +518,8 @@
 .bg-color {
   background-color: #e9d3b6 !important;
 }
+
+.shiki-transformer-button-copy {
+  border: none !important;
+  background-color: hsl(0deg 0% 0% / 0%) !important;
+}
