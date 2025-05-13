@@ -13,6 +13,7 @@ import { getCollection } from 'astro:content'
 import GiteaCalendar from '@/components/custom/GiteaCalendar'
 import Music163Player from '@/components/custom/Music163Player'
 import RandomAnimeBackground from '@/components/custom/RandomAnimeBackgrounds'
+import DevShortCuts from '@/components/DevShortCuts.astro'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -41,7 +42,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
 
     <div
       class="has-overlay relative grid aspect-square grid-cols-4 grid-rows-3 items-center
-      justify-center bg-[url('/static/honeycomb.webp')] [grid-area:b]"
+      justify-center bg-[url('/static/honeycomb.webp')] [grid-area:b] short-cuts-template"
       style="grid-template-columns: 2.85fr 2.95fr 2.9fr 1.3fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
       aria-label="Developer Stack Shortcuts"
     >
@@ -50,7 +51,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
         src="/static/images/shortcuts-bg.png"
       />
       <!-- <DevStackIconsCloud client:load/> -->
-      <ShortCuts />
+      <DevShortCuts />
     </div>
 
     <div class="aspect-[1/2.1] [grid-area:c] bg-[url('/static/images/ump45.png')] xl:aspect-auto bg-color" aria-hidden="true">

@@ -93,4 +93,17 @@ export const DEV_LINKS: DevLink[] = [
     title: '媒体订阅工具',
     icon: 'mdi:fruit-cherries',
   },
+  {
+    href: 'https://g.2ha.me',
+    label: 'GHProxy',
+    title: 'GitHub代理',
+    icon: 'mdi:rocket-launch-outline',
+  },
 ]
+
+export const getDevLinkHref = (label: string): string => {
+  return DEV_LINKS.find((link) => link.label === label)?.href || '#'
+}
+export const getDevLink = (label: string): DevLink | undefined => {
+  return DEV_LINKS.find((link) => link.label === label)
+}
