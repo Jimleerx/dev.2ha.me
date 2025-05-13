@@ -2,7 +2,7 @@
 title: '常用代码块合集'
 description: '常用的kotlin, python, shell, regex等代码块合集'
 date: 2025-04-10
-tags: ['kotlin', 'python', 'regex', 'linux', 'shell', 'javascript']
+tags: ['kotlin', 'python', 'regex', 'linux', 'shell', 'javascript', 'windows']
 image: 'assets/commoncodebanner.webp'
 authors: ['jimlee']
 ---
@@ -19,3 +19,8 @@ val <T : Any> T.LOGGER: Logger
 ```shellscript
 find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
+## windows
+### 上传公钥到服务器
+```cmd
+type %USERPROFILE%\.ssh\id_rsa.pub | ssh user@host "cat >> ~/.ssh/authorized_keys"
+```     
