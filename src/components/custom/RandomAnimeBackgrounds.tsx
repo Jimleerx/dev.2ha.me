@@ -58,23 +58,13 @@ const RandomAnimeBackground = () => {
   // }
 
   return (
-    <>
-    {
-      isLoading ? 
-      <video width="100" height="100" className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
-        src='/static/anime-bg/loading.mp4'
-        autoPlay muted loop>
-          Your browser does not support the video tag.
-      </video> 
-      : 
       <video ref={videoRef} width="100" height="100" className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
         src={'/static/anime-bg/' + videoBackgrounds[index]}
+        style={{ display: isLoading ? 'none' : 'block' }}
         onEnded={handleVideoEnded}
         autoPlay muted>
           Your browser does not support the video tag.
       </video>
-    }
-    </>
   )
 }
 
