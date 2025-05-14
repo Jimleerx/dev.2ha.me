@@ -9,18 +9,18 @@ authors: ['jimlee']
 
 ## kotlin 
 ### 添加全局logger
-```kotlin
+```kotlin title="kotlin"
 val <T : Any> T.LOGGER: Logger
     get() = LoggerFactory.getLogger(this::class.java)
 ```
 
 ## linux
 ### 打印文件树
-```shellscript
+```shellscript title="shell"
 find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
 ## windows
 ### 上传公钥到服务器
-```cmd
+```cmd title="cmd"
 type %USERPROFILE%\.ssh\id_rsa.pub | ssh user@host "cat >> ~/.ssh/authorized_keys"
 ```     

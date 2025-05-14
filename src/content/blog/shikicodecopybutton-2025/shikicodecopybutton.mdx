@@ -11,7 +11,7 @@ import FileTree from '@/components/starlight/FileTree.astro'
 
 # Shikijs重复依赖导致代码报错，打包失败
 ## 执行 npm run build 后发生以下错误
-```log
+```log  title="npm run build log"
 src/lib/transformerNotationSkip.ts - error ts(2322): Type 'import("/var/jenkins_home/workspace/dev.2ha.me/node_modules/@shikijs/transformers/node_modules/@shikijs/types/dist/index").ShikiTransformer' is not assignable to type 'import("/var/jenkins_home/workspace/dev.2ha.me/node_modules/@shikijs/types/dist/index").ShikiTransformer'.
   Types of property 'preprocess' are incompatible.
 
@@ -25,7 +25,7 @@ Result (78 files):
 ```
 ## 检查src/lib/transformerNotationSkip.ts代码
 这里引用的ShikiTransformer是/node_modules/@shikijs/types 中的 ShikiTransformer, 与 node_modules/@shikijs/transformers/node_modules/@shikijs/types 中的 ShikiTransformer 代码相同，但是引用不同
-```typescript
+```typescript title="TransformerNotationSkipOptions.ts"
 import { type ShikiTransformer } from '@shikijs/types';
 import { createCommentNotationTransformer } from '@shikijs/transformers'
 
@@ -91,8 +91,8 @@ export function transformerNotationSkip(
       - dist
       - README.md
       - package.json
-      - node_modules // 重复依赖最外层 node_modules 下的 @shikijs shiki
-        - shiki // 与 node_modules/shiki 重复
+      - **node_modules** // 重复依赖最外层 node_modules 下的 @shikijs shiki
+        - **shiki** // 与 node_modules/shiki 重复
           - dist
           - README.md
           - package.json
@@ -103,7 +103,7 @@ export function transformerNotationSkip(
           - package.json
           - types
           - LICENSE
-        - @shikijs // 与 node_modules/@shikijs 重复
+        - **@shikijs** // 与 node_modules/@shikijs 重复
           - engine-javascript
           - types
           - engine-oniguruma
@@ -127,19 +127,19 @@ export function transformerNotationSkip(
       - LICENSE
 </FileTree>
 ## 删除node_modules中的重复依赖
-```shellscript
+```shellscript title="shell"
 rm -rf node_modules/@shikijs/transformers/node_modules/
 ```
 
 # 给Astro博客Markdown代码块添加复制按钮
 通过查找[Rehype Pretty Code文档](https://rehype-pretty.pages.dev/)找到 [Rehype Pretty Code/Copy Button](https://rehype-pretty.pages.dev/plugins/copy-button/)这个实验性功能
 ## 1. 安装依赖
-```shellscript
+```shellscript title="shell"
 npm install @rehype-pretty/transformers
 ```
 ## 2. 添加transformerCopyButton.ts
 这个ts文件是基于node_modules\@rehype-pretty\transformers\dist\copy-button.js修改而来
-```typescript
+```typescript title="transformerCopyButton.ts"
 import type { ShikiTransformer } from "shiki";
 import { h } from "hastscript";
 
@@ -264,7 +264,7 @@ pre button.shiki-transformer-button-copy {
 ```
 
 ## 3. 添加插件
-```typescript
+```typescript title="astro.config.ts" {1,45,46,47,48,49}#a
 + import { transformerCopyButton } from './src/lib/transformerCopyButton'
 
 export default defineConfig({
@@ -330,7 +330,7 @@ export default defineConfig({
 })
 ```
 ## 3. 启动项目后，访问blog后报错
-```log
+```log title="npm run build log"
 TypeError: Cannot read properties of undefined (reading 'type')
     at /vscodeProjects/dev.2ha.me/node_modules/@shikijs/transformers/dist/index.mjs:516:22
     at Array.flatMap (<anonymous>)
@@ -342,7 +342,7 @@ TypeError: Cannot read properties of undefined (reading 'type')
 ```
 
 ## 5. 修改node_modules/@shikijs/transformers依赖中的transformerRenderWhitespace方法
-```javascript
+```javascript title="node_modules/@shikijs/transformers/dist/index.mjs" {28,29,30}#a 
 function transformerRenderWhitespace(options = {}) {
   const classMap = {
     " ": options.classSpace ?? "space",
