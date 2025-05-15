@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from "react";
 export const videoBackgrounds: string[] = [
     '225.mp4',
     '830.mp4',
-    'guduyaogun.mp4',
+    // 'guduyaogun.mp4',
     'guduyaogun1.mp4',
     'guduyaogun2.mp4',
     'lige.mp4',
     'maoliang.mp4',
     // 'miku.mp4',
     'miku2.mp4',
-    'sanlian.mp4',
+    // 'sanlian.mp4',
     'lycoris2.mp4',
 ]
 
