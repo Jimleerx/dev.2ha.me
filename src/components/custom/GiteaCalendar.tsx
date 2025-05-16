@@ -11,7 +11,7 @@ import Calendar, {
 
 async function fetchCalendarData(): Promise<ApiResponse> {
   const response = await fetch(
-    `https://dev.2ha.me/api/Calendar`,
+    `https://api.2ha.me/api/Calendar`,
   )
   const data: ApiResponse | ApiErrorResponse = await response.json()
   if (!response.ok) {
