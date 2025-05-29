@@ -88,10 +88,10 @@ export const DEV_LINKS: DevLink[] = [
     icon: 'mdi:plex',
   },
   {
-    href: 'https://mr.2ha.me',
-    label: 'MovieRobot',
+    href: 'https://mp.2ha.me',
+    label: 'MoviePilot',
     title: '媒体订阅工具',
-    icon: 'mdi:fruit-cherries',
+    icon: 'mdi:youtube-creator-studio',
   },
   {
     href: 'https://g.2ha.me',
