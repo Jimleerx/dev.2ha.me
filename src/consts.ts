@@ -54,7 +54,7 @@ export const DEV_LINKS: DevLink[] = [
     href: 'https://maven.2ha.me',
     label: 'Nexus',
     title: 'Maven仓库',
-    icon: 'mdi:alphabet-m-circle',
+    icon: 'mdi:chart-doughnut-variant',
   },
   {
     href: 'https://dms.2ha.me',
