@@ -29,6 +29,6 @@ ip addr add ::1/128 dev lo
 ### nginx反代后跳转变成原始ip+端口号
 加上如下配置
 ```shellscript
-server_name_in_redirect off;
-port_in_redirect off;
+    server_name_in_redirect off;
+    port_in_redirect off;
 ```
