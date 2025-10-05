@@ -28,8 +28,8 @@ wget https://github.com/aperezdc/ngx-fancyindex/releases/download/v0.5.2/ngx-fan
 tar -xf ngx-fancyindex-0.5.2.tar.xz
 ```
 ## 4. 配置需要编译的模块 
+** 创建目录 ** 
 ```shellscript
-# 创建目录
 mkdir -p /var/cache/nginx
 mkdir -p /var/log/nginx
 ```
@@ -83,6 +83,7 @@ sudo make && sudo make install
 ```shellscript
 vim /usr/lib/systemd/system/nginx.service
 ```
+** 输入如下内容 ** 
 ```systemd
 [Unit]
 Description=nginx
