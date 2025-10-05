@@ -20,7 +20,7 @@ val <T : Any> T.LOGGER: Logger
 find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 ```
 ### linux lo 网卡缺少ip
-```
+```shellscript
 ip addr add 127.0.0.1/8 dev lo
 ip addr add ::1/128 dev lo
 ```
@@ -28,7 +28,7 @@ ip addr add ::1/128 dev lo
 ## nginx
 ### nginx反代后跳转变成原始ip+端口号
 加上如下配置
-```
+```shellscript
 server_name_in_redirect off;
 port_in_redirect off;
 ```
