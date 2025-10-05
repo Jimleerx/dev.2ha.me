@@ -14,6 +14,12 @@ val <T : Any> T.LOGGER: Logger
     get() = LoggerFactory.getLogger(this::class.java)
 ```
 
+## windows
+### 上传公钥到服务器
+```cmd title="cmd"
+type %USERPROFILE%\.ssh\id_rsa.pub | ssh user@host "cat >> ~/.ssh/authorized_keys"
+```     
+
 ## linux
 ### 打印文件树
 ```shellscript title="shell"
