@@ -29,8 +29,12 @@ tar -xf ngx-fancyindex-0.5.2.tar.xz
 ```
 ## 4. 配置需要编译的模块 
 ```shellscript
-# NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录
+# 创建目录
 mkdir -p /var/cache/nginx
+mkdir -p /var/log/nginx
+```
+** NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录 **  
+```shellscript
 ./configure --add-module=./ngx-fancyindex-0.5.2 \
 --prefix=${NGINX_ROOT_PATH} \
 --user=jimlee \
@@ -75,8 +79,11 @@ mkdir -p /var/cache/nginx
 sudo make && sudo make install
 ```
 ## 6. 创建systemctl服务
-```systemd
+** vim编辑service文件 ** 
+```shellscript
 vim /usr/lib/systemd/system/nginx.service
+```
+```systemd
 [Unit]
 Description=nginx
 After=network.target

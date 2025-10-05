@@ -2,7 +2,7 @@
 title: '常用代码块合集'
 description: '常用的kotlin, python, shell, regex等代码块合集'
 date: 2025-04-10
-tags: ['kotlin', 'python', 'regex', 'linux', 'shell', 'javascript']
+tags: ['kotlin', 'python', 'regex', 'linux', 'shell', 'javascript', 'nginx']
 image: 'assets/commoncodebanner.webp'
 authors: ['jimlee']
 ---
@@ -18,4 +18,17 @@ val <T : Any> T.LOGGER: Logger
 ### 打印文件树
 ```shellscript
 find . -maxdepth 2 | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+```
+### linux lo 网卡缺少ip
+```
+ip addr add 127.0.0.1/8 dev lo
+ip addr add ::1/128 dev lo
+```
+
+## nginx
+### nginx反代后跳转变成原始ip+端口号
+加上如下配置
+```
+server_name_in_redirect off;
+port_in_redirect off;
 ```
