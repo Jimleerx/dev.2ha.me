@@ -10,9 +10,9 @@ authors: ['jimlee']
 ## 在debian上安装nginx
 debian默认软件库的nginx没有fancy-index模块, fancy-index是一个html文件服务器, 下面就开始手动给nginx添加fancy-index模块。
 ## 1. 安装编译环境
+包含pcre(正则库), zlib(压缩库), ssl(https)
 ```shellscript title="shell"
 sudo apt install -y build-essential libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
-# 包含pcre(正则库), zlib(压缩库), ssl(https)
 ```
 ## 2. 下载并解压nginx源码
 官网查看最新版本(当前20250111为1.26.3)
@@ -28,12 +28,12 @@ wget https://github.com/aperezdc/ngx-fancyindex/releases/download/v0.5.2/ngx-fan
 tar -xf ngx-fancyindex-0.5.2.tar.xz
 ```
 ## 4. 配置需要编译的模块 
-** 创建目录 ** 
+创建目录
 ```shellscript title="shell"
 mkdir -p /var/cache/nginx
 mkdir -p /var/log/nginx
 ```
-** NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录 **  
+NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录 
 ```shellscript
 ./configure --add-module=./ngx-fancyindex-0.5.2 \
 --prefix=${NGINX_ROOT_PATH} \
@@ -80,11 +80,11 @@ mkdir -p /var/log/nginx
 sudo make && sudo make install
 ```
 ## 6. 创建systemctl服务
-** vim编辑service文件 ** 
+vim编辑service文件 
 ```systemd
 vim /usr/lib/systemd/system/nginx.service
 ```
-** 输入如下内容 ** 
+输入如下内容
 ```systemd
 [Unit]
 Description=nginx

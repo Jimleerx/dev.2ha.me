@@ -82,10 +82,10 @@ export const DEV_LINKS: DevLink[] = [
   },
   { href: 'https://v.2ha.me', label: 'Emby', title: 'Emby', icon: 'mdi:emby' },
   {
-    href: 'https://plex.2ha.me',
-    label: 'Plex',
-    title: 'Plex',
-    icon: 'mdi:plex',
+    href: 'https://tz.2ha.me',
+    label: '探针',
+    title: '探针',
+    icon: 'mdi:blur',
   },
   {
     href: 'https://mp.2ha.me',
