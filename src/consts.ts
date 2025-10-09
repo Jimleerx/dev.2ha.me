@@ -82,10 +82,10 @@ export const DEV_LINKS: DevLink[] = [
   },
   { href: 'https://v.2ha.me', label: 'Emby', title: 'Emby', icon: 'mdi:emby' },
   {
-    href: 'https://tz.2ha.me',
-    label: '探针',
-    title: '探针',
-    icon: 'mdi:blur',
+    href: 'https://in.2ha.me',
+    label: '2ha.me statistics',
+    title: '统计',
+    icon: 'mdi:sun-azimuth',
   },
   {
     href: 'https://mp.2ha.me',

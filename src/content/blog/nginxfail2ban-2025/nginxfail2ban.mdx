@@ -16,7 +16,7 @@ sudo apt install fail2ban
 ## 2. 测试ban爬虫规则
 正则表达式如下
 ```regex
-<HOST> -.* "(GET|POST).*" (401|403|404) .* (Bytespider|AhrefsBot|Amazonbot|DataForSeoBot|MJ12bot|AhrefsBot|ds-robot|meta-externalagent|SemrushBot)
+<HOST> -.* "(GET|POST).*" (401|403|404) .* (Bytespider|AhrefsBot|Amazonbot|DataForSeoBot|MJ12bot|ds-robot|meta-externalagent|SemrushBot)
 ```
 从/var/log/nginx/access.log取一行日志用于测试
 ```shellscript title="shell"
