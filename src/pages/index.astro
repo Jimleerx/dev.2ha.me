@@ -1,11 +1,10 @@
 ---
 import AuthorPresence from '@/components/bento/AuthorPresence'
-import WakatimeGraph from '@/components/bento/WakatimeGraph.tsx'
+import WakatimeGraph from '@/components/bento/WakatimeGraph'
 import Link from '@/components/Link.astro'
 // import FuzzyText from '@/components/magicui/fuzzy-text'
 import GradientText from '@/components/magicui/gradint-text'
 import LetterGlitch from '@/components/magicui/letter-glitch'
-import ShortCuts from '@/components/ShortCuts.astro'
 import { SITE, SOCIAL_LINKS } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { Icon } from 'astro-icon/components'
@@ -13,6 +12,7 @@ import { getCollection } from 'astro:content'
 import GiteaCalendar from '@/components/custom/GiteaCalendar'
 import Music163Player from '@/components/custom/Music163Player'
 import RandomAnimeBackground from '@/components/custom/RandomAnimeBackgrounds'
+import DevShortCuts from '@/components/DevShortCuts.astro'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -32,8 +32,9 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     aria-label="Personal information and activity grid"
   > 
     <div
-      class="first flex flex-row xl:max-h-[298px] grow-[0] justify-center aspect-square rounded-3xl border bg-cover bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto"
+      class="first flex flex-row xl:max-h-[298px] grow-[0] justify-center aspect-square rounded-3xl bg-[url('/static/loading.gif')] border bg-cover bg-center bg-position-inherit bg-no-repeat [grid-area:a] sm:aspect-[2.1/1] xl:aspect-auto"
       role="img"
+
       aria-label="Introduction"
     >
      <RandomAnimeBackground client:load/>
@@ -41,7 +42,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
 
     <div
       class="has-overlay relative grid aspect-square grid-cols-4 grid-rows-3 items-center
-      justify-center bg-[url('/static/honeycomb.webp')] [grid-area:b]"
+      justify-center bg-[url('/static/honeycomb.webp')] [grid-area:b] short-cuts-template"
       style="grid-template-columns: 2.85fr 2.95fr 2.9fr 1.3fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
       aria-label="Developer Stack Shortcuts"
     >
@@ -50,7 +51,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
         src="/static/images/shortcuts-bg.png"
       />
       <!-- <DevStackIconsCloud client:load/> -->
-      <ShortCuts />
+      <DevShortCuts />
     </div>
 
     <div class="aspect-[1/2.1] [grid-area:c] bg-[url('/static/images/ump45.png')] xl:aspect-auto bg-color" aria-hidden="true">

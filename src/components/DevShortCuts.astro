@@ -1,0 +1,102 @@
+---
+import { DEV_LINKS } from '@/consts'
+import { Icon } from 'astro-icon/components'
+import Link from './Link.astro'
+
+
+// interface ShortCutProps {
+//   href: string | undefined
+//   title: string
+//   ariaLabel: string
+//   icon: string
+// }
+
+// const SHORT_CUTS: ShortCutProps[] = [
+//   {
+//     href: getDevLinkHref('Gitea'),
+//     title: "代码仓库",
+//     ariaLabel: "代码仓库",
+//     icon: "mdi:git"
+//   },
+//   {
+//     href: getDevLinkHref('Nexus'),
+//     title: "Maven仓库",
+//     ariaLabel: "Maven仓库",
+//     icon: "mdi:chart-doughnut-variant"
+//   },
+//   {
+//     href: getDevLinkHref('Bytebase'),
+//     title: "数据库管理",
+//     ariaLabel: "数据库管理",
+//     icon: "mdi:database-cog"
+//   },
+//   {
+//     href: getDevLinkHref('Zfile'),
+//     title: "网盘",
+//     ariaLabel: "网盘",
+//     icon: "mdi:cloud-arrow-up"
+//   },
+//   {
+//     href: getDevLinkHref('FileServer'),
+//     title: "文件服务器",
+//     ariaLabel: "文件服务器",
+//     icon: "mdi:file-arrow-up-down-outline"
+//   },
+//   {
+//     href: getDevLinkHref('immich'),
+//     title: "相册",
+//     ariaLabel: "相册",
+//     icon: "mdi:camera"
+//   },
+//   {
+//     href: getDevLinkHref('Emby'),
+//     title: "Emby",
+//     ariaLabel: "Emby",
+//     icon: "mdi:emby"
+//   },
+//   {
+//     href: getDevLinkHref('Emby'),
+//     title: "Emby",
+//     ariaLabel: "Emby",
+//     icon: "mdi:emby"
+//   }
+// ]
+const SHORTS_CUTS_CLASS_NAMES: string[] = [
+  'z-10 max-w max-h mt-[2.6em] inline-block sm:mt-[2.35em]',
+  'z-10 max-w max-h ml-[0.1em] mt-[-3.7em] inline-block sm:ml-[0em] sm:mt-[-3.4em]',
+  'z-10 max-w max-h ml-[-0.1em] mt-[2.5em] inline-block sm:ml-[0em] sm:mt-[2.5em]',
+  'z-10 max-w max-h mt-[-4em] inline-block sm:mt-[-3em]',
+  'z-10 max-w max-h mt-[0.1em] inline-block sm:mt-[0.6em]',
+  'z-10 max-w max-h ml-[0.1em] mt-[-6.5em] inline-block sm:ml-[0em] sm:mt-[-5.3em]',
+  'z-10 max-w max-h mt-[0.2em] inline-block sm:mt-[0.6em]',
+  'z-10 max-w max-h mt-[-6.5em] inline-block sm:mt-[-5.3em]',
+  'z-10 max-w max-h mt-[1.49em] inline-block sm:mt-[1em]',
+  'z-10 max-w max-h mt-[-5.2em] inline-block sm:mt-[-4.3em]'
+]
+
+---
+{
+  DEV_LINKS.map((item, index) => (
+    <div
+      class={SHORTS_CUTS_CLASS_NAMES[index]}
+    >
+      <Link
+        href={item.href} || '#'}
+        title={item.title}
+        aria-label={item.label}
+        target="_blank"
+      >
+        <div
+          class="bottom-0 right-0 w-fit items-end rounded-full border bg-secondary/50 p-3 text-primary transition-all duration-300 hover:rotate-12 hover:ring-1 hover:ring-primary"
+        >
+          <Icon
+            style="color: rgb(233, 211, 182);"
+            name={item.icon}
+            class="z-[1] size-1/2 size-8 text-primary sm:size-8"
+            aria-hidden="true"
+          />
+        </div>
+      </Link>
+    </div>
+  ))
+}

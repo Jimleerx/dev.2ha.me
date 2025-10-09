@@ -18,7 +18,7 @@ const SpotifyPresence = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    fetch('https://dev.2ha.me/api/v1/play/record?uid=91859315&type=1')
+    fetch('https://api.2ha.me/api/v1/play/record?uid=91859315&type=1')
       .then((response) => response.json())
       .then((data) => {
         let lastweekFirstSong = data.weekData[0].song

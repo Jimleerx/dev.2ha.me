@@ -10,30 +10,30 @@ authors: ['jimlee']
 ## 在debian上安装nginx
 debian默认软件库的nginx没有fancy-index模块, fancy-index是一个html文件服务器, 下面就开始手动给nginx添加fancy-index模块。
 ## 1. 安装编译环境
-```shellscript
+包含pcre(正则库), zlib(压缩库), ssl(https)
+```shellscript title="shell"
 sudo apt install -y build-essential libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
-# 包含pcre(正则库), zlib(压缩库), ssl(https)
 ```
 ## 2. 下载并解压nginx源码
 官网查看最新版本(当前20250111为1.26.3)
 https://nginx.org/en/download.html
-```shellscript
+```shellscript title="shell"
 wget https://nginx.org/download/nginx-1.26.3.tar.gz
 tar -xf nginx-1.26.3.tar.gz
 ``` 
 ## 3. 下载并解压nginx-fancyindex模块
-```shellscript
+```shellscript title="shell"
 cd nginx-1.26.3
 wget https://github.com/aperezdc/ngx-fancyindex/releases/download/v0.5.2/ngx-fancyindex-0.5.2.tar.xz
 tar -xf ngx-fancyindex-0.5.2.tar.xz
 ```
 ## 4. 配置需要编译的模块 
-** 创建目录 ** 
-```shellscript
+创建目录
+```shellscript title="shell"
 mkdir -p /var/cache/nginx
 mkdir -p /var/log/nginx
 ```
-** NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录 **  
+NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录 
 ```shellscript
 ./configure --add-module=./ngx-fancyindex-0.5.2 \
 --prefix=${NGINX_ROOT_PATH} \
@@ -72,18 +72,19 @@ mkdir -p /var/log/nginx
 --with-stream \
 --with-stream_realip_module \
 --with-stream_ssl_module \
---with-stream_ssl_preread_module 
+--with-stream_ssl_preread_module \
+--with-http_v3_module
 ```
 ## 5. 编译
-```shellscript
+```shellscript title="shell"
 sudo make && sudo make install
 ```
 ## 6. 创建systemctl服务
-** vim编辑service文件 ** 
-```shellscript
+vim编辑service文件 
+```systemd
 vim /usr/lib/systemd/system/nginx.service
 ```
-** 输入如下内容 ** 
+输入如下内容
 ```systemd
 [Unit]
 Description=nginx
@@ -100,11 +101,11 @@ PrivateTmp=true
 WantedBy=multi-user.target
 ```
 ## 7. 通过systemctl管理nginx
-```shellscript
+```shellscript title="shell"
 systemctl start nginx
 systemctl status nginx
 ```
 ## 8. 修改setcap让普通用户可以使用1024以下端口
-```shellscript
+```shellscript title="shell"
 setcap cap_net_bind_service=+eip ${NGINX_ROOT_PATH}/sbin/nginx
 ```

@@ -3,14 +3,14 @@ import { useEffect, useRef, useState } from "react";
 export const videoBackgrounds: string[] = [
     '225.mp4',
     '830.mp4',
-    'guduyaogun.mp4',
+    // 'guduyaogun.mp4',
     'guduyaogun1.mp4',
     'guduyaogun2.mp4',
     'lige.mp4',
     'maoliang.mp4',
     // 'miku.mp4',
     'miku2.mp4',
-    'sanlian.mp4',
+    // 'sanlian.mp4',
     'lycoris2.mp4',
 ]
 
@@ -58,23 +58,13 @@ const RandomAnimeBackground = () => {
   // }
 
   return (
-    <>
-    {
-      isLoading ? 
-      <video className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
-        src='/static/anime-bg/loading.mp4'
-        autoPlay muted loop>
-          Your browser does not support the video tag.
-      </video> 
-      : 
-      <video ref={videoRef} className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
+      <video ref={videoRef} width="100" height="100" className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
         src={'/static/anime-bg/' + videoBackgrounds[index]}
+        style={{ display: isLoading ? 'none' : 'block' }}
         onEnded={handleVideoEnded}
         autoPlay muted>
           Your browser does not support the video tag.
       </video>
-    }
-    </>
   )
 }
 

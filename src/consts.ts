@@ -82,15 +82,28 @@ export const DEV_LINKS: DevLink[] = [
   },
   { href: 'https://v.2ha.me', label: 'Emby', title: 'Emby', icon: 'mdi:emby' },
   {
-    href: 'https://plex.2ha.me',
-    label: 'Plex',
-    title: 'Plex',
-    icon: 'mdi:plex',
+    href: 'https://in.2ha.me',
+    label: '2ha.me statistics',
+    title: '统计',
+    icon: 'mdi:sun-azimuth',
   },
   {
-    href: 'https://mr.2ha.me',
-    label: 'MovieRobot',
+    href: 'https://mp.2ha.me',
+    label: 'MoviePilot',
     title: '媒体订阅工具',
-    icon: 'mdi:fruit-cherries',
+    icon: 'mdi:youtube-creator-studio',
+  },
+  {
+    href: 'https://g.2ha.me',
+    label: 'GHProxy',
+    title: 'GitHub代理',
+    icon: 'mdi:rocket-launch-outline',
   },
 ]
+
+export const getDevLinkHref = (label: string): string => {
+  return DEV_LINKS.find((link) => link.label === label)?.href || '#'
+}
+export const getDevLink = (label: string): DevLink | undefined => {
+  return DEV_LINKS.find((link) => link.label === label)
+}
