@@ -55,12 +55,12 @@ const WakatimeGraph = ({ }: Props) => {
   useEffect(() => {
     setLanguages([
       { name: 'java', hours: 1009, fill: 'hsl(var(--chart-1))' },
-      { name: 'kotlin', hours: 346, fill: 'hsl(var(--chart-2))' },
-      { name: 'javascript', hours: 311, fill: 'hsl(var(--chart-3))' },
-      { name: 'typescript', hours: 287, fill: 'hsl(var(--chart-4))' },
-      { name: 'python', hours: 120, fill: 'hsl(var(--chart-5))' },
-      { name: 'react', hours: 85, fill: 'hsl(var(--chart-6))' },
-      { name: 'go', hours: 9, fill: 'hsl(var(--chart-7))' },
+      { name: 'javascript', hours: 476, fill: 'hsl(var(--chart-2))' },
+      { name: 'kotlin', hours: 405, fill: 'hsl(var(--chart-3))' },
+      { name: 'typescript', hours: 401, fill: 'hsl(var(--chart-4))' },
+      { name: 'react', hours: 257, fill: 'hsl(var(--chart-5))' },
+      { name: 'go', hours: 125, fill: 'hsl(var(--chart-6))' },
+      { name: 'python', hours: 120, fill: 'hsl(var(--chart-7))' },
     ])
     setIsLoading(false)
   }, [])
