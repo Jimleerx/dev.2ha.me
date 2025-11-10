@@ -1,10 +1,13 @@
 ---
+import Badge from '@/components/Badge.astro'
 import Link from '@/components/Link.astro'
-import { Badge } from '@/components/ui/badge'
+import { Separator } from '@/components/ui/separator'
+import { extractDomain, formatMonthYear } from '@/lib/utils'
+import { Icon } from 'astro-icon/components'
 import { Image } from 'astro:assets'
 import type { CollectionEntry } from 'astro:content'
 
-type Props = {
+interface Props {
   project: CollectionEntry<'projects'>
 }
 
@@ -12,30 +15,62 @@ const { project } = Astro.props
 ---
 
 <div
-  class="overflow-hidden rounded-xl border transition-colors duration-300 ease-in-out hover:bg-secondary/50"
+  class="hover:bg-secondary/50 border p-4 transition-colors duration-300 ease-in-out mx-auto max-w-screen-md px-4 flex grow flex-col gap-y-6"
 >
-  <Link href={project.data.link} class="block">
-    <Image
-      src={project.data.image}
-      alt={project.data.name}
-      width={400}
-      height={200}
-      class="w-full object-cover"
-    />
-    <div class="p-4">
-      <h3 class="mb-2 text-lg font-semibold">{project.data.name}</h3>
-      <p class="mb-4 text-sm text-muted-foreground">
+  <Link
+    href={project.data.link}
+    class="flex flex-col gap-4 sm:flex-row"
+    external
+  >
+    {
+      project.data.image && (
+        <div class="max-w-[225px] sm:flex-shrink-0">
+          <Image
+            src={project.data.image}
+            alt={project.data.name}
+            width={1200}
+            height={630}
+            class="object-cover"
+          />
+        </div>
+      )
+    }
+    <div class="grow">
+      <h3 class="mb-1 text-lg font-medium">
+        {project.data.name}
+      </h3>
+      <p class="text-muted-foreground mb-2 text-sm">
         {project.data.description}
       </p>
-      <div class="flex flex-wrap gap-2">
-        {
-          project.data.tags.map((tag) => (
-            <Badge variant="secondary" showHash={false}>
-              {tag}
-            </Badge>
-          ))
-        }
-      </div>
+      {
+        project.data.startDate && (
+          <div class="text-muted-foreground/70 mb-2 flex flex-wrap items-center gap-x-2 text-xs">
+            <span class="flex items-center gap-x-1.5">
+              <Icon name="lucide:calendar" class="size-3" />
+              <span>
+                {formatMonthYear(project.data.startDate)}
+                {project.data.endDate
+                  ? ` → ${formatMonthYear(project.data.endDate)}`
+                  : ' → Present'}
+              </span>
+            </span>
+            <Separator orientation="vertical" className="h-4!" />
+            <span class="flex items-center gap-x-1">
+              <Icon name="lucide:external-link" class="size-3" />
+              <span>{extractDomain(project.data.link)}</span>
+            </span>
+          </div>
+        )
+      }
+      {
+        project.data.tags && (
+          <div class="flex flex-wrap gap-2">
+            {project.data.tags.map((tag: string) => (
+              <Badge text={tag} />
+            ))}
+          </div>
+        )
+      }
     </div>
   </Link>
 </div>

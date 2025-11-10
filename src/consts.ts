@@ -32,7 +32,7 @@ export const NAV_LINKS: Link[] = [
   { href: '/', label: '主页' },
   { href: '/blog', label: '博客' },
   { href: '/tags', label: '标签' },
-  // { href: '/authors', label: '作者' },
+  { href: '/projects', label: '项目' },
   { href: '/authors', label: '关于' },
 ]
 
@@ -88,15 +88,15 @@ export const DEV_LINKS: DevLink[] = [
     icon: 'mdi:sun-azimuth',
   },
   {
-    href: 'https://mp.2ha.me',
-    label: 'MoviePilot',
-    title: '媒体订阅工具',
-    icon: 'mdi:youtube-creator-studio',
+    href: 'https://mmwdemo.2ha.me/docs',
+    label: '妙妙屋',
+    title: '个人Clash订阅管理工具',
+    icon: '/static/mmw.svg',
   },
   {
-    href: 'https://g.2ha.me',
-    label: 'GHProxy',
-    title: 'GitHub代理',
+    href: 'https://1ms.cc',
+    label: 'hubproxy',
+    title: 'GitHub&DockerHub代理',
     icon: 'mdi:rocket-launch-outline',
   },
 ]

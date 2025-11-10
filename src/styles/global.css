@@ -11,6 +11,14 @@
 }
 
 @font-face {
+  font-family: 'OPlusSans3-Medium';
+  src: url('/fonts/OPlusSans3-Medium.woff');
+  font-weight: 100 800;
+  font-style: normal;
+  /* unicode-range: U+2E80-2EFF,U+3400-4DBF,U+4E00-9FFF; */
+}
+
+@font-face {
   font-family: 'JetBrains Mono';
   src: url('/fonts/JetBrainsMono[wght].woff2') format('woff2-variations');
   font-weight: 100 800;
