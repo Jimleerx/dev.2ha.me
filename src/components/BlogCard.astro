@@ -24,7 +24,8 @@ const subposts = allPosts.filter((p) => p.data.parentTitle === entry.data.title)
 const totalBody = [entry.body!, ...subposts.map((p) => p.body!)]
   .map(stripCodeBlocks)
   .join('')
-const readTime = readingTime(totalBody)
+const wordCount = totalBody.split(/\s+/).filter(Boolean).length
+const readTime = readingTime(wordCount)
 
 const authors = await parseAuthors(entry.data.authors ?? [])
 ---

@@ -61,7 +61,8 @@ const subposts = allPosts.filter((p) => p.data.parentTitle === post.data.title)
 const totalBody = [post.body!, ...subposts.map((p) => p.body!)]
   .map(stripCodeBlocks)
   .join('')
-const readTime = readingTime(totalBody)
+const wordCount = totalBody.split(/\s+/).filter(Boolean).length
+const readTime = readingTime(wordCount)
 ---
 
 <Layout

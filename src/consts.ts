@@ -5,6 +5,7 @@ export type Site = {
   NUM_POSTS_ON_HOMEPAGE: number
   POSTS_PER_PAGE: number
   SITEURL: string
+  locale: string
 }
 
 export type Link = {
@@ -27,6 +28,7 @@ export const SITE: Site = {
   NUM_POSTS_ON_HOMEPAGE: 2,
   POSTS_PER_PAGE: 4,
   SITEURL: 'https://dev.2ha.me',
+  locale: 'zh-CN',
 }
 
 export const NAV_LINKS: Link[] = [
