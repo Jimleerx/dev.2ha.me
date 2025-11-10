@@ -102,7 +102,7 @@ const Music163Player = () => {
             alt="Album art"
             width={128}
             height={128}
-            className="mb-2 w-[55%] rounded-xl border border-border"
+            className="mb-2 w-[55%] border-2 border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))]"
           />
         </a>
         <div className="flex min-w-0 flex-1 flex-col justify-end overflow-hidden">

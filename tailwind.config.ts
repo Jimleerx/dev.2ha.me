@@ -8,6 +8,7 @@ const config: Config = {
   	extend: {
   		fontFamily: {
   			sans: [
+  				'OPlusSans3-Medium',
   				'haipaiqiangdiaosenxiyuan',
                     ...defaultTheme.fontFamily.sans
                 ],
@@ -19,6 +20,18 @@ const config: Config = {
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
+  			brand: {
+  				50: 'var(--brand-50)',
+  				100: 'var(--brand-100)',
+  				200: 'var(--brand-200)',
+  				300: 'var(--brand-300)',
+  				400: 'var(--brand-400)',
+  				500: 'var(--brand-500)',
+  				600: 'var(--brand-600)',
+  				700: 'var(--brand-700)',
+  				800: 'var(--brand-800)',
+  				900: 'var(--brand-900)'
+  			},
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
   				foreground: 'hsl(var(--primary-foreground))'
@@ -63,9 +76,10 @@ const config: Config = {
   			}
   		},
   		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			lg: '0',
+  			md: '0',
+  			sm: '0',
+  			DEFAULT: '0'
   		},
   		animation: {
   			orbit: 'orbit calc(var(--duration)*1s) linear infinite',
