@@ -485,6 +485,19 @@
   * {
     @apply border-border;
   }
+
+  /* Prevent text selection cursor on interactive elements */
+  button,
+  a,
+  .pixel-button,
+  [role="button"],
+  [role="link"] {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
   body {
     @apply text-foreground;
     /* MiaoMiaoWu Background Gradients */

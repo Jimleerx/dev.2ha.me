@@ -62,6 +62,13 @@ const Music163Player = () => {
       })
   }, [])
 
+  // Set audio volume to 50%
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5
+    }
+  }, [displayData])
+
   if (isLoading) {
     return (
       <div className="relative flex h-full w-full flex-col justify-between rounded-3xl p-6">
@@ -141,7 +148,7 @@ const Music163Player = () => {
             <span className="w-[85%] truncate text-xs text-muted-foreground">
               <span className="font-semibold text-secondary-foreground">
                 <div>
-                  <audio ref={audioRef} >
+                  <audio ref={audioRef}>
                     <source src={outerurl} type="audio/mp3" />
                     <source src={backupurl} type="audio/mp3" />
                   </audio>

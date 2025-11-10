@@ -58,7 +58,7 @@ const RandomAnimeBackground = () => {
   // }
 
   return (
-      <video ref={videoRef} width="100" height="100" className="no-repeat relative w-full justify-center rounded-[1.4em] object-cover"
+      <video ref={videoRef} width="100" height="100" className="no-repeat relative w-full justify-center object-cover"
         src={'/static/anime-bg/' + videoBackgrounds[index]}
         style={{ display: isLoading ? 'none' : 'block' }}
         onEnded={handleVideoEnded}

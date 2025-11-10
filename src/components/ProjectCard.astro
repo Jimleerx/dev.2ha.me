@@ -20,7 +20,8 @@ const { project } = Astro.props
   <Link
     href={project.data.link}
     class="flex flex-col gap-4 sm:flex-row"
-    external
+    target="_blank"
+    rel="noopener noreferrer"
   >
     {
       project.data.image && (
