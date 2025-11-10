@@ -38,7 +38,7 @@ export const NAV_LINKS: Link[] = [
 
 export const SOCIAL_LINKS: Link[] = [
   { href: 'https://github.com/jimleerx', label: 'GitHub' },
-  { href: 'https://maven.2ha.me', label: 'Maven' },
+  { href: 'https://1ms.cc', label: 'HubProxy' },
   { href: 'https://code.2ha.me', label: 'Gitea' },
   { href: 'li@2ha.me', label: 'Email' },
 ]
