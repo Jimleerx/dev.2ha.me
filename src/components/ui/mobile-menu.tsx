@@ -7,23 +7,19 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { NAV_LINKS } from '@/consts'
-import { Menu, Home, FileText, Tag, FolderGit2, User } from 'lucide-react'
+import { Menu, Home, FileText, FolderGit2, BadgeInfo } from 'lucide-react'
 
-const getIconForLabel = (label: string) => {
-  switch (label) {
-    case '主页':
-      return Home
-    case '博客':
-      return FileText
-    case '标签':
-      return Tag
-    case '项目':
-      return FolderGit2
-    case '关于':
-      return User
-    default:
-      return Home
+const getIconComponent = (iconName?: string) => {
+  if (!iconName) return Home
+
+  const iconMap: Record<string, any> = {
+    'lucide:home': Home,
+    'lucide:file-text': FileText,
+    'lucide:folder-git-2': FolderGit2,
+    'lucide:badge-info': BadgeInfo,
   }
+
+  return iconMap[iconName] || Home
 }
 
 const MobileMenu = () => {
@@ -59,7 +55,7 @@ const MobileMenu = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="bg-background min-w-[140px] w-auto p-0">
         {NAV_LINKS.map((item) => {
-          const Icon = getIconForLabel(item.label)
+          const Icon = getIconComponent(item.icon)
           return (
             <DropdownMenuItem key={item.href} asChild className="p-0">
               <a

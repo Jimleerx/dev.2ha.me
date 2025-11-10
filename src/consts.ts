@@ -10,6 +10,7 @@ export type Site = {
 export type Link = {
   href: string
   label: string
+  icon?: string
 }
 
 export type DevLink = {
@@ -29,11 +30,11 @@ export const SITE: Site = {
 }
 
 export const NAV_LINKS: Link[] = [
-  { href: '/', label: '主页' },
-  { href: '/blog', label: '博客' },
-  { href: '/tags', label: '标签' },
-  { href: '/projects', label: '项目' },
-  { href: '/authors', label: '关于' },
+  { href: '/', label: '主页', icon: 'lucide:home' },
+  { href: '/blog', label: '博客', icon: 'lucide:file-text' },
+  // { href: '/tags', label: '标签' },
+  { href: '/projects', label: '项目', icon: 'lucide:folder-git-2'},
+  { href: '/authors', label: '关于', icon: 'lucide:badge-info' },
 ]
 
 export const SOCIAL_LINKS: Link[] = [

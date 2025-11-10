@@ -57,35 +57,24 @@ const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
 ---
 
 <Layout title="Blog" description="Blog">
-  <Container class="flex grow flex-col gap-y-6">
-    <Breadcrumbs
-      items={[
-        { label: 'Blog', href: '/blog', icon: 'lucide:archive' },
-        { label: `Page ${page.currentPage}`, icon: 'lucide:folder-open' },
-      ]}
-    />
-
-    <div
-      class="sm:none hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded-sm bg-gray-50 pt-5 shadow-md lg:contents dark:bg-gray-900/70 dark:shadow-gray-800/40"
-    >
-      <div
-        class="absolute left-4 top-[50%] px-4 py-2"
-        style="transform: translateY(-50%);"
-      >
+  <!-- Fixed Sidebar -->
+  <aside
+    class="hidden xl:block fixed left-4 top-32 w-[240px] px-4 py-3 rounded-sm bg-background/80 backdrop-blur-sm border-2 border-[color:rgba(241,140,110,0.22)] shadow-[4px_4px_0_rgba(0,0,0,0.22)] dark:shadow-[4px_4px_0_rgba(0,0,0,0.65)] z-10"
+  >
         <Link
           href={`/blog`}
-          class="hover:text-primary-500 dark:hover:text-primary-500 font-bold uppercase"
+          class="block mb-2 font-bold uppercase text-primary hover:text-primary/80 transition-colors"
         >
           All Posts
         </Link>
-        <ul>
+        <ul class="space-y-0.5">
           {
             sortedTags.map((t) => {
               return (
-                <li value={t} class="my-0">
+                <li value={t}>
                   <Link
                     href={`/tags/${slug(t)}`}
-                    class="hover:text-primary-500 dark:hover:text-primary-500 px-3 py-2 text-sm font-medium uppercase text-gray-400 dark:text-gray-300"
+                    class="block px-2 py-1.5 text-sm font-medium uppercase text-foreground/60 hover:text-primary hover:bg-primary/10 rounded transition-colors"
                     aria-label={`View posts tagged ${t}`}
                   >
                     {`${t} (${tagCounts[t]})`}
@@ -95,22 +84,25 @@ const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
             })
           }
         </ul>
-        <span
-          class="ms-auto inline-flex h-6 items-center text-base sm:text-end"
+        <div class="mt-2 pt-2 border-t border-[color:rgba(241,140,110,0.15)]">
+        <a
+          aria-label="View all blog categories"
+          class="text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+          href="/tags/"
         >
-          <a
-            aria-label="View all blog categories"
-            class="sm:hover:text-accent-two font-medium text-accent"
-            style="color: #e9d3b6; font-size: 12px;"
-            href="/tags/"
-          >
-            View all →
-          </a>
-        </span>
+          View all →
+        </a>
       </div>
-    </div>
+  </aside>
 
-    <div class="flex min-h-[calc(100vh-18rem)] flex-col gap-y-8">
+  <Container class="flex grow flex-col gap-y-6">
+    <Breadcrumbs
+      items={[
+        { label: 'Blog', href: '/blog', icon: 'lucide:archive' },
+        { label: `Page ${page.currentPage}`, icon: 'lucide:folder-open' },
+      ]}
+    />
+      <div class="flex min-h-[calc(100vh-18rem)] flex-col gap-y-8">
       {
         years.map((year) => (
           <section class="flex flex-col gap-y-4">
@@ -125,13 +117,13 @@ const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
           </section>
         ))
       }
-    </div>
+      </div>
 
-    <PaginationComponent
+      <PaginationComponent
       currentPage={page.currentPage}
       totalPages={page.lastPage}
       baseUrl="/blog/"
       client:load
-    />
+      />
   </Container>
 </Layout>

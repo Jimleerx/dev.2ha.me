@@ -165,6 +165,7 @@
 
   html {
     color-scheme: dark;
+    overflow-y: scroll;
     @apply bg-background text-foreground forced-color-adjust-none;
 
     ::-webkit-scrollbar-corner {

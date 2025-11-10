@@ -7,22 +7,6 @@ import { Image } from 'astro:assets'
 import { Icon } from 'astro-icon/components'
 import logo from '../../public/static/logo.webp'
 
-const getIconForLabel = (label: string) => {
-  switch (label) {
-    case '主页':
-      return 'lucide:home'
-    case '博客':
-      return 'lucide:file-text'
-    case '标签':
-      return 'lucide:tag'
-    case '项目':
-      return 'lucide:folder-git-2'
-    case '关于':
-      return 'lucide:user'
-    default:
-      return 'lucide:home'
-  }
-}
 ---
 
 <header
@@ -42,7 +26,7 @@ const getIconForLabel = (label: string) => {
                 href={item.href}
                 class="pixel-button inline-flex items-center justify-center gap-2 px-4 py-2 h-9 text-sm font-semibold uppercase tracking-wider bg-background/75 text-foreground border-[color:rgba(137,110,96,0.45)] hover:bg-primary/20 hover:text-primary hover:border-[color:rgba(217,119,87,0.65)] dark:bg-input/30 dark:border-[color:rgba(255,255,255,0.18)] dark:hover:bg-primary/25 dark:hover:text-primary dark:hover:border-[color:rgba(241,140,110,0.75)] transition-all"
               >
-                <Icon name={getIconForLabel(item.label)} class="size-[18px] shrink-0" />
+                <Icon name={item.icon} class="size-[18px] shrink-0" />
                 <span>{item.label}</span>
               </Link>
             ))
