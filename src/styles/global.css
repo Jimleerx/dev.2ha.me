@@ -489,6 +489,7 @@
   /* Prevent text selection cursor on interactive elements */
   button,
   a,
+  div,
   .pixel-button,
   [role="button"],
   [role="link"] {
@@ -496,6 +497,22 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    cursor: default;
+  }
+
+  /* Allow text selection for content elements */
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li,
+  article {
+    user-select: text;
+    cursor: text;
   }
 
   body {

@@ -27,8 +27,8 @@ const AuthorPresence = () => {
             </div>
           </div>
           <div className="flex flex-col gap-y-1 rounded-xl bg-secondary/50 p-3">
-            <span className="text-base leading-none">jimlee</span>
-            <span className="text-xs leading-none text-muted-foreground">
+            <span className="text-base leading-none select-none cursor-default">jimlee</span>
+            <span className="text-xs leading-none text-muted-foreground select-none cursor-default">
               li@2ha.me
             </span>
           </div>
