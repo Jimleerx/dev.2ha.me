@@ -62,6 +62,13 @@ const Music163Player = () => {
       })
   }, [])
 
+  // Set audio volume to 50%
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5
+    }
+  }, [displayData])
+
   if (isLoading) {
     return (
       <div className="relative flex h-full w-full flex-col justify-between rounded-3xl p-6">
@@ -102,7 +109,7 @@ const Music163Player = () => {
             alt="Album art"
             width={128}
             height={128}
-            className="mb-2 w-[55%] rounded-xl border border-border"
+            className="mb-2 w-[55%] border-2 border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))]"
           />
         </a>
         <div className="flex min-w-0 flex-1 flex-col justify-end overflow-hidden">
@@ -141,7 +148,7 @@ const Music163Player = () => {
             <span className="w-[85%] truncate text-xs text-muted-foreground">
               <span className="font-semibold text-secondary-foreground">
                 <div>
-                  <audio ref={audioRef} >
+                  <audio ref={audioRef}>
                     <source src={outerurl} type="audio/mp3" />
                     <source src={backupurl} type="audio/mp3" />
                   </audio>

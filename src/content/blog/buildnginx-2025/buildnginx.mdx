@@ -15,15 +15,15 @@ debian默认软件库的nginx没有fancy-index模块, fancy-index是一个html�
 sudo apt install -y build-essential libpcre3 libpcre3-dev zlib1g-dev openssl libssl-dev
 ```
 ## 2. 下载并解压nginx源码
-官网查看最新版本(当前20250111为1.26.3)
+官网查看最新版本(当前20251111为1.29.3)
 https://nginx.org/en/download.html
 ```shellscript title="shell"
-wget https://nginx.org/download/nginx-1.26.3.tar.gz
-tar -xf nginx-1.26.3.tar.gz
+wget https://nginx.org/download/nginx-1.29.3.tar.gz
+tar -xf nginx-1.29.3.tar.gz
 ``` 
 ## 3. 下载并解压nginx-fancyindex模块
 ```shellscript title="shell"
-cd nginx-1.26.3
+cd nginx-1.29.3
 wget https://github.com/aperezdc/ngx-fancyindex/releases/download/v0.5.2/ngx-fancyindex-0.5.2.tar.xz
 tar -xf ngx-fancyindex-0.5.2.tar.xz
 ```
@@ -34,11 +34,15 @@ mkdir -p /var/cache/nginx
 mkdir -p /var/log/nginx
 ```
 NGINX_ROOT_PATH = nginx的安装目录, 需要替换成你想要安装的目录 
+```
+export NGINX_ROOT_PATH=/usr/local/nginx
+```
+
 ```shellscript
 ./configure --add-module=./ngx-fancyindex-0.5.2 \
 --prefix=${NGINX_ROOT_PATH} \
---user=jimlee \
---group=jimlee \
+--user=$(whoami) \
+--group=$(id -Gn) \
 --sbin-path=${NGINX_ROOT_PATH}/sbin/nginx \
 --conf-path=${NGINX_ROOT_PATH}/nginx.conf \
 --error-log-path=/var/log/nginx/error.log \

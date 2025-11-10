@@ -24,7 +24,7 @@ export default function GradientText({
   // console.log(children)
   return (
     <div
-      className={`relative mx-auto ml-2 md:max-h-[1em] flex max-w-fit cursor-pointer flex-row items-center justify-center overflow-hidden rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 ${className}`}
+      className={`relative mx-auto ml-2 flex max-w-fit cursor-pointer flex-row items-center justify-center rounded-[1.25rem] font-medium backdrop-blur transition-shadow duration-500 ${className}`}
     >
       {showBorder && (
         <div

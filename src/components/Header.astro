@@ -4,7 +4,9 @@ import Link from '@/components/Link.astro'
 import MobileMenu from '@/components/ui/mobile-menu'
 import { NAV_LINKS } from '@/consts'
 import { Image } from 'astro:assets'
+import { Icon } from 'astro-icon/components'
 import logo from '../../public/static/logo.webp'
+
 ---
 
 <header
@@ -14,17 +16,18 @@ import logo from '../../public/static/logo.webp'
   <Container>
     <div class="flex flex-wrap items-center justify-between gap-4 py-4 ">
       <Link href="/">
-        <Image src={logo} alt="Logo" class="size-8 -scale-x-100" />
+        <Image src={logo} alt="Logo" class="size-8 -scale-x-100 border-2 border-[color:rgba(241,140,110,0.4)] shadow-[4px_4px_0_rgba(0,0,0,0.2)]" />
       </Link>
       <div class="flex items-center gap-2 sm:gap-4">
-        <nav class="hidden items-center gap-4 text-base sm:flex sm:gap-6">
+        <nav class="hidden items-center gap-2 text-base sm:flex sm:gap-3">
           {
             NAV_LINKS.map((item) => (
               <Link
                 href={item.href}
-                class="capitalize text-foreground/60 transition-colors hover:text-foreground/80"
+                class="pixel-button inline-flex items-center justify-center gap-2 px-4 py-2 h-9 text-sm font-semibold uppercase tracking-wider bg-background/75 text-foreground border-[color:rgba(137,110,96,0.45)] hover:bg-primary/20 hover:text-primary hover:border-[color:rgba(217,119,87,0.65)] dark:bg-input/30 dark:border-[color:rgba(255,255,255,0.18)] dark:hover:bg-primary/25 dark:hover:text-primary dark:hover:border-[color:rgba(241,140,110,0.75)] transition-all"
               >
-                {item.label}
+                <Icon name={item.icon} class="size-[18px] shrink-0" />
+                <span>{item.label}</span>
               </Link>
             ))
           }

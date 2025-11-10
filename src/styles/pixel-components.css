@@ -1,0 +1,252 @@
+/* MiaoMiaoWu Pixel Style Components */
+
+/* Pixel Border - 像素边框 */
+.pixel-border {
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  border-color: color-mix(in srgb, hsl(var(--primary)) 60%, transparent);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.18),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.pixel-border:hover {
+  border-color: color-mix(in srgb, hsl(var(--primary)) 75%, transparent);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.24),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.dark .pixel-border {
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.dark .pixel-border:hover {
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.55),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* Pixel Button - 像素按钮 */
+.pixel-button {
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 0;
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.18);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.pixel-button:hover {
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+.pixel-button:active {
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.16);
+  transform: translate(0);
+}
+
+.dark .pixel-button {
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.dark .pixel-button:hover {
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55);
+}
+
+.dark .pixel-button:active {
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* Pixel Card - 像素卡片 */
+.pixel-card {
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+  border-color: color-mix(in srgb, hsl(var(--primary)) 22%, hsl(var(--border)));
+  background: hsl(var(--card));
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.22),
+              0 0 0 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pixel-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, hsl(var(--primary)) 40%, hsl(var(--border)));
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.26),
+              0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* 悬停时显示斜纹背景 */
+.pixel-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 6px,
+    rgba(255, 255, 255, 0.04) 6px,
+    rgba(255, 255, 255, 0.04) 12px
+  );
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 0;
+}
+
+.pixel-card:hover::before {
+  opacity: 1;
+}
+
+.pixel-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dark .pixel-card {
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.65),
+              0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.dark .pixel-card:hover {
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.75),
+              0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* Pixel Badge - 像素徽章 */
+.pixel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(241, 140, 110, 0.3);
+  background: rgba(241, 140, 110, 0.12);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+/* Pixel Pill - 药丸按钮 */
+.pixel-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(217, 119, 87, 0.45);
+  padding: 0.35rem 0.85rem;
+  background: color-mix(in srgb, hsl(var(--secondary)) 40%, transparent);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.15),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+  transition: all 0.2s ease;
+}
+
+.pixel-pill:hover {
+  background: rgba(217, 119, 87, 0.16);
+  border-color: rgba(217, 119, 87, 0.65);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.dark .pixel-pill {
+  border-color: rgba(241, 140, 110, 0.55);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.45),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.dark .pixel-pill:hover {
+  background: rgba(241, 140, 110, 0.22);
+  border-color: rgba(241, 140, 110, 0.75);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.55),
+              inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* Pixel Text - 像素文字效果 */
+.pixel-text {
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25),
+               -1px -1px 0 rgba(255, 241, 232, 0.18);
+}
+
+.dark .pixel-text {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.55),
+               -1px -1px 0 rgba(255, 241, 232, 0.08);
+}
+
+/* Grid Pattern - 网格图案 */
+.grid-pattern {
+  position: relative;
+}
+
+.grid-pattern::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(241, 140, 110, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(241, 140, 110, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.dark .grid-pattern::after {
+  background-image:
+    linear-gradient(to right, rgba(241, 140, 110, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(241, 140, 110, 0.08) 1px, transparent 1px);
+  opacity: 0.4;
+}
+
+/* Scanlines - 扫描线效果 */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.05) 0,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  pointer-events: none;
+}
+
+.dark .scanlines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.03) 0,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+}
+
+/* Remove rounded corners from common elements */
+button:not(.short-cuts-template *, [class*="rounded-full"]),
+input,
+textarea,
+select,
+.card,
+.badge {
+  border-radius: 0 !important;
+}
+
+/* Keep rounded corners for shortcut buttons and other rounded-full elements */
+.short-cuts-template div[class*="rounded-full"],
+div[class*="rounded-full"] {
+  border-radius: 9999px !important;
+}

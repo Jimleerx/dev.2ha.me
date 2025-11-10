@@ -14,14 +14,14 @@ const { title, description, image } = Astro.props
 ---
 
 <!doctype html>
-<html lang="zh">
+<html lang="zh" class="dark">
   <head>
     <Head
       title={`${title} | ${SITE.TITLE}`}
       description={description}
       image={image}
     />
-    <script defer src="https://in.2ha.me/script.js" data-website-id="34634aec-34a9-4ef4-9a8f-08ee96699a84"></script>
+    <script is:inline defer src="https://in.2ha.me/script.js" data-website-id="34634aec-34a9-4ef4-9a8f-08ee96699a84"></script>
   </head>
   <body>
     <div

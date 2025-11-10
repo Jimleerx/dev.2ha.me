@@ -5,11 +5,13 @@ export type Site = {
   NUM_POSTS_ON_HOMEPAGE: number
   POSTS_PER_PAGE: number
   SITEURL: string
+  locale: string
 }
 
 export type Link = {
   href: string
   label: string
+  icon?: string
 }
 
 export type DevLink = {
@@ -26,19 +28,20 @@ export const SITE: Site = {
   NUM_POSTS_ON_HOMEPAGE: 2,
   POSTS_PER_PAGE: 4,
   SITEURL: 'https://dev.2ha.me',
+  locale: 'zh-CN',
 }
 
 export const NAV_LINKS: Link[] = [
-  { href: '/', label: '主页' },
-  { href: '/blog', label: '博客' },
-  { href: '/tags', label: '标签' },
-  // { href: '/authors', label: '作者' },
-  { href: '/authors', label: '关于' },
+  { href: '/', label: '主页', icon: 'lucide:home' },
+  { href: '/blog', label: '博客', icon: 'lucide:file-text' },
+  // { href: '/tags', label: '标签' },
+  { href: '/projects', label: '项目', icon: 'lucide:folder-git-2'},
+  { href: '/authors', label: '关于', icon: 'lucide:badge-info' },
 ]
 
 export const SOCIAL_LINKS: Link[] = [
   { href: 'https://github.com/jimleerx', label: 'GitHub' },
-  { href: 'https://maven.2ha.me', label: 'Maven' },
+  { href: 'https://1ms.cc', label: 'HubProxy' },
   { href: 'https://code.2ha.me', label: 'Gitea' },
   { href: 'li@2ha.me', label: 'Email' },
 ]
@@ -88,15 +91,15 @@ export const DEV_LINKS: DevLink[] = [
     icon: 'mdi:sun-azimuth',
   },
   {
-    href: 'https://mp.2ha.me',
-    label: 'MoviePilot',
-    title: '媒体订阅工具',
-    icon: 'mdi:youtube-creator-studio',
+    href: 'https://mmwdemo.2ha.me/docs',
+    label: '妙妙屋',
+    title: '个人Clash订阅管理工具',
+    icon: '/static/mmw.svg',
   },
   {
-    href: 'https://g.2ha.me',
-    label: 'GHProxy',
-    title: 'GitHub代理',
+    href: 'https://1ms.cc',
+    label: 'hubproxy',
+    title: 'GitHub&DockerHub代理',
     icon: 'mdi:rocket-launch-outline',
   },
 ]

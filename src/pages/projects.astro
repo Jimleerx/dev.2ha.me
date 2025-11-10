@@ -1,0 +1,39 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Container from '@/components/Container.astro'
+import PageHead from '@/components/PageHead.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import Layout from '@/layouts/Layout.astro'
+import { getAllProjects, groupProjectsByYear } from '@/lib/data-utils'
+
+const projects = await getAllProjects()
+const projectsByYear = groupProjectsByYear(projects)
+const years = Object.keys(projectsByYear).sort(
+  (a, b) => parseInt(b) - parseInt(a),
+)
+---
+
+<Layout title="项目" description="dev.2ha.me的项目">
+  <PageHead slot="head" title="Project" />
+
+  <Container class="flex grow flex-col gap-y-6">
+    <Breadcrumbs items={[{ label: 'Project', icon: 'lucide:briefcase' }]} />
+
+    <div class="flex min-h-[calc(100vh-18rem)] flex-col gap-y-8">
+      {
+        years.map((year) => (
+          <section class="flex flex-col gap-y-4">
+            <div class="font-semibold">{year}</div>
+            <ul class="not-prose flex flex-col gap-4">
+              {projectsByYear[year].map((project) => (
+                <li>
+                  <ProjectCard project={project} />
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>
