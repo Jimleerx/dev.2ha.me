@@ -9,7 +9,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prettier": "prettier --write ./src/**/*.{astro,ts,tsx,css}"
+    "prettier": "prettier --write ./src/**/*.{astro,ts,tsx,css}",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -60,6 +61,7 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",
+    "patch-package": "^8.0.1",
     "prettier": "^3.4.2",
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-astro-organize-imports": "^0.4.11",

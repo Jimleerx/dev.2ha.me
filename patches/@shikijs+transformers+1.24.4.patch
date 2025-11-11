@@ -1,0 +1,14 @@
+diff --git a/node_modules/@shikijs/transformers/dist/index.mjs b/node_modules/@shikijs/transformers/dist/index.mjs
+index db4db63..c7f3ea2 100644
+--- a/node_modules/@shikijs/transformers/dist/index.mjs
++++ b/node_modules/@shikijs/transformers/dist/index.mjs
+@@ -410,6 +410,9 @@ function transformerRenderWhitespace(options = {}) {
+               return token;
+             if (position === "trailing" && index !== last)
+               return token;
++            if (token.children.length === 0) {
++              return token;
++            }
+             const node = token.children[0];
+             if (node.type !== "text" || !node.value)
+               return token;
