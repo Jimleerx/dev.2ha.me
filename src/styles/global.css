@@ -506,6 +506,12 @@
   [contenteditable="true"] {
     user-select: text;
     -webkit-user-select: text;
+  }
+
+  /* Only inputs and textareas should have text cursor */
+  input,
+  textarea,
+  [contenteditable="true"] {
     cursor: text;
   }
 
@@ -513,6 +519,8 @@
   button,
   a,
   div,
+  img,
+  svg,
   .pixel-button,
   [role="button"],
   [role="link"] {
@@ -533,7 +541,17 @@
     user-select: none;
   }
 
-  /* Allow text selection for content elements */
+  /* Images should never show text cursor */
+  img,
+  svg,
+  video,
+  canvas {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+
+  /* Allow text selection for content elements but keep default cursor */
   p,
   span,
   h1,
@@ -542,10 +560,10 @@
   h4,
   h5,
   h6,
-  li,
-  article {
+  li {
     user-select: text;
-    cursor: text;
+    -webkit-user-select: text;
+    cursor: default;
   }
 
   body {
