@@ -190,6 +190,7 @@ const viewHeight = rawHeight / sizeScale
 const viewMinX = centerX - viewWidth / 2
 const viewMinY = centerY - viewHeight / 2
 const viewBox = `${viewMinX} ${viewMinY} ${viewWidth} ${viewHeight}`
+const iconClipId = 'hexIconClip'
 
 const cells = baseCells.map((cell) => ({
   ...cell,
@@ -198,7 +199,7 @@ const cells = baseCells.map((cell) => ({
 ---
 
 <svg
-  class="hex-grid"
+  class="hex-grid hex-grid--polygons"
   width="100%"
   height="100%"
   viewBox={viewBox}
@@ -206,82 +207,94 @@ const cells = baseCells.map((cell) => ({
   preserveAspectRatio="xMidYMid slice"
 >
   <g class="hex-grid__group">
-    {cells.map(({ link, center, showContent }, index) => {
+    {cells.map(({ link, center }, index) => {
       const isGhost = !link
       return (
+        <polygon
+          class={`hexagon-bg ${isGhost ? 'hexagon-bg--ghost' : ''}`}
+          points={hexagonPoints}
+          fill="transparent"
+          stroke="#252525"
+          stroke-width={BORDER_WIDTH}
+          transform={`translate(${center.x}, ${center.y})`}
+          data-index={index}
+        />
+      )
+    })}
+  </g>
+</svg>
+
+<svg
+  class="hex-grid hex-grid--icons"
+  width="100%"
+  height="100%"
+  viewBox={viewBox}
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid slice"
+>
+  <defs>
+    <clipPath id={iconClipId} clipPathUnits="userSpaceOnUse">
+      <circle cx="0" cy="0" r={circleRadius} />
+    </clipPath>
+  </defs>
+
+  <g class="hex-grid__group">
+    {cells.map(({ link, center, showContent }, index) => {
+      if (!link || !showContent) return null
+      return (
         <g
-          class={`hexagon-wrapper ${isGhost ? 'hexagon-wrapper--ghost' : ''}`}
+          class="hexagon-wrapper"
           transform={`translate(${center.x}, ${center.y})`}
           data-index={index}
         >
-          {link ? (
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={link.label}
-              title={link.title}
-            >
-              <polygon
-                points={hexagonPoints}
-                class="hexagon-bg"
-                fill="transparent"
-                stroke="#252525"
-                stroke-width={BORDER_WIDTH}
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.label}
+          >
+            <title>{link.title}</title>
+            <g class="icon-group">
+              <circle
+                r={circleRadius}
+                fill="hsl(var(--secondary))"
+                fill-opacity="0.45"
+                stroke="hsl(var(--border))"
+                stroke-width={Math.max(4, BORDER_WIDTH * 0.32)}
+                class="icon-circle z-10"
               />
 
-              {
-                showContent && (
-                  <g class="icon-group">
-                    <circle
-                      r={circleRadius}
-                      fill="hsl(var(--secondary))"
-                      fill-opacity="0.45"
-                      stroke="hsl(var(--primary))"
-                      stroke-width={Math.max(4, BORDER_WIDTH * 0.32)}
-                      class="icon-circle"
+              {link.icon.startsWith('mdi:') ? (
+                <foreignObject
+                  x={-(layout.size.x * 0.7)}
+                  y={-(layout.size.y * 0.7)}
+                  width={layout.size.x * 1.4}
+                  height={layout.size.y * 1.4}
+                  clip-path={`url(#${iconClipId})`}
+                  class="icon-foreign"
+                >
+                  <div class="icon-container">
+                    <Icon
+                      name={link.icon}
+                      class="hexagon-icon"
+                      style="color: rgb(233, 211, 182);"
+                      aria-hidden="true"
                     />
-
-                    {link.icon.startsWith('mdi:') ? (
-                      <foreignObject
-                        x={-(layout.size.x * 0.7)}
-                        y={-(layout.size.y * 0.7)}
-                        width={layout.size.x * 1.4}
-                        height={layout.size.y * 1.4}
-                        class="icon-foreign"
-                      >
-                        <div class="icon-container">
-                          <Icon
-                            name={link.icon}
-                            class="hexagon-icon"
-                            style="color: rgb(233, 211, 182);"
-                            aria-hidden="true"
-                          />
-                        </div>
-                      </foreignObject>
-                    ) : (
-                      <image
-                        href={link.icon}
-                        x={-layout.size.x * 0.6}
-                        y={-layout.size.y * 0.6}
-                        width={layout.size.x * 1.2}
-                        height={layout.size.y * 1.2}
-                        class="z-[1] size-1/2 size-8 sm:size-8"
-                      />
-                    )}
-                  </g>
-                )
-              }
-            </a>
-          ) : (
-            <polygon
-              points={hexagonPoints}
-              class="hexagon-bg hexagon-bg--ghost"
-              fill="transparent"
-              stroke="#252525"
-              stroke-width={BORDER_WIDTH}
-            />
-          )}
+                  </div>
+                </foreignObject>
+              ) : (
+                <image
+                  href={link.icon}
+                  x={-layout.size.x * 0.3}
+                  y={-layout.size.y * 0.3}
+                  width={layout.size.x * 0.6}
+                  height={layout.size.y * 0.6}
+                  clip-path={`url(#${iconClipId})`}
+                  class="hexagon-image"
+                />
+              )}
+            </g>
+          </a>
         </g>
       )
     })}
@@ -294,16 +307,41 @@ const cells = baseCells.map((cell) => ({
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: 10;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+  .hex-grid--polygons {
+    z-index: 1;
+  }
+  .hex-grid--icons {
+    z-index: 20;
   }
 
   .hex-grid__group {
     transform-origin: center;
-    transform: translateX(-114px) translateY(60px) scale(1.08)
+    transform: translateX(-114px) translateY(60px) scale(1.08);
   }
 
   .hexagon-wrapper {
     cursor: pointer;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hexagon-wrapper a {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .hexagon-wrapper a title {
+    pointer-events: none;
   }
 
   .hexagon-bg,
@@ -322,13 +360,9 @@ const cells = baseCells.map((cell) => ({
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
   }
 
-  .hexagon-wrapper:hover .hexagon-bg {
-    stroke: #252525;
-    stroke-width: 16;
-  }
-
   .hexagon-wrapper:hover .icon-circle {
     fill-opacity: 0.85;
+    stroke: hsl(var(--primary));
     stroke-width: 4px;
     transform: scale(1.08);
   }
@@ -336,11 +370,6 @@ const cells = baseCells.map((cell) => ({
   .hexagon-wrapper:hover .icon-group {
     transform: rotate(12deg);
     transform-origin: center;
-  }
-
-  .hexagon-wrapper--ghost {
-    cursor: default;
-    pointer-events: none;
   }
 
   .hexagon-bg--ghost {
@@ -359,8 +388,8 @@ const cells = baseCells.map((cell) => ({
   .hexagon-icon {
     width: 100% !important;
     height: 100% !important;
-    max-width: 68px;
-    max-height: 68px;
+    max-width: 88px;
+    max-height: 88px;
   }
 
   .hexagon-image {

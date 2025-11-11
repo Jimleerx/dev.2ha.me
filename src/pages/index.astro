@@ -48,8 +48,8 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       aria-label="Developer Stack Shortcuts"
     >
       <img
-        class="overlay absolute no-repeat w-full max-w-fit justify-center object-cover z-9"
-        src="/static/images/shortcuts-bg.png"
+        class="overlay absolute bottom-0 right-0 no-repeat max-w-[28%] object-contain z-[100]"
+        src="/static/images/shortcuts-bg-mini.png"
       />
       <!-- <DevStackIconsCloud client:load/> -->
       <!-- <DevShortCuts /> -->
@@ -65,7 +65,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       style="grid-template-rows: 9fr 1fr; "
     >
       <div
-        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/images/lastblogbg-sm.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/images/lastblogbg.webp')] xl:opacity-100"
+        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/images/lastblogbg-sm.webp')] bg-cover bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/images/lastblogbg.webp')] xl:opacity-100"
       >
       </div>
       {
@@ -171,3 +171,21 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     </div>
   </section>
 </Layout>
+
+<style>
+  section > div:hover {
+    box-shadow:
+      0 0 16px rgba(241, 140, 110, 0.5),
+      0 0 32px rgba(241, 140, 110, 0.3),
+      0 0 48px rgba(241, 140, 110, 0.15),
+      6px 6px 0 rgba(0, 0, 0, 0.26) !important;
+  }
+
+  .dark section > div:hover {
+    box-shadow:
+      0 0 16px rgba(241, 140, 110, 0.5),
+      0 0 32px rgba(241, 140, 110, 0.3),
+      0 0 48px rgba(241, 140, 110, 0.15),
+      6px 6px 0 rgba(0, 0, 0, 0.75) !important;
+  }
+</style>

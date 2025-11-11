@@ -486,7 +486,30 @@
     @apply border-border;
   }
 
-  /* Prevent text selection cursor on interactive elements */
+  /* Prevent text selection cursor on all elements by default */
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: default;
+  }
+
+  /* Allow text selection in content areas */
+  article,
+  article *,
+  .prose,
+  .prose *,
+  input,
+  textarea,
+  [contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: text;
+  }
+
+  /* Ensure proper cursor on interactive elements */
   button,
   a,
   div,
