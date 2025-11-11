@@ -520,7 +520,17 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    cursor: default;
+    cursor: pointer;
+  }
+
+  /* Children of interactive elements should not have text cursor */
+  button *,
+  a *,
+  .pixel-button *,
+  [role="button"] *,
+  [role="link"] * {
+    cursor: pointer;
+    user-select: none;
   }
 
   /* Allow text selection for content elements */

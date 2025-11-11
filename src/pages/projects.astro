@@ -37,3 +37,21 @@ const years = Object.keys(projectsByYear).sort(
     </div>
   </Container>
 </Layout>
+
+<style>
+  ul li > :global(div:hover) {
+    box-shadow:
+      0 0 16px rgba(241, 140, 110, 0.5),
+      0 0 32px rgba(241, 140, 110, 0.3),
+      0 0 48px rgba(241, 140, 110, 0.15),
+      6px 6px 0 rgba(0, 0, 0, 0.26) !important;
+  }
+
+  .dark ul li > :global(div:hover) {
+    box-shadow:
+      0 0 16px rgba(241, 140, 110, 0.5),
+      0 0 32px rgba(241, 140, 110, 0.3),
+      0 0 48px rgba(241, 140, 110, 0.15),
+      6px 6px 0 rgba(0, 0, 0, 0.75) !important;
+  }
+</style>
