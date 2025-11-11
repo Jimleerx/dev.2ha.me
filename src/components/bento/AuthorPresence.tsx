@@ -1,9 +1,9 @@
 import AvatarComponent from '@/components/ui/avatar'
 
 const AuthorPresence = () => {
-  
+
   return (
-    <div className="relative overflow-hidden sm:aspect-square">
+    <div className="relative overflow-hidden sm:aspect-square select-none" style={{ cursor: 'default' }}>
       <div className="grid size-full grid-rows-4">
         <div className="bg-secondary/50"></div>
         <div className="row-span-3 flex flex-col gap-3 p-3">
@@ -26,22 +26,22 @@ const AuthorPresence = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col gap-y-1 rounded-xl bg-secondary/50 p-3">
-            <span className="text-base leading-none">jimlee</span>
-            <span className="text-xs leading-none text-muted-foreground">
+          <div className="flex flex-col gap-y-1 rounded-xl bg-secondary/50 p-3 select-none">
+            <span className="text-base leading-none select-none cursor-default">jimlee</span>
+            <span className="text-xs leading-none text-muted-foreground select-none cursor-default">
               li@2ha.me
             </span>
           </div>
-          <div className="flex grow rounded-xl bg-secondary/50 px-3 py-2">
-            <div className="flex size-full flex-col items-center justify-center gap-1">
+          <div className="flex grow rounded-xl bg-secondary/50 px-3 py-2 select-none">
+            <div className="flex size-full flex-col items-center justify-center gap-1 select-none">
               <img
                 src="/static/images/lieflat.svg"
                 alt="No Status Image"
                 width={64}
                 height={64}
-                className="h-full rounded-lg"
+                className="h-full rounded-lg select-none"
               />
-              <div className="text-[10px] text-muted-foreground">
+              <div className="text-[10px] text-muted-foreground select-none cursor-default">
                 但行好事，莫问前程。
               </div>
             </div>

@@ -12,7 +12,8 @@ import { getCollection } from 'astro:content'
 import GiteaCalendar from '@/components/custom/GiteaCalendar'
 import Music163Player from '@/components/custom/Music163Player'
 import RandomAnimeBackground from '@/components/custom/RandomAnimeBackgrounds'
-import DevShortCuts from '@/components/DevShortCuts.astro'
+// import DevShortCuts from '@/components/DevShortCuts.astro'
+import DevShortcutsHexagon from '@/components/DevShortcutsHexagon.astro'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -28,7 +29,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
 
 <Layout title="主页" description={SITE.DESCRIPTION}>
   <section
-    class="mx-auto grid w-full max-w-[300px] grid-cols-1 gap-4 [grid-template-areas:'a'_'b'_'d'_'i'_'e'_'g'_'f'_'j'_'k'] [grid-template-rows:repeat(9,300px)] *:border-2 *:border-[color-mix(in_srgb,hsl(var(--primary))_22%,hsl(var(--border)))] *:bg-secondary/25 *:bg-cover *:bg-center *:bg-no-repeat *:overflow-hidden *:max-h-[300px] *:max-w-[300px] *:justify-self-center *:[box-shadow:4px_4px_0_rgba(0,0,0,0.22)] *:transition-all *:duration-200 sm:max-w-screen-sm sm:grid-cols-2 sm:px-4 sm:[grid-template-areas:'a_a'_'b_d'_'e_e'_'j_g'_'f_f'_'i_k'] sm:[grid-template-rows:repeat(6,300px)] sm:*:max-w-[615px] xl:max-w-screen-xl xl:grid-cols-4 xl:px-4 xl:[grid-template-areas:'a_a_b_g'_'d_e_e_i'_'k_j_f_f'] xl:[grid-template-rows:repeat(3,300px)] xl:*:max-w-none dark:*:[box-shadow:4px_4px_0_rgba(0,0,0,0.65)] xl:[&:hover:has(>.has-overlay:hover)>.first>.overlay]:opacity-100 xl:[&>*:not(.first):hover_.overlay]:opacity-100"
+    class="mx-auto grid w-full grid-cols-1 gap-4 px-4 [grid-template-areas:'a'_'d'_'b'_'i'_'e'_'g'_'f'_'j'_'k'] [grid-template-rows:repeat(9,auto)] *:border-2 *:border-[color-mix(in_srgb,hsl(var(--primary))_22%,hsl(var(--border)))] *:bg-secondary/25 *:bg-cover *:bg-center *:bg-no-repeat *:overflow-hidden *:w-full *:[box-shadow:4px_4px_0_rgba(0,0,0,0.22)] *:transition-all *:duration-200 sm:max-w-screen-sm sm:grid-cols-2 sm:[grid-template-areas:'a_a'_'b_d'_'e_e'_'j_g'_'f_f'_'i_k'] sm:[grid-template-rows:repeat(6,300px)] sm:*:max-w-[615px] xl:max-w-screen-xl xl:grid-cols-4 xl:[grid-template-areas:'a_a_b_g'_'d_e_e_i'_'k_j_f_f'] xl:[grid-template-rows:repeat(3,300px)] xl:*:max-w-none dark:*:[box-shadow:4px_4px_0_rgba(0,0,0,0.65)] xl:[&:hover:has(>.has-overlay:hover)>.first>.overlay]:opacity-100 xl:[&>*:not(.first):hover_.overlay]:opacity-100"
     aria-label="Personal information and activity grid"
   > 
     <div
@@ -42,19 +43,20 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
 
     <div
       class="has-overlay relative grid aspect-square grid-cols-4 grid-rows-3 items-center
-      justify-center bg-[url('/static/honeycomb.webp')] [grid-area:b] short-cuts-template hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.26)] hover:-translate-y-1 hover:border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))] dark:hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.75)]"
+      justify-center [grid-area:b] short-cuts-template hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.26)] hover:-translate-y-1 hover:border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))] dark:hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.75)]"
       style="grid-template-columns: 2.85fr 2.95fr 2.9fr 1.3fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
       aria-label="Developer Stack Shortcuts"
     >
       <img
-        class="overlay absolute no-repeat w-full max-w-fit justify-center object-cover z-9"
-        src="/static/images/shortcuts-bg.png"
+        class="overlay absolute bottom-0 right-0 no-repeat max-w-[28%] object-contain z-[100]"
+        src="/static/images/shortcuts-bg-mini.png"
       />
       <!-- <DevStackIconsCloud client:load/> -->
-      <DevShortCuts />
+      <!-- <DevShortCuts /> -->
+      <DevShortcutsHexagon />
     </div>
 
-    <div class="relative overflow-hidden [grid-area:d] sm:aspect-square min-h-[300px] min-w-[300px] hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.26)] hover:-translate-y-1 hover:border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))] dark:hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.75)]">
+    <div class="relative overflow-hidden [grid-area:d] aspect-square hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.26)] hover:-translate-y-1 hover:border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))] dark:hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.75)]">
       <AuthorPresence client:load />
     </div>
 
@@ -63,7 +65,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
       style="grid-template-rows: 9fr 1fr; "
     >
       <div
-        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/images/lastblogbg-sm.webp')] bg-cover bg-center bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/images/lastblogbg.webp')] xl:opacity-100"
+        class="overlay absolute inset-0 size-full rounded-3xl bg-[url('/static/images/lastblogbg-sm.webp')] bg-cover bg-no-repeat transition-opacity duration-200 sm:bg-[url('/static/images/lastblogbg.webp')] xl:opacity-100"
       >
       </div>
       {
@@ -169,3 +171,21 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
     </div>
   </section>
 </Layout>
+
+<style>
+  section > div:hover {
+    box-shadow:
+      0 0 16px rgba(241, 140, 110, 0.5),
+      0 0 32px rgba(241, 140, 110, 0.3),
+      0 0 48px rgba(241, 140, 110, 0.15),
+      6px 6px 0 rgba(0, 0, 0, 0.26) !important;
+  }
+
+  .dark section > div:hover {
+    box-shadow:
+      0 0 16px rgba(241, 140, 110, 0.5),
+      0 0 32px rgba(241, 140, 110, 0.3),
+      0 0 48px rgba(241, 140, 110, 0.15),
+      6px 6px 0 rgba(0, 0, 0, 0.75) !important;
+  }
+</style>

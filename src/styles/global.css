@@ -486,9 +486,41 @@
     @apply border-border;
   }
 
-  /* Prevent text selection cursor on interactive elements */
+  /* Prevent text selection cursor on all elements by default */
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: default;
+  }
+
+  /* Allow text selection in content areas */
+  article,
+  article *,
+  .prose,
+  .prose *,
+  input,
+  textarea,
+  [contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  /* Only inputs and textareas should have text cursor */
+  input,
+  textarea,
+  [contenteditable="true"] {
+    cursor: text;
+  }
+
+  /* Ensure proper cursor on interactive elements */
   button,
   a,
+  div,
+  img,
+  svg,
   .pixel-button,
   [role="button"],
   [role="link"] {
@@ -496,6 +528,42 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    cursor: pointer;
+  }
+
+  /* Children of interactive elements should not have text cursor */
+  button *,
+  a *,
+  .pixel-button *,
+  [role="button"] *,
+  [role="link"] * {
+    cursor: pointer;
+    user-select: none;
+  }
+
+  /* Images should never show text cursor */
+  img,
+  svg,
+  video,
+  canvas {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+  }
+
+  /* Allow text selection for content elements but keep default cursor */
+  p,
+  span,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  li {
+    user-select: text;
+    -webkit-user-select: text;
+    cursor: default;
   }
 
   body {

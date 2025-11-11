@@ -54,10 +54,10 @@ export const DEV_LINKS: DevLink[] = [
     icon: 'mdi:git',
   },
   {
-    href: 'https://maven.2ha.me',
+    href: 'https://img.2ha.me',
     label: 'Nexus',
-    title: 'Maven仓库',
-    icon: 'mdi:chart-doughnut-variant',
+    title: '图床',
+    icon: 'mdi:image-multiple',
   },
   {
     href: 'https://dms.2ha.me',
@@ -69,13 +69,13 @@ export const DEV_LINKS: DevLink[] = [
     href: 'https://p.2ha.me',
     label: 'Zfile',
     title: '网盘',
-    icon: 'mdi:cloud-arrow-up',
+    icon: 'mdi:harddisk',
   },
   {
-    href: 'https://photo.2ha.me',
-    label: 'immich',
-    title: '相册',
-    icon: 'mdi:camera',
+    href: 'https://tz.2ha.me',
+    label: 'VPS Monitor',
+    title: '探针',
+    icon: 'mdi:chart-areaspline',
   },
   {
     href: 'https://f.2ha.me',
@@ -83,7 +83,12 @@ export const DEV_LINKS: DevLink[] = [
     title: '文件服务器',
     icon: 'mdi:file-arrow-up-down-outline',
   },
-  { href: 'https://v.2ha.me', label: 'Emby', title: 'Emby', icon: 'mdi:emby' },
+  { 
+    href: 'https://status.2ha.me', 
+    label: 'Domain Status', 
+    title: '站点检测', 
+    icon: 'mdi:cloud-check' 
+  },
   {
     href: 'https://in.2ha.me',
     label: '2ha.me statistics',
@@ -95,6 +100,7 @@ export const DEV_LINKS: DevLink[] = [
     label: '妙妙屋',
     title: '个人Clash订阅管理工具',
     icon: '/static/mmw.svg',
+    // icon: 'mdi:cat',
   },
   {
     href: 'https://1ms.cc',
