@@ -13,6 +13,7 @@ import GiteaCalendar from '@/components/custom/GiteaCalendar'
 import Music163Player from '@/components/custom/Music163Player'
 import RandomAnimeBackground from '@/components/custom/RandomAnimeBackgrounds'
 import DevShortCuts from '@/components/DevShortCuts.astro'
+import DevShortcutsHexagon from '@/components/DevShortcutsHexagon.astro'
 
 const latestPost = await getCollection('blog').then((posts: any[]) =>
   posts
@@ -42,7 +43,7 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
 
     <div
       class="has-overlay relative grid aspect-square grid-cols-4 grid-rows-3 items-center
-      justify-center bg-[url('/static/honeycomb.webp')] [grid-area:b] short-cuts-template hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.26)] hover:-translate-y-1 hover:border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))] dark:hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.75)]"
+      justify-center [grid-area:b] short-cuts-template hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.26)] hover:-translate-y-1 hover:border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))] dark:hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.75)]"
       style="grid-template-columns: 2.85fr 2.95fr 2.9fr 1.3fr;grid-template-rows: 4.7fr 3.4fr 2.8fr;"
       aria-label="Developer Stack Shortcuts"
     >
@@ -51,7 +52,8 @@ const latestPost = await getCollection('blog').then((posts: any[]) =>
         src="/static/images/shortcuts-bg.png"
       />
       <!-- <DevStackIconsCloud client:load/> -->
-      <DevShortCuts />
+      <!-- <DevShortCuts /> -->
+      <DevShortcutsHexagon />
     </div>
 
     <div class="relative overflow-hidden [grid-area:d] aspect-square hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.26)] hover:-translate-y-1 hover:border-[color-mix(in_srgb,hsl(var(--primary))_40%,hsl(var(--border)))] dark:hover:[box-shadow:6px_6px_0_rgba(0,0,0,0.75)]">
