@@ -30,6 +30,6 @@ export function transformerNotationSkip(
       return false
     },
     undefined, // remove empty lines
-  )
+  ) as ShikiTransformer
 
  }
